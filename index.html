@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ascend Catalog Pro — Pivotree</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#001f5b;--navy-mid:#0a2d6e;--navy-light:#e8edf7;
+  --teal:#0f9d82;--teal-light:#e6f7f4;--teal-dark:#0a7d68;
+  --orange:#c8510a;--orange-light:#fdf0e8;
+  --amber:#b45309;--amber-light:#fef3c7;--amber-mid:#d97706;
+  --blue:#1d4ed8;--blue-light:#eff6ff;
+  --purple:#5b21b6;--purple-light:#ede9fe;
+  --rose:#9f1239;--rose-light:#fff1f2;
+  --gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;
+  --gray-300:#cbd5e1;--gray-400:#94a3b8;--gray-500:#64748b;
+  --gray-600:#475569;--gray-700:#334155;--gray-800:#1e293b;
+  --green:#0d6b40;--green-light:#d1fae5;
+  --red:#991b1b;--red-light:#fee2e2;
+  --r-sm:4px;--r-md:6px;--r-lg:10px;--r-xl:14px;
+  --sh-sm:0 1px 3px rgba(0,0,0,.07);--sh-md:0 4px 12px rgba(0,0,0,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-800);font-size:14px;line-height:1.5;}
+
+/* HEADER */
+.hdr{background:var(--navy);padding:0 28px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;gap:16px;}
+.hdr-left{display:flex;align-items:center;gap:16px;flex-shrink:0;}
+.pt-logo{display:flex;align-items:center;gap:10px;}
+.pt-logo-mark{display:flex;align-items:center;justify-content:center;}
+.pt-wordmark{font-family:'Inter',sans-serif;font-weight:700;font-size:17px;color:#fff;letter-spacing:-.3px;}
+.cbadge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-md);padding:3px 10px;font-size:11px;font-weight:500;color:rgba(255,255,255,.88);display:flex;align-items:center;gap:6px;}
+.cav{width:18px;height:18px;border-radius:3px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;}
+.hdr-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.hbtn{padding:5px 11px;border-radius:var(--r-md);font-size:11px;font-weight:500;cursor:pointer;border:none;display:flex;align-items:center;gap:5px;transition:all .15s;}
+.hbtn-lib{background:rgba(255,255,255,.08);color:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.16);}
+.hbtn-lib:hover{background:rgba(255,255,255,.14);}
+.hbtn-add{background:var(--orange);color:#fff;}
+.hbtn-add:hover{background:#a84208;}
+.livebadge{background:var(--teal);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:99px;letter-spacing:.4px;}
+.livedate{font-size:11px;color:rgba(255,255,255,.5);}
+.uav{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;cursor:pointer;}
+
+/* CONNECTED SOURCES BAR */
+.src-bar{background:#fff;border-bottom:1px solid var(--gray-200);padding:0 28px;height:34px;display:flex;align-items:center;gap:6px;position:sticky;top:54px;z-index:99;}
+.src-label{font-size:10px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.6px;margin-right:6px;white-space:nowrap;}
+.src-badge{display:flex;align-items:center;gap:5px;padding:3px 10px;border:1px solid var(--gray-200);border-radius:99px;font-size:10px;font-weight:500;color:var(--gray-600);background:var(--gray-50);white-space:nowrap;}
+.src-badge svg{width:14px;height:14px;flex-shrink:0;}
+.src-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;box-shadow:0 0 0 2px var(--teal-light);}
+.src-divider{width:1px;height:16px;background:var(--gray-200);margin:0 2px;}
+
+/* TAB NAV */
+.tnav{background:#fff;border-bottom:1px solid var(--gray-200);padding:0 28px;display:flex;align-items:center;position:sticky;top:88px;z-index:98;}
+.tbtn{padding:12px 16px;font-size:12px;font-weight:500;color:var(--gray-500);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.tbtn:hover{color:var(--navy);}
+.tbtn.active{color:var(--navy);border-bottom-color:var(--navy);}
+.aibadge{background:var(--navy);color:#fff;font-size:8px;font-weight:700;padding:2px 5px;border-radius:3px;letter-spacing:.3px;}
+
+/* MAIN */
+.main{padding:24px;max-width:1400px;margin:0 auto;}
+.tab{display:none;}.tab.active{display:block;}
+
+/* CARDS */
+.card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:20px;box-shadow:var(--sh-sm);}
+.mb16{margin-bottom:16px;}.mb20{margin-bottom:20px;}.mb24{margin-bottom:24px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.sec-ttl{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--navy);}
+.card-ttl{font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy);margin-bottom:3px;}
+.card-sub{font-size:11px;color:var(--gray-500);}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:var(--r-md);font-size:11px;font-weight:500;cursor:pointer;border:none;transition:all .15s;}
+.btn-p{background:var(--navy);color:#fff;}.btn-p:hover{background:var(--navy-mid);}
+.btn-s{background:#fff;color:var(--gray-700);border:1px solid var(--gray-300);}.btn-s:hover{background:var(--gray-50);}
+.btn-g{background:transparent;color:var(--navy);border:1px solid var(--gray-300);}.btn-g:hover{background:var(--navy-light);}
+.btn-sm{padding:3px 9px;font-size:10px;}
+.btn-q{background:var(--green-light);color:var(--green);border:1px solid #6ee7b7;cursor:default;}
+.btn-w{background:#fff;color:var(--navy);font-weight:600;border:1px solid var(--gray-300);}.btn-w:hover{background:var(--gray-50);}
+.btn-ow{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);}.btn-ow:hover{background:rgba(255,255,255,.08);}
+
+/* SCORE CARDS */
+.scard{text-align:center;padding:20px 16px;position:relative;overflow:hidden;}
+.snum{font-family:'Poppins',sans-serif;font-weight:700;font-size:42px;line-height:1;margin-bottom:2px;}
+.slbl{font-size:12px;font-weight:600;color:var(--gray-600);margin-bottom:5px;letter-spacing:.2px;}
+.sring{position:absolute;top:-18px;right:-18px;opacity:.06;}
+.sg{color:var(--green);}.sy{color:var(--amber);}.sr{color:var(--rose);}
+.sbg-g{background:linear-gradient(135deg,#f0fdf9,#d1fae5);border-color:#6ee7b7;}
+.sbg-y{background:linear-gradient(135deg,#fffbeb,#fef3c7);border-color:#fcd34d;}
+.sbg-r{background:linear-gradient(135deg,#fff1f2,#fee2e2);border-color:#fecdd3;}
+.sdelta{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:2px 7px;border-radius:3px;margin-bottom:4px;}
+.dup{background:var(--green-light);color:var(--green);}
+.ddn{background:var(--red-light);color:var(--red);}
+.dfl{background:var(--gray-100);color:var(--gray-600);}
+
+/* FILTER PILLS */
+.fpill{padding:3px 9px;border-radius:99px;font-size:10px;font-weight:500;cursor:pointer;border:1px solid var(--gray-300);background:#fff;color:var(--gray-600);transition:all .15s;}
+.fpill:hover{border-color:var(--navy);color:var(--navy);}
+.fpill.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.fsel{padding:4px 9px;border:1px solid var(--gray-300);border-radius:var(--r-md);font-size:11px;font-family:'Inter',sans-serif;color:var(--gray-700);outline:none;background:#fff;cursor:pointer;}
+.fsel:focus{border-color:var(--navy);}
+.fsel.af{border-color:var(--navy);background:var(--navy-light);color:var(--navy);font-weight:600;}
+
+/* EXEC SUMMARY */
+.execsum{background:var(--navy);border-radius:var(--r-lg);padding:16px 20px;color:#fff;margin-bottom:20px;display:flex;gap:16px;align-items:flex-start;}
+.es-ttl{font-size:9px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px;}
+.es-txt{font-size:12px;line-height:1.7;color:rgba(255,255,255,.88);}
+.es-txt strong{color:#fff;}
+.hl-g{color:#6ee7b7;font-weight:600;}.hl-r{color:#fda4af;font-weight:600;}.hl-y{color:#fcd34d;font-weight:600;}
+
+/* FINANCIAL IMPACT PANEL */
+.fin-panel{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:20px;margin-bottom:20px;box-shadow:var(--sh-sm);}
+.fin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.fin-title{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--navy);}
+.fin-sources{display:flex;align-items:center;gap:6px;}
+.fin-src-badge{display:flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;font-size:9px;font-weight:600;border:1px solid var(--gray-200);color:var(--gray-500);}
+.fin-src-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);}
+.fin-toggle{display:flex;gap:0;border:1px solid var(--gray-200);border-radius:var(--r-md);overflow:hidden;}
+.fin-toggle-btn{padding:4px 12px;font-size:10px;font-weight:600;cursor:pointer;border:none;background:#fff;color:var(--gray-500);transition:all .15s;}
+.fin-toggle-btn.active{background:var(--navy);color:#fff;}
+.fin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+.fin-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:12px 14px;}
+.fin-card-label{font-size:10px;color:var(--gray-500);margin-bottom:3px;text-transform:uppercase;letter-spacing:.3px;}
+.fin-card-val{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:var(--navy);}
+.fin-card-delta{font-size:10px;margin-top:2px;font-weight:600;}
+.fin-card-delta.up{color:var(--green);}
+.fin-card-delta.dn{color:var(--red);}
+.fin-bar-section{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fin-bar-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:14px;}
+.fin-bar-title{font-size:11px;font-weight:600;color:var(--navy);margin-bottom:10px;}
+.fin-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+.fin-bar-lbl{font-size:10px;color:var(--gray-600);width:100px;flex-shrink:0;}
+.fin-bar-track{flex:1;background:var(--gray-200);border-radius:99px;height:5px;}
+.fin-bar-fill{height:5px;border-radius:99px;background:var(--navy);}
+.fin-bar-val{font-size:10px;font-weight:600;color:var(--navy);min-width:36px;text-align:right;font-family:'DM Mono',monospace;}
+.fin-insight{background:var(--navy-light);border-radius:var(--r-md);padding:10px 14px;font-size:11px;color:var(--navy);line-height:1.6;margin-top:12px;}
+.fin-insight strong{font-weight:600;}
+
+/* HEATMAP */
+.hm-grid{display:grid;grid-template-columns:130px repeat(3,1fr);gap:2px;font-size:12px;}
+.hm-hdr{padding:6px 8px;font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;text-align:center;}
+.hm-lbl{padding:8px 10px;font-weight:600;color:var(--navy);display:flex;align-items:center;font-size:11px;}
+.hm-cell{padding:9px 6px;border-radius:var(--r-sm);text-align:center;font-weight:700;font-size:12px;transition:transform .1s;}
+.hm-cell:hover{transform:scale(1.03);}
+
+/* MOVERS */
+.mv-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--gray-100);}
+.mv-row:last-child{border-bottom:none;}
+.mv-name{flex:1;font-size:12px;font-weight:500;color:var(--navy);}
+.mv-sub{font-size:10px;color:var(--gray-400);}
+.mv-up{font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--green);}
+.mv-dn{font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--red);}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:18px;}
+.tl::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--gray-200);}
+.tl-item{position:relative;padding:0 0 16px 18px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-13px;top:3px;width:10px;height:10px;border-radius:50%;border:2px solid #fff;}
+.tl-date{font-size:9px;font-family:'DM Mono',monospace;color:var(--gray-400);margin-bottom:1px;}
+.tl-ttl{font-size:11px;font-weight:600;color:var(--navy);margin-bottom:2px;}
+.tl-desc{font-size:10px;color:var(--gray-500);line-height:1.5;}
+.tl-imp{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:2px 6px;border-radius:3px;margin-top:3px;}
+.ti-up{background:var(--green-light);color:var(--green);}
+.ti-pend{background:var(--gray-100);color:var(--gray-500);}
+.ti-dn{background:var(--red-light);color:var(--red);}
+
+/* TABLES */
+.dt{width:100%;border-collapse:collapse;font-size:12px;}
+.dt th{text-align:left;padding:7px 10px;font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid var(--gray-200);background:var(--gray-50);}
+.dt td{padding:9px 10px;border-bottom:1px solid var(--gray-100);color:var(--gray-700);}
+.dt tr:hover td{background:var(--gray-50);}
+.dt tr:last-child td{border-bottom:none;}
+.sp{display:inline-flex;align-items:center;justify-content:center;width:40px;padding:2px 0;border-radius:var(--r-sm);font-size:11px;font-weight:700;}
+.sp-g{background:var(--green-light);color:var(--green);}
+.sp-y{background:var(--amber-light);color:var(--amber);}
+.sp-r{background:var(--red-light);color:var(--red);}
+.tu{color:var(--green);font-weight:600;}.tf{color:var(--gray-400);font-weight:600;}.td2{color:var(--red);font-weight:600;}
+
+/* STAT ROW */
+.sr2{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--gray-100);}
+.sr2:last-child{border-bottom:none;}
+.sr-l{font-size:11px;color:var(--gray-600);}
+.sr-v{font-size:12px;font-weight:600;color:var(--navy);font-family:'DM Mono',monospace;}
+
+/* METRIC CARD */
+.mc{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:11px 13px;}
+.mc-l{font-size:10px;color:var(--gray-500);margin-bottom:3px;text-transform:uppercase;letter-spacing:.3px;}
+.mc-v{font-family:'Poppins',sans-serif;font-weight:700;font-size:19px;color:var(--navy);}
+
+/* CAT BADGES */
+.cb{display:inline-block;padding:1px 7px;border-radius:3px;font-size:9px;font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;}
+.cb-e{background:var(--blue-light);color:var(--blue);}
+.cb-h{background:#fce7f3;color:#9d174d;}
+.cb-p{background:#d1fae5;color:var(--green);}
+.cb-l{background:var(--amber-light);color:var(--amber);}
+.cb-v{background:var(--purple-light);color:var(--purple);}
+.cb-t{background:var(--red-light);color:var(--red);}
+
+/* PIPELINE */
+.pipe-wrap{display:flex;align-items:stretch;width:100%;}
+.pipe-ph{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;text-align:center;transition:all .15s;border:1.5px solid transparent;}
+.pipe-ph:hover{opacity:.9;transform:translateY(-1px);}
+.pipe-arr{display:flex;align-items:center;padding:0 3px;flex-shrink:0;}
+.pipe-arr-inner{position:relative;width:20px;height:1px;background:var(--gray-300);}
+.pipe-arr-inner::after{content:'▶';position:absolute;right:-6px;top:50%;transform:translateY(-50%);font-size:8px;color:var(--gray-400);line-height:1;}
+.pipe-icon-wrap{width:32px;height:32px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;margin-bottom:7px;}
+.pipe-lbl{font-size:11px;font-weight:700;margin-bottom:3px;}
+.pipe-cnt{font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;line-height:1;}
+.pipe-sub{font-size:9px;margin-top:2px;opacity:.7;}
+
+/* PROGRESS */
+.pw{background:var(--gray-200);border-radius:99px;height:6px;overflow:hidden;}
+.pb{height:100%;border-radius:99px;}
+
+/* AGENTIC */
+.ag-wrap{display:flex;gap:20px;min-height:500px;}
+.ag-side{width:250px;flex-shrink:0;}
+.ag-main{flex:1;display:flex;flex-direction:column;}
+.chat-area{flex:1;overflow-y:auto;padding:18px;background:var(--gray-50);border-radius:var(--r-lg) var(--r-lg) 0 0;border:1px solid var(--gray-200);border-bottom:none;max-height:480px;}
+.chat-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid var(--gray-200);border-radius:0 0 var(--r-lg) var(--r-lg);}
+.chat-inp{flex:1;border:none;outline:none;font-size:12px;font-family:'Inter',sans-serif;color:var(--gray-700);background:transparent;}
+.chat-inp::placeholder{color:var(--gray-400);}
+.chat-send{background:var(--navy);color:#fff;border:none;border-radius:var(--r-md);padding:6px 12px;font-size:11px;font-weight:600;cursor:pointer;}
+.msg{margin-bottom:14px;}
+.msg-u{display:flex;justify-content:flex-end;}
+.msg-a{display:flex;gap:8px;}
+.bub-u{background:var(--navy);color:#fff;padding:9px 13px;border-radius:var(--r-lg) var(--r-lg) 3px var(--r-lg);max-width:75%;font-size:12px;line-height:1.5;}
+.bub-a{background:#fff;border:1px solid var(--gray-200);padding:11px 14px;border-radius:3px var(--r-lg) var(--r-lg) var(--r-lg);flex:1;font-size:12px;line-height:1.6;}
+.ai-av{width:28px;height:28px;border-radius:var(--r-md);background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--teal);flex-shrink:0;}
+.mono{background:var(--gray-800);border-radius:var(--r-md);padding:10px 12px;margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:#e2e8f0;line-height:1.8;}
+.mh{color:#6ee7b7;font-weight:500;}.mw{color:#fcd34d;}.md{color:#94a3b8;}
+.mtag{font-size:9px;color:var(--gray-400);margin-top:5px;font-family:'DM Mono',monospace;}
+.sq{padding:9px 12px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:11px;color:var(--gray-600);cursor:pointer;margin-bottom:6px;transition:all .15s;line-height:1.4;}
+.sq:hover{background:var(--navy-light);border-color:var(--navy);color:var(--navy);}
+.slbl2{font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
+.typing span{display:inline-block;width:5px;height:5px;background:var(--gray-400);border-radius:50%;margin:0 2px;animation:bounce 1.2s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes bounce{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-5px);}}
+
+/* LIBRARY */
+.lib-sb{width:100%;padding:10px 14px;border:1.5px solid var(--gray-200);border-radius:var(--r-lg);font-size:13px;font-family:'Inter',sans-serif;outline:none;background:#fff;}
+.lib-sb:focus{border-color:var(--navy);}
+.lib-wrap{display:flex;gap:18px;}
+.lib-filt{width:190px;flex-shrink:0;}
+.filt-sec{margin-bottom:18px;}
+.filt-lbl{font-size:9px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;}
+.filt-opt{display:flex;align-items:center;gap:7px;padding:3px 0;font-size:11px;color:var(--gray-600);cursor:pointer;}
+.filt-opt input{accent-color:var(--navy);}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.pc{background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);overflow:hidden;transition:box-shadow .15s,transform .15s;}
+.pc:hover{box-shadow:var(--sh-md);transform:translateY(-1px);}
+.pc-img{height:72px;display:flex;align-items:center;justify-content:center;}
+.pc-body{padding:11px;}
+.pc-brand{font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.4px;}
+.pc-name{font-size:11px;font-weight:600;color:var(--navy);margin:2px 0 5px;line-height:1.3;}
+.pc-attrs{font-size:10px;color:var(--gray-500);line-height:1.5;margin-bottom:7px;}
+.pn{font-family:'DM Mono',monospace;font-size:9px;color:var(--gray-400);margin-bottom:7px;}
+.ua{border:1.5px dashed var(--gray-300);border-radius:var(--r-lg);padding:28px;text-align:center;transition:all .15s;cursor:pointer;}
+.ua:hover{border-color:var(--navy);background:var(--navy-light);}
+
+/* MODAL */
+.moverlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,20,60,.55);z-index:200;align-items:center;justify-content:center;}
+.moverlay.open{display:flex;}
+.modal{background:#fff;border-radius:var(--r-xl);padding:26px;width:500px;max-width:95vw;box-shadow:var(--sh-md);max-height:90vh;overflow-y:auto;}
+.modal-ttl{font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin-bottom:5px;}
+.modal-sub{font-size:12px;color:var(--gray-500);margin-bottom:18px;}
+.fl{font-size:11px;font-weight:600;color:var(--gray-700);margin-bottom:5px;display:block;}
+.fs{width:100%;padding:8px 10px;border:1px solid var(--gray-300);border-radius:var(--r-md);font-size:12px;font-family:'Inter',sans-serif;color:var(--gray-700);outline:none;margin-bottom:12px;}
+.fs:focus{border-color:var(--navy);}
+.macts{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;}
+
+/* INSIGHT */
+.insight{background:var(--navy-light);border:1px solid #c7d2ea;border-radius:var(--r-lg);padding:14px 18px;display:flex;gap:10px;align-items:flex-start;}
+.ins-ico{flex-shrink:0;margin-top:1px;}
+.ins-txt{font-size:12px;color:var(--navy);line-height:1.6;}
+.ins-txt strong{font-weight:600;}
+
+/* DOWNLOAD CARD */
+.dlcard{background:var(--navy);border-radius:var(--r-lg);padding:22px;color:#fff;}
+
+/* TOAST */
+.tc{position:fixed;bottom:20px;right:20px;z-index:300;display:flex;flex-direction:column;gap:6px;}
+.toast{background:var(--navy);color:#fff;padding:10px 16px;border-radius:var(--r-lg);font-size:12px;font-weight:500;display:flex;align-items:center;gap:8px;box-shadow:var(--sh-md);animation:tIn .3s ease;max-width:300px;}
+.ti2{color:var(--teal);font-size:14px;}
+@keyframes tIn{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes tOut{from{transform:translateX(0);opacity:1;}to{transform:translateX(100%);opacity:0;}}
+.toast.out{animation:tOut .3s ease forwards;}
+.divider{height:1px;background:var(--gray-200);margin:18px 0;}
+.pi{font-size:10px;color:var(--red);font-style:italic;}
+
+/* PRIORITY SECTION — reduced color */
+.pri-hdr{font-size:10px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px;}
+.pri-issue{font-size:10px;color:var(--gray-400);}
+.pri-critical{color:var(--red);font-size:10px;}
+
+/* SVG ICONS */
+.ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:99px;}
+
+@media(max-width:900px){
+  .g3,.g2{grid-template-columns:1fr;}
+  .ag-wrap{flex-direction:column;}
+  .ag-side{width:100%;}
+  .lib-wrap{flex-direction:column;}
+  .lib-filt{width:100%;}
+  .pipe-wrap{flex-wrap:wrap;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="pt-logo">
+      <svg height="28" viewBox="0 0 998.41333 376.33334" xmlns="http://www.w3.org/2000/svg">
+        <g transform="matrix(0.13333333,0,0,-0.13333333,0,376.33333)">
+          <path d="m 814.07,993.359 c 0,38.471 -5.851,76.611 -17.531,114.411 -11.684,37.75 -29.191,71.76 -52.551,101.98 -23.363,30.22 -52.914,54.64 -88.625,73.2 -35.738,18.52 -77.64,27.83 -125.707,27.83 -45.328,0 -85.886,-9.65 -121.601,-28.88 -35.739,-19.24 -66.293,-43.99 -91.696,-74.21 -25.445,-30.22 -44.683,-64.57 -57.707,-103.04 -13.093,-38.47 -19.593,-76.94 -19.593,-115.42 0,-38.468 6.5,-76.601 19.593,-114.359 13.024,-37.801 32.262,-71.812 57.707,-102.031 25.403,-30.219 55.957,-54.59 91.696,-73.149 35.715,-18.57 76.273,-27.82 121.601,-27.82 48.067,0 89.969,9.59 125.707,28.828 35.711,19.231 65.262,43.981 88.625,74.211 23.36,30.219 40.867,64.559 52.551,103.031 11.68,38.481 17.531,76.95 17.531,115.418 z M 236.996,1483.87 v -138.08 h 6.188 c 12.375,19.22 28.492,38.81 48.425,58.74 19.907,19.89 44.325,37.78 73.176,53.58 28.856,15.79 61.473,28.86 97.883,39.15 36.387,10.31 77.305,15.47 122.637,15.47 70.058,0 134.625,-13.41 193.722,-40.2 59.051,-26.79 109.903,-63.56 152.524,-110.26 42.57,-46.7 75.529,-101.67 98.909,-164.85 23.36,-63.22 35.04,-131.24 35.04,-204.061 0,-72.82 -11.34,-141.179 -34.01,-205.07 C 1008.83,724.391 976.52,668.75 934.645,621.352 892.719,573.961 841.895,536.16 782.125,508 722.352,479.891 654.668,465.789 579.113,465.789 c -70.058,0 -134.312,14.391 -192.691,43.27 -58.406,28.832 -103.399,68.023 -134.988,117.48 h -4.125 L 247.309,0 H 0 v 1483.87 h 236.996" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 1230.23,1483.87 h 247.31 V 494.621 h -247.31 z m -35.04,335.94 c 0,39.83 14.75,74.52 44.3,104.07 29.52,29.52 66.99,44.32 112.32,44.32 45.36,0 83.47,-14.1 114.38,-42.26 30.92,-28.18 46.39,-63.56 46.39,-106.13 0,-42.6 -15.47,-78 -46.39,-106.14 -30.91,-28.18 -69.02,-42.26 -114.38,-42.26 -45.33,0 -82.8,14.75 -112.32,44.33 -29.55,29.52 -44.3,64.2 -44.3,104.07" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 1577.73,1483.87 h 269.98 l 259.68,-721.339 h 4.12 l 261.75,721.339 h 261.73 L 2241.35,494.621 h -263.79 l -399.83,989.249" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 2898.63,993.359 c 0,-38.468 5.82,-76.937 17.5,-115.418 11.66,-38.472 29.19,-72.812 52.56,-103.031 23.36,-30.23 52.88,-54.98 88.62,-74.211 35.71,-19.238 78.31,-28.828 127.79,-28.828 49.46,0 92.03,9.59 127.77,28.828 35.71,19.231 65.24,43.981 88.62,74.211 23.34,30.219 40.87,64.559 52.55,103.031 11.66,38.481 17.54,76.95 17.54,115.418 0,38.471 -5.88,76.611 -17.54,114.411 -11.68,37.75 -29.21,71.76 -52.55,101.98 -23.38,30.22 -52.91,54.64 -88.62,73.2 -35.74,18.52 -78.31,27.83 -127.77,27.83 -49.48,0 -92.08,-9.31 -127.79,-27.83 -35.74,-18.56 -65.26,-42.98 -88.62,-73.2 -23.37,-30.22 -40.9,-64.23 -52.56,-101.98 -11.68,-37.8 -17.5,-75.94 -17.5,-114.411 z m -251.44,0 c 0,78.331 14.08,149.431 42.24,213.321 28.16,63.9 66.27,118.49 114.38,163.84 48.09,45.33 105.1,80.38 171.06,105.1 65.96,24.73 136.02,37.11 210.23,37.11 74.19,0 144.27,-12.38 210.2,-37.11 65.96,-24.72 122.95,-59.77 171.06,-105.1 48.09,-45.35 86.21,-99.94 114.39,-163.84 28.16,-63.89 42.26,-134.99 42.26,-213.321 0,-78.289 -14.1,-149.757 -42.26,-214.328 -28.18,-64.609 -66.3,-119.883 -114.39,-165.929 -48.11,-46.051 -105.1,-82.071 -171.06,-108.172 -65.93,-26.09 -136.01,-39.141 -210.2,-39.141 -74.21,0 -144.27,13.051 -210.23,39.141 -65.96,26.101 -122.97,62.121 -171.06,108.172 -48.11,46.046 -86.22,101.32 -114.38,165.929 -28.16,64.571 -42.24,136.039 -42.24,214.328" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 3767.53,1286.02 v 197.85 h 173.13 v 286.48 h 243.18 v -286.48 h 247.31 V 1286.02 H 4183.84 V 826.43 c 0,-43.989 7.89,-80.348 23.7,-109.231 15.78,-28.828 51.18,-43.269 106.13,-43.269 16.5,0 34.35,1.679 53.6,5.129 19.22,3.41 36.39,8.589 51.52,15.453 l 8.23,-193.703 c -21.99,-8.25 -48.09,-14.778 -78.31,-19.579 -30.24,-4.789 -59.1,-7.242 -86.56,-7.242 -65.94,0 -119.54,9.313 -160.75,27.821 -41.23,18.57 -73.87,43.992 -97.9,76.281 -24.06,32.281 -40.54,69.359 -49.46,111.289 -8.95,41.871 -13.38,86.871 -13.38,134.98 v 461.661 h -173.13" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 4636.63,1483.87 h 237 v -164.89 h 4.12 c 27.46,57.73 65.96,104.4 115.42,140.17 49.45,35.71 107.16,53.58 173.12,53.58 9.59,0 19.91,-0.36 30.92,-1.03 10.98,-0.72 20.6,-2.43 28.85,-5.16 v -226.7 c -16.5,4.12 -30.61,6.85 -42.26,8.25 -11.68,1.34 -23.03,2.06 -33.99,2.06 -56.36,0 -101.69,-10.31 -136.04,-30.94 -34.35,-20.58 -61.14,-45.33 -80.37,-74.16 -19.26,-28.88 -32.29,-58.43 -39.15,-88.65 -6.91,-30.22 -10.31,-54.25 -10.31,-72.1 V 494.621 h -247.31 v 989.249" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 6020.17,1088.15 c 0,31.61 -4.49,61.83 -13.39,90.71 -8.97,28.83 -23.02,54.25 -42.26,76.27 -19.26,21.92 -43.63,39.48 -73.15,52.53 -29.58,13.05 -64.26,19.57 -104.1,19.57 -74.18,0 -137.05,-22.35 -188.57,-66.97 -51.52,-44.66 -80.06,-102.03 -85.53,-172.11 z m 247.3,-111.291 c 0,-10.988 0,-21.968 0,-32.961 0,-11.027 -0.69,-21.968 -2.06,-32.949 h -752.24 c 2.74,-35.789 12.02,-68.41 27.83,-97.91 15.78,-29.551 36.74,-54.969 62.86,-76.269 26.07,-21.301 55.65,-38.141 88.62,-50.461 32.96,-12.379 67.31,-18.571 103.04,-18.571 61.84,0 114.03,11.321 156.62,34.012 42.58,22.641 77.62,53.922 105.13,93.781 l 164.87,-131.91 c -97.57,-131.922 -239.08,-197.832 -424.55,-197.832 -76.97,0 -147.73,12.043 -212.29,36.02 -64.6,24.043 -120.55,58.05 -167.97,102.043 -47.39,43.937 -84.5,97.898 -111.29,161.796 -26.79,63.891 -40.17,136.332 -40.17,217.403 0,79.669 13.38,152.159 40.17,217.439 26.79,65.24 63.54,120.89 110.26,166.94 46.7,46.03 102.03,81.74 165.93,107.16 63.87,25.43 132.92,38.14 207.11,38.14 68.69,0 132.22,-11.35 190.63,-34.01 58.4,-22.67 108.89,-56.34 151.49,-100.98 42.57,-44.71 75.91,-100.3 99.97,-166.93 24,-66.68 36.04,-144.63 36.04,-233.951" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 7124.63,1088.15 c 0,31.61 -4.49,61.83 -13.39,90.71 -8.97,28.83 -23.02,54.25 -42.26,76.27 -19.26,21.92 -43.63,39.48 -73.15,52.53 -29.58,13.05 -64.26,19.57 -104.1,19.57 -74.18,0 -137.05,-22.35 -188.57,-66.97 -51.52,-44.66 -80.06,-102.03 -85.53,-172.11 z m 247.3,-111.291 c 0,-10.988 0,-21.968 0,-32.961 0,-11.027 -0.69,-21.968 -2.06,-32.949 h -752.24 c 2.74,-35.789 12.02,-68.41 27.83,-97.91 15.78,-29.551 36.74,-54.969 62.86,-76.269 26.07,-21.301 55.65,-38.141 88.63,-50.461 32.95,-12.379 67.3,-18.571 103.03,-18.571 61.84,0 114.03,11.321 156.63,34.012 42.57,22.641 77.61,53.922 105.12,93.781 l 164.87,-131.91 c -97.57,-131.922 -239.08,-197.832 -424.55,-197.832 -76.97,0 -147.73,12.043 -212.29,36.02 -64.59,24.043 -120.55,58.05 -167.97,102.043 -47.39,43.937 -84.5,97.898 -111.29,161.796 -26.79,63.891 -40.17,136.332 -40.17,217.403 0,79.669 13.38,152.159 40.17,217.439 26.79,65.24 63.54,120.89 110.26,166.94 46.7,46.03 102.03,81.74 165.93,107.16 63.87,25.43 132.92,38.14 207.11,38.14 68.69,0 132.22,-11.35 190.63,-34.01 58.4,-22.67 108.89,-56.34 151.49,-100.98 42.57,-44.71 75.91,-100.3 99.97,-166.93 24,-66.68 36.04,-144.63 36.04,-233.951" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 4241.09,2508.7 c 0,-173.34 -179.37,-313.87 -179.37,-313.87 0,0 -179.3,140.53 -179.3,313.87 0,173.31 179.3,313.84 179.3,313.84 0,0 179.37,-140.53 179.37,-313.84" style="fill:#8255b0;fill-rule:nonzero;stroke:none"/>
+          <path d="m 3751.62,2433.23 c 150.11,-86.69 182.14,-312.27 182.14,-312.27 0,0 -211.37,-85.01 -361.48,1.64 -150.08,86.65 -182.14,312.2 -182.14,312.2 0,0 211.4,85.08 361.48,-1.57" style="fill:#f9ad16;fill-rule:nonzero;stroke:none"/>
+          <path d="m 3572.25,1971.59 c 150.11,86.66 361.48,1.61 361.48,1.61 0,0 -32.03,-225.55 -182.14,-312.24 -150.08,-86.62 -361.45,-1.63 -361.45,-1.63 0,0 32,225.61 182.11,312.26" style="fill:#3fb33c;fill-rule:nonzero;stroke:none"/>
+          <path d="m 4371.82,1660.94 c -150.1,86.65 -182.14,312.23 -182.14,312.23 0,0 211.37,85.05 361.47,-1.64 150.06,-86.65 182.15,-312.2 182.15,-312.2 0,0 -211.4,-85.08 -361.48,1.61" style="fill:#d7115c;fill-rule:nonzero;stroke:none"/>
+          <path d="m 4551.15,2122.56 c -150.07,-86.68 -361.44,-1.63 -361.44,-1.63 0,0 32.01,225.58 182.14,312.23 150.08,86.63 361.45,1.64 361.45,1.64 0,0 -32,-225.61 -182.15,-312.24" style="fill:#439ada;fill-rule:nonzero;stroke:none"/>
+          <path d="m 7321.8,1400.31 v 94.7 h -35.37 v 12.67 h 85.11 v -12.67 h -35.52 v -94.7 h -14.22" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+          <path d="m 7385.67,1400.31 v 107.37 h 21.39 l 25.41,-76.02 c 2.34,-7.08 4.05,-12.38 5.13,-15.89 1.21,3.9 3.12,9.64 5.71,17.21 l 25.71,74.7 h 19.11 v -107.37 h -13.69 v 89.87 l -31.2,-89.87 h -12.82 l -31.06,91.41 v -91.41 h -13.69" style="fill:#ffffff;fill-rule:nonzero;stroke:none"/>
+        </g>
+      </svg>
+    </div>
+    <div style="width:1px;height:20px;background:rgba(255,255,255,.15)"></div>
+    <div class="cbadge"><div class="cav">SS</div>Summit Supply Co.</div>
+  </div>
+  <div class="hdr-right">
+    <button class="hbtn hbtn-lib" onclick="openLib()">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="1" width="6" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/><path d="M1 13h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Library
+    </button>
+    <button class="hbtn hbtn-add" onclick="openModal()">
+      <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      Add to Catalog
+    </button>
+    <span class="livedate" id="ld"></span>
+    <span class="livebadge">LIVE</span>
+    <div class="uav">JS</div>
+  </div>
+</header>
+
+<!-- CONNECTED SOURCES BAR -->
+<div class="src-bar">
+  <span class="src-label">Connected Sources</span>
+  <div class="src-badge">
+    <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#94a3b8" stroke-width="1.2"/><path d="M8 2.5c-2 2-2 9 0 11M8 2.5c2 2 2 9 0 11M1.5 8h13" stroke="#94a3b8" stroke-width="1.2"/></svg>
+    <span class="src-dot"></span>Google Search Console
+  </div>
+  <div class="src-divider"></div>
+  <div class="src-badge">
+    <svg viewBox="0 0 16 16" fill="none"><path d="M2 12l4-5 3 3 2-4 3 6" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="src-dot"></span>Google Analytics 4
+  </div>
+  <div class="src-divider"></div>
+  <div class="src-badge">
+    <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#94a3b8" stroke-width="1.2"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1M8 8v2M6 9h4" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/></svg>
+    <span class="src-dot"></span>OroCommerce
+  </div>
+  <div class="src-divider"></div>
+  <div class="src-badge">
+    <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#94a3b8" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/></svg>
+    <span class="src-dot"></span>Akeneo PIM
+  </div>
+  <div style="margin-left:auto;font-size:9px;color:var(--gray-400);font-family:'DM Mono',monospace;white-space:nowrap">Last sync: 4 min ago</div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tnav">
+  <button class="tbtn" data-tab="howitworks" onclick="switchTab('howitworks',this)">How It Works</button>
+  <button class="tbtn active" data-tab="strategic" onclick="switchTab('strategic',this)">Strategic</button>
+  <button class="tbtn" data-tab="operations" onclick="switchTab('operations',this)">Operations</button>
+  <button class="tbtn" data-tab="sales" onclick="switchTab('sales',this)">Sales &amp; Marketing</button>
+  <button class="tbtn" data-tab="agentic" onclick="switchTab('agentic',this)">Agentic Query <span class="aibadge">AI</span></button>
+</nav>
+
+<div class="main">
+
+<!-- ===== HOW IT WORKS ===== -->
+<div id="tab-howitworks" class="tab">
+
+  <!-- Header -->
+  <div style="margin-bottom:24px">
+    <div style="font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px">Platform Overview</div>
+    <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--navy);margin-bottom:8px;line-height:1.2">A done-for-you catalog service.<br>Powered by your data.</div>
+    <div style="font-size:13px;color:var(--gray-500);max-width:600px;line-height:1.7">Ascend Catalog Pro connects your commerce systems, scores your catalog quality, and continuously enriches your product data — all managed by Pivotree. One catalog owner oversees what used to require a team of ten.</div>
+  </div>
+
+  <!-- Stat strip -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px">
+    <div class="mc" style="border-left:2px solid var(--teal);text-align:center;padding:16px">
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:var(--navy)">4</div>
+      <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-top:3px">Connected Sources</div>
+    </div>
+    <div class="mc" style="border-left:2px solid var(--teal);text-align:center;padding:16px">
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:var(--navy)">3</div>
+      <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-top:3px">Score Dimensions</div>
+    </div>
+    <div class="mc" style="border-left:2px solid var(--teal);text-align:center;padding:16px">
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:var(--navy)">&lt;90</div>
+      <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-top:3px">Days to Go Live</div>
+    </div>
+    <div class="mc" style="border-left:2px solid var(--teal);text-align:center;padding:16px">
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:var(--navy)">1</div>
+      <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-top:3px">Catalog Owner Needed</div>
+    </div>
+  </div>
+
+  <!-- Loop Diagram -->
+  <div class="card mb20" style="padding:28px">
+    <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--navy);margin-bottom:4px">The Ascend Continuous Improvement Loop</div>
+    <div style="font-size:12px;color:var(--gray-500);margin-bottom:24px">Data flows in, catalog quality improves, enrichment runs, scores update — continuously, managed by Pivotree.</div>
+    <div style="display:flex;justify-content:center">
+      <canvas id="loop-diagram" width="700" height="520" style="max-width:100%;height:auto"></canvas>
+    </div>
+    <!-- Loop stage legend -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px">
+      <div style="text-align:center">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--navy);margin:0 auto 5px"></div>
+        <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:2px">1. Data Sources</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.4">GSC · GA4 · OroCommerce · Akeneo</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--teal);margin:0 auto 5px"></div>
+        <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:2px">2. Ascend Scores</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.4">Search · Find · Buy composite scoring</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--navy);margin:0 auto 5px"></div>
+        <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:2px">3. Client Prioritizes</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.4">Adds categories & brands to queue</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--teal);margin:0 auto 5px"></div>
+        <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:2px">4. Pivotree Enriches</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.4">Normalization · Enrichment · QA</div>
+      </div>
+      <div style="text-align:center">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--navy);margin:0 auto 5px"></div>
+        <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:2px">5. Published</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.4">Back to PIM · Review · eCommerce</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Integrations + Scoring + Priority Engine -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+
+    <!-- Integrations -->
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+        <div style="width:28px;height:28px;border-radius:var(--r-md);background:var(--navy-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h3M9 7h3M5 4l-2 3 2 3M9 4l2 3-2 3" stroke="var(--navy)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy)">Connected Sources</div><div style="font-size:10px;color:var(--gray-500)">Pre-built connectors · Pivotree configures &amp; maintains</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+          <div style="width:32px;height:32px;border-radius:var(--r-sm);background:#e8f0fe;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#1a73e8" stroke-width="1.2"/><path d="M8 2c-2.5 2-2.5 10 0 12M8 2c2.5 2 2.5 10 0 12M1.5 8h13" stroke="#1a73e8" stroke-width="1.1"/></svg>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600;color:var(--navy)">Google Search Console</div>
+            <div style="font-size:10px;color:var(--gray-400)">Impressions · Clicks · CTR · SERP position</div>
+          </div>
+          <span style="font-size:9px;font-weight:700;background:#dbeafe;color:#1e40af;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Search</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+          <div style="width:32px;height:32px;border-radius:var(--r-sm);background:#fce8e6;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 13l4-5 3 3 3-5 3 6" stroke="#e37400" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600;color:var(--navy)">Google Analytics 4</div>
+            <div style="font-size:10px;color:var(--gray-400)">Bounce rate · Filter usage · Engagement · Pages/session</div>
+          </div>
+          <span style="font-size:9px;font-weight:700;background:var(--purple-light);color:var(--purple);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Find</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+          <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="5" width="12" height="8" rx="1.5" stroke="var(--green)" stroke-width="1.2"/><path d="M5 5V4a1 1 0 011-1h4a1 1 0 011 1v1M8 9v1.5M6.5 10h3" stroke="var(--green)" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600;color:var(--navy)">OroCommerce Enterprise</div>
+            <div style="font-size:10px;color:var(--gray-400)">Onsite search · RFQ · Orders · AOV · Returns</div>
+          </div>
+          <div style="display:flex;gap:3px">
+            <span style="font-size:9px;font-weight:700;background:#dbeafe;color:#1e40af;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Search</span>
+            <span style="font-size:9px;font-weight:700;background:var(--green-light);color:var(--green);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Buy</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+          <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--purple-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="var(--purple)" stroke-width="1.2"/><path d="M5 8h6M5 5.5h4M5 10.5h5" stroke="var(--purple)" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:11px;font-weight:600;color:var(--navy)">Akeneo PIM Enterprise</div>
+            <div style="font-size:10px;color:var(--gray-400)">Attribute completeness · Schema coverage · DQ grade</div>
+          </div>
+          <span style="font-size:9px;font-weight:700;background:var(--purple-light);color:var(--purple);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Find</span>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:10px 12px;background:var(--navy-light);border-radius:var(--r-md);font-size:11px;color:var(--navy);line-height:1.6">
+        <strong>Setup &amp; maintenance:</strong> All four connectors are pre-built. Pivotree configures, connects, and maintains every integration as part of the managed service. Live in under 90 days.
+      </div>
+    </div>
+
+    <!-- Scoring Methodology -->
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+        <div style="width:28px;height:28px;border-radius:var(--r-md);background:var(--navy-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--navy)" stroke-width="1.3"/><path d="M7 4v3l2 1.5" stroke="var(--navy)" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy)">Scoring Methodology</div><div style="font-size:10px;color:var(--gray-500)">Three equally weighted dimensions · 0–100 composite</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:12px 14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:11px;font-weight:700;color:var(--navy)">Search Visibility</div>
+            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:var(--gray-500)">33.3%</span>
+          </div>
+          <div style="font-size:10px;color:var(--gray-500);margin-bottom:6px">Can customers find your products on Google and in your portal?</div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+            <div style="width:60%;height:4px;border-radius:99px;background:var(--navy)"></div>
+            <span style="font-size:9px;color:var(--gray-500)">OroCommerce onsite search — 60%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px">
+            <div style="width:40%;height:4px;border-radius:99px;background:var(--gray-300)"></div>
+            <span style="font-size:9px;color:var(--gray-500)">Google Search Console — 40%</span>
+          </div>
+        </div>
+        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:12px 14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:11px;font-weight:700;color:var(--navy)">Findability</div>
+            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:var(--gray-500)">33.3%</span>
+          </div>
+          <div style="font-size:10px;color:var(--gray-500);margin-bottom:6px">Can customers filter, compare, and navigate to the right product?</div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+            <div style="width:50%;height:4px;border-radius:99px;background:var(--navy)"></div>
+            <span style="font-size:9px;color:var(--gray-500)">Akeneo attribute completeness — 50%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px">
+            <div style="width:50%;height:4px;border-radius:99px;background:var(--gray-300)"></div>
+            <span style="font-size:9px;color:var(--gray-500)">GA4 on-site behaviour — 50%</span>
+          </div>
+        </div>
+        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:12px 14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="font-size:11px;font-weight:700;color:var(--navy)">Conversion</div>
+            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:var(--gray-500)">33.3%</span>
+          </div>
+          <div style="font-size:10px;color:var(--gray-500);margin-bottom:6px">Do customers add to cart, submit RFQs, and complete orders?</div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+            <div style="width:70%;height:4px;border-radius:99px;background:var(--navy)"></div>
+            <span style="font-size:9px;color:var(--gray-500)">Purchase intent (cart + RFQ + order) — 70%</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px">
+            <div style="width:30%;height:4px;border-radius:99px;background:var(--gray-300)"></div>
+            <span style="font-size:9px;color:var(--gray-500)">Order quality (returns + AOV + repeat) — 30%</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--navy);border-radius:var(--r-md)">
+        <span style="font-size:10px;color:rgba(255,255,255,.6);font-weight:600;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap">Composite</span>
+        <span style="font-size:10px;color:rgba(255,255,255,.4)">=</span>
+        <span style="font-size:10px;font-weight:600;color:#93c5fd">Search</span>
+        <span style="font-size:10px;color:rgba(255,255,255,.4)">+</span>
+        <span style="font-size:10px;font-weight:600;color:#c4b5fd">Find</span>
+        <span style="font-size:10px;color:rgba(255,255,255,.4)">+</span>
+        <span style="font-size:10px;font-weight:600;color:#6ee7b7">Buy</span>
+        <span style="font-size:10px;color:rgba(255,255,255,.4)">÷ 3</span>
+        <span style="margin-left:auto;font-family:'Poppins',sans-serif;font-weight:700;font-size:12px;color:#fff">0 – 100</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Priority Engine -->
+  <div class="card mb20">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <div style="width:28px;height:28px;border-radius:var(--r-md);background:var(--navy-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M2 7h7M2 10h5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </div>
+      <div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy)">Priority Engine</div><div style="font-size:10px;color:var(--gray-500)">Tells your team exactly which categories, brands, and SKUs to enrich first — and why</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="padding:14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="5" cy="5" r="4" stroke="var(--navy)" stroke-width="1.3"/><path d="M8 8l3 3" stroke="var(--navy)" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <div style="font-size:11px;font-weight:700;color:var(--navy)">Search Priorities</div>
+        </div>
+        <div style="font-size:11px;color:var(--gray-600);line-height:1.6">Identifies categories and brands with the worst search visibility scores. Surfaces missing titles, descriptions, and structured data gaps that are suppressing Google indexing.</div>
+        <div style="margin-top:8px;font-size:10px;font-weight:600;color:var(--teal)">Source: GSC + OroCommerce search logs</div>
+      </div>
+      <div style="padding:14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="1.5" stroke="var(--navy)" stroke-width="1.3"/><path d="M3 6h6M3 4h4M3 8h5" stroke="var(--navy)" stroke-width="1.1" stroke-linecap="round"/></svg>
+          <div style="font-size:11px;font-weight:700;color:var(--navy)">Find Priorities</div>
+        </div>
+        <div style="font-size:11px;color:var(--gray-600);line-height:1.6">Surfaces products that appear in search but can't be filtered or compared on-site due to missing attributes. High bounce rate + low attribute completeness = Find priority.</div>
+        <div style="margin-top:8px;font-size:10px;font-weight:600;color:var(--teal)">Source: Akeneo completeness + GA4 bounce data</div>
+      </div>
+      <div style="padding:14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1h2l1.2 6h5.5l.9-3.5H4.5" stroke="var(--navy)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="10.5" r=".8" fill="var(--navy)"/><circle cx="9" cy="10.5" r=".8" fill="var(--navy)"/></svg>
+          <div style="font-size:11px;font-weight:700;color:var(--navy)">Buy Priorities</div>
+        </div>
+        <div style="font-size:11px;color:var(--gray-600);line-height:1.6">Identifies high-traffic products that aren't converting or have elevated return rates. Missing certifications, compatibility data, or specs are the most common causes.</div>
+        <div style="margin-top:8px;font-size:10px;font-weight:600;color:var(--teal)">Source: OroCommerce RFQ, orders &amp; return data</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:12px 14px;background:var(--navy-light);border-radius:var(--r-md);font-size:11px;color:var(--navy);line-height:1.6;display:flex;gap:10px;align-items:flex-start">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px"><circle cx="7" cy="7" r="6" stroke="var(--navy)" stroke-width="1.2"/><path d="M7 5v3M7 9.5v.5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <div><strong>How it works:</strong> Your catalog owner reviews the Priority Engine and adds items to the enrichment queue with one click. Pivotree's team processes the queue — normalizing, enriching, and QA-ing every SKU. Enriched data is returned to Akeneo for client review, then published to the OroCommerce eCommerce channel. Scores update within 48–72 hours of publish.</div>
+    </div>
+  </div>
+
+  <!-- Meet Your Catalog Operations Team -->
+  <div class="card" style="margin-top:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--navy)">Meet Your Catalog Operations Team</div>
+        <div style="font-size:11px;color:var(--gray-500);margin-top:2px">When you work with Ascend, you're not buying software — you're engaging a team of catalog experts. This is the capability model behind every enrichment program.</div>
+      </div>
+      <div style="flex-shrink:0;margin-left:20px;background:var(--navy-light);border-radius:var(--r-md);padding:6px 12px;font-size:10px;font-weight:700;color:var(--navy);white-space:nowrap">RI + AI · Real Intelligence + Artificial Intelligence</div>
+    </div>
+
+    <div style="background:var(--navy-light);border-radius:var(--r-md);padding:12px 16px;margin-bottom:20px;font-size:12px;color:var(--navy);line-height:1.7">
+      <strong>Our approach:</strong> AI enhances productivity and scales execution. Humans drive the strategy and deliver the results. Every SKU enriched by Ascend passes through expert human review — because catalog quality is too important to leave entirely to automation.
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px">
+
+      <!-- Taxonomist -->
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:16px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:#fff;letter-spacing:.5px">TX</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;color:var(--navy);margin-bottom:2px">Taxonomist</div>
+        <div style="font-size:10px;color:var(--teal);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Strategy</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.6;margin-bottom:10px">Designs your category schema, attribute hierarchy, and product family structure. Defines what "complete" means for every SKU in your catalog.</div>
+        <div style="background:var(--navy-light);border-radius:var(--r-md);padding:7px 10px;font-size:10px;color:var(--navy);line-height:1.5;text-align:left">
+          <strong>For you:</strong> Akeneo channel setup, schema per product family, attribute requirement definition before day one.
+        </div>
+      </div>
+
+      <!-- Governance -->
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:16px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:#fff;letter-spacing:.5px">GV</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;color:var(--navy);margin-bottom:2px">Governance Lead</div>
+        <div style="font-size:10px;color:var(--teal);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Standards</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.6;margin-bottom:10px">Enforces data standards and quality thresholds across every enriched SKU. Ensures consistency, compliance, and score reliability throughout the program.</div>
+        <div style="background:var(--navy-light);border-radius:var(--r-md);padding:7px 10px;font-size:10px;color:var(--navy);line-height:1.5;text-align:left">
+          <strong>For you:</strong> Quality gates at every pipeline phase, scoring calibration, and data standard enforcement across all brands and categories.
+        </div>
+      </div>
+
+      <!-- Project Manager -->
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:16px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:#fff;letter-spacing:.5px">PM</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;color:var(--navy);margin-bottom:2px">Project Manager</div>
+        <div style="font-size:10px;color:var(--teal);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Relationship</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.6;margin-bottom:10px">Your primary point of contact. Owns onboarding, milestone tracking, communication, and program health. Translates business priorities into enrichment action.</div>
+        <div style="background:var(--navy-light);border-radius:var(--r-md);padding:7px 10px;font-size:10px;color:var(--navy);line-height:1.5;text-align:left">
+          <strong>For you:</strong> Weekly cadence, roadmap management, escalation path, and the bridge between your catalog manager and Pivotree's team.
+        </div>
+      </div>
+
+      <!-- Enrichment Specialist -->
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:16px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:#fff;letter-spacing:.5px">ES</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;color:var(--navy);margin-bottom:2px">Enrichment Specialist</div>
+        <div style="font-size:10px;color:var(--teal);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Execution</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.6;margin-bottom:10px">Sources, populates, and normalizes attribute data at scale. AI surfaces candidates and auto-populates where confidence is high — humans review, validate, and approve every output.</div>
+        <div style="background:var(--navy-light);border-radius:var(--r-md);padding:7px 10px;font-size:10px;color:var(--navy);line-height:1.5;text-align:left">
+          <strong>For you:</strong> Every SKU in the queue enriched against your approved schema — classified, attributed, normalized, and QA'd before it reaches your PIM.
+        </div>
+      </div>
+
+      <!-- Analytics Lead -->
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:16px;text-align:center">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:#fff;letter-spacing:.5px">AL</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;color:var(--navy);margin-bottom:2px">Analytics Lead</div>
+        <div style="font-size:10px;color:var(--teal);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Intelligence</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.6;margin-bottom:10px">Interprets your scoring data, surfaces patterns and opportunities, and feeds insights back into prioritization. Turns numbers into decisions your team can act on.</div>
+        <div style="background:var(--navy-light);border-radius:var(--r-md);padding:7px 10px;font-size:10px;color:var(--navy);line-height:1.5;text-align:left">
+          <strong>For you:</strong> Monthly performance reviews, score trend analysis, priority recommendations, and the financial impact narrative for your leadership team.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RI + AI callout -->
+    <div style="margin-top:16px;background:var(--navy);border-radius:var(--r-lg);padding:16px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="width:32px;height:32px;border-radius:var(--r-md);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="3" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/><path d="M2 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="rgba(255,255,255,.7)" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div><div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:3px">Humans drive strategy</div><div style="font-size:10px;color:rgba(255,255,255,.55);line-height:1.5">Your Catalog Operations Team sets priorities, defines standards, and makes the judgment calls that AI cannot.</div></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="width:32px;height:32px;border-radius:var(--r-md);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l1.2 3.6H12L9.1 7.6l1.1 3.4L7 9l-3.2 2 1.1-3.4L2 5.6h3.8z" stroke="rgba(255,255,255,.7)" stroke-width="1.2" stroke-linejoin="round"/></svg>
+        </div>
+        <div><div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:3px">AI enhances productivity</div><div style="font-size:10px;color:rgba(255,255,255,.55);line-height:1.5">AI surfaces candidates, auto-populates high-confidence attributes, and scales execution — doing in seconds what would take days manually.</div></div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="width:32px;height:32px;border-radius:var(--r-md);background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10l3-4 2.5 2.5 2-3 2.5 4.5" stroke="rgba(255,255,255,.7)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:3px">Humans deliver results</div><div style="font-size:10px;color:rgba(255,255,255,.55);line-height:1.5">Every enriched SKU is reviewed and approved by a human expert before it reaches your PIM. Quality you can stake your brand on.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="tab-strategic" class="tab active">
+
+  <!-- Filter Bar -->
+  <div class="card mb20" style="padding:12px 18px">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.6px">Filter by</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:11px;color:var(--gray-500)">Period</span>
+        <div style="display:flex;gap:3px">
+          <button class="fpill active" onclick="setDate('30d',this)">30 days</button>
+          <button class="fpill" onclick="setDate('90d',this)">90 days</button>
+          <button class="fpill" onclick="setDate('6m',this)">6 months</button>
+          <button class="fpill" onclick="setDate('12m',this)">12 months</button>
+        </div>
+      </div>
+      <div style="width:1px;height:20px;background:var(--gray-200)"></div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:11px;color:var(--gray-500)">Category</span>
+        <select class="fsel" id="cat-f" onchange="applyF()">
+          <option value="all">All categories</option>
+          <option value="Lighting">Lighting</option>
+          <option value="Electrical">Electrical</option>
+          <option value="HVAC">HVAC</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Tools & Safety">Tools &amp; Safety</option>
+          <option value="PVF">PVF</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span style="font-size:11px;color:var(--gray-500)">Brand</span>
+        <select class="fsel" id="brand-f" onchange="applyF()">
+          <option value="all">All brands</option>
+          <option value="Eaton">Eaton</option>
+          <option value="Southwire">Southwire</option>
+          <option value="Honeywell">Honeywell</option>
+          <option value="Philips Signify">Philips Signify</option>
+          <option value="Smith-Cooper">Smith-Cooper</option>
+          <option value="Matco-Norca">Matco-Norca</option>
+          <option value="Klein Tools">Klein Tools</option>
+          <option value="Milwaukee">Milwaukee</option>
+          <option value="Watts">Watts</option>
+          <option value="Charlotte Pipe">Charlotte Pipe</option>
+        </select>
+      </div>
+      <button class="btn btn-s btn-sm" id="reset-f" onclick="resetF()" style="display:none;margin-left:auto">✕ Reset</button>
+      <button class="btn btn-p btn-sm" onclick="showToast('Exec snapshot exported','↗')" style="margin-left:auto">
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 10l8-8M4 2h6v6" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Export for Exec Review
+      </button>
+    </div>
+  </div>
+
+  <!-- Exec Summary -->
+  <div class="execsum mb20" id="exec-sum">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;margin-top:2px"><rect x="1" y="1" width="16" height="16" rx="3" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/><path d="M5 9h8M5 6h5M5 12h6" stroke="rgba(255,255,255,.7)" stroke-width="1.2" stroke-linecap="round"/></svg>
+    <div id="exec-sum-body"></div>
+  </div>
+
+  <!-- Scorecards -->
+  <div class="g3 mb20" id="scorecard-grid"></div>
+
+  <!-- Financial Impact Panel -->
+  <div class="fin-panel mb20">
+    <div class="fin-header">
+      <div>
+        <div class="fin-title">Financial Impact — Enrichment Attribution</div>
+        <div style="font-size:11px;color:var(--gray-500);margin-top:2px">Revenue, margin, and return rate movement linked to enrichment activity</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="fin-sources">
+          <div class="fin-src-badge"><div class="fin-src-dot"></div>OroCommerce</div>
+          <div class="fin-src-badge"><div class="fin-src-dot"></div>Epicor ERP</div>
+        </div>
+        <div class="fin-toggle">
+          <button class="fin-toggle-btn" id="fin-pre" onclick="setFinView('pre')">Pre-Enrichment</button>
+          <button class="fin-toggle-btn active" id="fin-post" onclick="setFinView('post')">Post-Enrichment</button>
+        </div>
+      </div>
+    </div>
+    <div class="fin-grid" id="fin-cards"></div>
+    <div class="fin-bar-section">
+      <div class="fin-bar-card">
+        <div class="fin-bar-title">Gross Margin by Category — Post-Enrichment</div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Lighting</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:62%"></div></div><div class="fin-bar-val">62.4%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Tools &amp; Safety</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:54%"></div></div><div class="fin-bar-val">54.1%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Electrical</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:48%"></div></div><div class="fin-bar-val">48.3%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">HVAC</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:44%"></div></div><div class="fin-bar-val">44.7%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Plumbing</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:41%"></div></div><div class="fin-bar-val">41.2%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">PVF</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:36%;background:var(--gray-400)"></div></div><div class="fin-bar-val" style="color:var(--gray-500)">36.8%</div></div>
+      </div>
+      <div class="fin-bar-card">
+        <div class="fin-bar-title">Return Rate by Category — Enrichment Impact</div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Lighting</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:8%;background:var(--green)"></div></div><div class="fin-bar-val" style="color:var(--green)">2.1%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Electrical</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:16%;background:var(--green)"></div></div><div class="fin-bar-val" style="color:var(--green)">4.3%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">HVAC</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:22%;background:var(--amber-mid)"></div></div><div class="fin-bar-val" style="color:var(--amber)">6.1%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Plumbing</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:26%;background:var(--amber-mid)"></div></div><div class="fin-bar-val" style="color:var(--amber)">7.2%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">Tools &amp; Safety</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:30%;background:var(--amber-mid)"></div></div><div class="fin-bar-val" style="color:var(--amber)">8.4%</div></div>
+        <div class="fin-bar-row"><div class="fin-bar-lbl">PVF</div><div class="fin-bar-track"><div class="fin-bar-fill" style="width:52%;background:var(--red)"></div></div><div class="fin-bar-val" style="color:var(--red)">14.7%</div></div>
+      </div>
+    </div>
+    <div class="fin-insight" id="fin-insight"></div>
+  </div>
+
+  <!-- Movers + Timeline -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 320px;gap:16px;margin-bottom:20px">
+    <div class="card">
+      <div class="sec-hdr"><div class="sec-ttl">Top Movers</div><span id="mv-lbl" style="font-size:10px;color:var(--gray-400)"></span></div>
+      <div id="mv-list"></div>
+    </div>
+    <div class="card">
+      <div class="sec-hdr"><div class="sec-ttl">Biggest Decliners</div><span id="dc-lbl" style="font-size:10px;color:var(--gray-400)"></span></div>
+      <div id="dc-list"></div>
+    </div>
+    <div class="card" style="overflow-y:auto;max-height:320px">
+      <div class="sec-hdr"><div class="sec-ttl">Enrichment Milestones</div></div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-dot" style="background:var(--teal);box-shadow:0 0 0 2px var(--teal-light)"></div><div class="tl-date">Apr 2, 2026</div><div class="tl-ttl">Lighting batch complete</div><div class="tl-desc">2,400 Philips &amp; Lithonia SKUs enriched.</div><div class="tl-imp ti-up">▲ Search +6.1 · Find +5.3</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--teal);box-shadow:0 0 0 2px var(--teal-light)"></div><div class="tl-date">Mar 18, 2026</div><div class="tl-ttl">Eaton Electrical published</div><div class="tl-desc">1,100 circuit breaker &amp; switchgear SKUs live.</div><div class="tl-imp ti-up">▲ Electrical composite +7.4</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--blue);box-shadow:0 0 0 2px #bfdbfe"></div><div class="tl-date">Mar 5, 2026</div><div class="tl-ttl">PVF Phase 1 queued</div><div class="tl-desc">1,847 PVF SKUs entered queue.</div><div class="tl-imp ti-pend">⏳ In pipeline</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--amber-mid);box-shadow:0 0 0 2px #fde68a"></div><div class="tl-date">Feb 14, 2026</div><div class="tl-ttl">HVAC Honeywell refresh</div><div class="tl-desc">800 Thermostat &amp; Controls SKUs updated.</div><div class="tl-imp ti-up">▲ HVAC Buy +4.1</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--red);box-shadow:0 0 0 2px #fecdd3"></div><div class="tl-date">Jan 10, 2026</div><div class="tl-ttl">Southwire audit flagged</div><div class="tl-desc">Missing amperage &amp; voltage on 3,200 SKUs.</div><div class="tl-imp ti-dn">▼ Electrical Search −4.8</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heatmap -->
+  <div class="card mb20">
+    <div class="sec-hdr">
+      <div><div class="sec-ttl">Category Health Heatmap</div><div style="font-size:11px;color:var(--gray-500)">Search · Find · Buy scores — one-glance exec view</div></div>
+      <div style="display:flex;gap:10px;align-items:center;font-size:10px;color:var(--gray-500)">
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--green-light);display:inline-block;border:1px solid #6ee7b7"></span>≥75</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--amber-light);display:inline-block;border:1px solid #fcd34d"></span>50–74</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--red-light);display:inline-block;border:1px solid #fecdd3"></span>&lt;50</span>
+      </div>
+    </div>
+    <div class="hm-grid" id="heatmap"></div>
+  </div>
+
+  <!-- Drill-down -->
+  <div class="card mb20">
+    <div class="sec-hdr">
+      <div><div class="card-ttl" id="drill-ttl">Category Performance</div><div class="card-sub" id="drill-sub">Click any row to drill into sub-categories</div></div>
+      <div id="drill-bc"></div>
+    </div>
+    <div id="drill-wrap"></div>
+  </div>
+
+  <!-- SFB Detail -->
+  <div class="g3 mb20">
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--navy)" stroke-width="1.4"/><path d="M9.5 9.5l3 3" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Search Detail
+        <span style="font-size:9px;background:var(--navy-light);color:var(--navy);padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">GSC</span>
+      </div>
+      <div class="sr2"><span class="sr-l">Total Impressions</span><span class="sr-v">2,847,300</span></div>
+      <div class="sr2"><span class="sr-l">Organic Clicks</span><span class="sr-v">184,200</span></div>
+      <div class="sr2"><span class="sr-l">Average CTR</span><span class="sr-v">6.5%</span></div>
+      <div class="sr2"><span class="sr-l">Zero-Result Searches</span><span class="sr-v" style="color:var(--red)">14,830</span></div>
+      <div style="margin:10px 0 7px;font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px">Top Queries</div>
+      <div class="sr2"><span class="sr-l">gate valve 2"</span><span class="sr-v" style="font-size:10px">42,100 · 3.2%</span></div>
+      <div class="sr2"><span class="sr-l">LED warehouse light</span><span class="sr-v" style="font-size:10px">38,700 · 9.1%</span></div>
+      <div class="sr2"><span class="sr-l">20A circuit breaker</span><span class="sr-v" style="font-size:10px">31,400 · 7.8%</span></div>
+    </div>
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="var(--navy)" stroke-width="1.4"/><path d="M4 7h6M4 4.5h3M4 9.5h4" stroke="var(--navy)" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Find Detail
+        <span style="font-size:9px;background:var(--navy-light);color:var(--navy);padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">GA4</span>
+      </div>
+      <div class="sr2"><span class="sr-l">Product Page Views</span><span class="sr-v">1,234,000</span></div>
+      <div class="sr2"><span class="sr-l">Avg Bounce Rate</span><span class="sr-v" style="color:var(--red)">61%</span></div>
+      <div class="sr2"><span class="sr-l">Filter/Facet Usage</span><span class="sr-v">34%</span></div>
+      <div class="sr2"><span class="sr-l">Pages per Session</span><span class="sr-v">3.2</span></div>
+      <div style="margin:10px 0 7px;font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px">By Category</div>
+      <div class="sr2"><span class="sr-l">Lighting</span><span class="sr-v" style="font-size:10px;color:var(--green)">Bounce 38%</span></div>
+      <div class="sr2"><span class="sr-l">PVF</span><span class="sr-v" style="font-size:10px;color:var(--red)">Bounce 74%</span></div>
+      <div class="sr2"><span class="sr-l">HVAC</span><span class="sr-v" style="font-size:10px;color:var(--amber)">Bounce 58%</span></div>
+    </div>
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 1h2.5l1.5 7h6l1-4H5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="12" r="1" fill="var(--navy)"/><circle cx="10.5" cy="12" r="1" fill="var(--navy)"/></svg>
+        Buy Detail
+        <span style="font-size:9px;background:var(--navy-light);color:var(--navy);padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">OroCommerce + GA4</span>
+      </div>
+      <div class="sr2"><span class="sr-l">Add-to-Cart Rate</span><span class="sr-v">12.4%</span></div>
+      <div class="sr2"><span class="sr-l">Cart-to-Order Rate</span><span class="sr-v">68%</span></div>
+      <div class="sr2"><span class="sr-l">Avg Order Value</span><span class="sr-v">$847</span></div>
+      <div class="sr2"><span class="sr-l">Return Rate (catalog)</span><span class="sr-v" style="color:var(--amber)">7.8%</span></div>
+      <div style="margin:10px 0 7px;font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px">Top Converters</div>
+      <div class="sr2"><span class="sr-l">Lighting Commercial</span><span class="sr-v" style="font-size:10px;color:var(--green)">ATC 19%</span></div>
+      <div class="sr2"><span class="sr-l">Tools &amp; Safety</span><span class="sr-v" style="font-size:10px;color:var(--green)">ATC 16%</span></div>
+      <div class="sr2"><span class="sr-l">PVF</span><span class="sr-v" style="font-size:10px;color:var(--red)">ATC 6% · Return 14.7%</span></div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <svg class="ins-ico" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--navy)" stroke-width="1.3"/><path d="M8 7v4M8 5v.5" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <div class="ins-txt"><strong>PVF has the highest SKU count but the lowest composite score and highest return rate (14.7%).</strong> Epicor data shows $2.1M in attributed return costs this year from spec mismatch orders. Improving PVF catalog quality to 70+ is estimated to reduce returns by 40% and increase organic traffic by a similar margin.</div>
+  </div>
+</div>
+
+<!-- ===== OPERATIONS ===== -->
+<div id="tab-operations" class="tab">
+  <!-- Pipeline -->
+  <div class="card mb16">
+    <div class="sec-hdr">
+      <div class="sec-ttl">Enrichment Pipeline</div>
+      <span style="font-size:11px;color:var(--gray-500)">5 phases · 3,565 active · click a phase for details</span>
+    </div>
+    <div class="pipe-wrap" id="pipe-wrap">
+      <div id="ph0" class="pipe-ph" style="border-radius:var(--r-lg) 0 0 var(--r-lg);background:#f1f5f9;border-color:#cbd5e1" onclick="selPhase(0)">
+        <div class="pipe-icon-wrap" style="background:#e2e8f0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#475569" stroke-width="1.4"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1" stroke="#475569" stroke-width="1.4" stroke-linecap="round"/><path d="M8 8v2M6 9h4" stroke="#475569" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="pipe-lbl" style="color:#475569">Queue</div>
+        <div class="pipe-cnt" style="color:#334155">1,847</div>
+        <div class="pipe-sub" style="color:#94a3b8">items waiting</div>
+      </div>
+      <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
+      <div id="ph1" class="pipe-ph" style="background:#eff6ff;border-color:#bfdbfe" onclick="selPhase(1)">
+        <div class="pipe-icon-wrap" style="background:#dbeafe">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1d4ed8" stroke-width="1.4"/><path d="M8 5v3l2 1.5" stroke="#1d4ed8" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div class="pipe-lbl" style="color:#1d4ed8">Normalization</div>
+        <div class="pipe-cnt" style="color:#1e3a8a">730</div>
+        <div class="pipe-sub" style="color:#93c5fd">in progress</div>
+      </div>
+      <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
+      <div id="ph2" class="pipe-ph" style="background:#f5f3ff;border-color:#ddd6fe" onclick="selPhase(2)">
+        <div class="pipe-icon-wrap" style="background:#ede9fe">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4.5H14l-3.7 2.7 1.4 4.3L8 11l-3.7 2.5 1.4-4.3L2 6.5h4.5z" stroke="#5b21b6" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="pipe-lbl" style="color:#5b21b6">Enrichment</div>
+        <div class="pipe-cnt" style="color:#4c1d95">654</div>
+        <div class="pipe-sub" style="color:#c4b5fd">in progress</div>
+      </div>
+      <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
+      <div id="ph3" class="pipe-ph" style="background:#fffbeb;border-color:#fde68a" onclick="selPhase(3)">
+        <div class="pipe-icon-wrap" style="background:#fef3c7">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#b45309" stroke-width="1.4"/><path d="M5.5 8l2 2 3-3" stroke="#b45309" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="pipe-lbl" style="color:#92400e">Review</div>
+        <div class="pipe-cnt" style="color:#78350f">334</div>
+        <div class="pipe-sub" style="color:#fbbf24">awaiting approval</div>
+      </div>
+      <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
+      <div id="ph4" class="pipe-ph" style="border-radius:0 var(--r-lg) var(--r-lg) 0;background:#f0fdf9;border-color:#6ee7b7" onclick="selPhase(4)">
+        <div class="pipe-icon-wrap" style="background:var(--green-light)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="var(--green)" stroke-width="1.4"/><path d="M5 8l2.5 2.5 4-4" stroke="var(--green)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="pipe-lbl" style="color:var(--green)">Published</div>
+        <div class="pipe-cnt" style="color:var(--green)">4,218</div>
+        <div class="pipe-sub" style="color:#6ee7b7">cumulative live</div>
+      </div>
+    </div>
+    <div id="phase-detail" style="display:none;margin-top:12px;border-radius:var(--r-md);padding:14px 18px;border:1.5px solid var(--gray-200)"></div>
+  </div>
+
+  <!-- Catalog Growth -->
+  <div class="card mb20">
+    <div class="sec-hdr">
+      <div class="sec-ttl">Catalog Growth</div>
+      <span style="font-size:11px;color:var(--gray-500)">Enrichment coverage &amp; publishing momentum</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px">
+      <div class="mc" style="border-left:2px solid var(--teal)"><div class="mc-l">Total Enriched SKUs</div><div class="mc-v">42,180</div><div style="font-size:10px;color:var(--gray-400);margin-top:2px">of 91,800 total</div></div>
+      <div class="mc" style="border-left:2px solid var(--green)"><div class="mc-l">Overall Coverage</div><div class="mc-v">45.9%</div><div style="font-size:10px;color:var(--green);margin-top:2px">▲ +3.2% this month</div></div>
+      <div class="mc" style="border-left:2px solid var(--navy)"><div class="mc-l">Published This Month</div><div class="mc-v">892</div><div style="font-size:10px;color:var(--gray-400);margin-top:2px">SKUs pushed live</div></div>
+      <div class="mc" style="border-left:2px solid var(--amber-mid)"><div class="mc-l">Avg Quality Score</div><div class="mc-v">67.4</div><div style="font-size:10px;color:var(--green);margin-top:2px">▲ +4.1 pts vs last mo.</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--navy);margin-bottom:10px">SKUs Published per Month</div>
+        <canvas id="growth-chart" height="180" style="width:100%"></canvas>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px" id="chart-legend"></div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--navy);margin-bottom:10px">Enrichment Coverage by Category</div>
+        <table class="dt">
+          <thead><tr><th>Category</th><th>Total</th><th>Enriched</th><th>Coverage</th><th></th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600">Lighting</td><td>11,600</td><td style="color:var(--green);font-weight:600">10,672</td><td><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--gray-200);border-radius:99px;height:4px"><div style="width:92%;height:4px;border-radius:99px;background:var(--green)"></div></div><span style="font-size:10px;font-weight:700;color:var(--green);min-width:28px">92%</span></div></td><td class="tu" style="font-size:11px">▲</td></tr>
+            <tr><td style="font-weight:600">Electrical</td><td>18,400</td><td style="color:var(--amber);font-weight:600">12,144</td><td><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--gray-200);border-radius:99px;height:4px"><div style="width:66%;height:4px;border-radius:99px;background:var(--amber-mid)"></div></div><span style="font-size:10px;font-weight:700;color:var(--amber);min-width:28px">66%</span></div></td><td class="tu" style="font-size:11px">▲</td></tr>
+            <tr><td style="font-weight:600">HVAC</td><td>14,200</td><td style="color:var(--amber);font-weight:600">8,378</td><td><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--gray-200);border-radius:99px;height:4px"><div style="width:59%;height:4px;border-radius:99px;background:var(--amber-mid)"></div></div><span style="font-size:10px;font-weight:700;color:var(--amber);min-width:28px">59%</span></div></td><td class="tf" style="font-size:11px">►</td></tr>
+            <tr><td style="font-weight:600">Plumbing</td><td>16,800</td><td style="color:var(--amber);font-weight:600">8,904</td><td><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--gray-200);border-radius:99px;height:4px"><div style="width:53%;height:4px;border-radius:99px;background:var(--amber-mid)"></div></div><span style="font-size:10px;font-weight:700;color:var(--amber);min-width:28px">53%</span></div></td><td class="tu" style="font-size:11px">▲</td></tr>
+            <tr><td style="font-weight:600">Tools &amp; Safety</td><td>9,500</td><td style="color:var(--amber);font-weight:600">4,750</td><td><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--gray-200);border-radius:99px;height:4px"><div style="width:50%;height:4px;border-radius:99px;background:var(--amber-mid)"></div></div><span style="font-size:10px;font-weight:700;color:var(--amber);min-width:28px">50%</span></div></td><td class="tf" style="font-size:11px">►</td></tr>
+            <tr><td style="font-weight:600">PVF</td><td>21,300</td><td style="color:var(--red);font-weight:600">5,325</td><td><div style="display:flex;align-items:center;gap:5px"><div style="flex:1;background:var(--gray-200);border-radius:99px;height:4px"><div style="width:25%;height:4px;border-radius:99px;background:var(--red)"></div></div><span style="font-size:10px;font-weight:700;color:var(--red);min-width:28px">25%</span></div></td><td class="td2" style="font-size:11px">▼</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px">
+          <div style="font-size:10px;font-weight:600;color:var(--navy);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">Recently Enriched Brands</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:7px"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span><span style="font-weight:500">Philips Signify</span><span style="color:var(--gray-400)">Lighting</span></div><span style="font-family:'DM Mono',monospace;color:var(--green);font-weight:600;font-size:10px">+2,400 · Apr 2</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:7px"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span><span style="font-weight:500">Eaton</span><span style="color:var(--gray-400)">Electrical</span></div><span style="font-family:'DM Mono',monospace;color:var(--green);font-weight:600;font-size:10px">+1,100 · Mar 18</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:7px"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span><span style="font-weight:500">Honeywell</span><span style="color:var(--gray-400)">HVAC</span></div><span style="font-family:'DM Mono',monospace;color:var(--green);font-weight:600;font-size:10px">+800 · Feb 14</span></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:7px"><span style="width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block"></span><span style="font-weight:500">Smith-Cooper</span><span style="color:var(--gray-400)">PVF · queued</span></div><span style="font-family:'DM Mono',monospace;color:var(--orange);font-weight:600;font-size:10px">1,847 pending</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Queue + Scoring -->
+  <div class="g2 mb20">
+    <div class="card">
+      <div class="sec-hdr"><div class="sec-ttl">Enrichment Queue</div><button class="btn btn-p btn-sm">+ Add Credits</button></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+        <div class="mc"><div class="mc-l">In Queue</div><div class="mc-v">1,847</div></div>
+        <div class="mc"><div class="mc-l">In Progress</div><div class="mc-v">1,718</div></div>
+        <div class="mc"><div class="mc-l">Completed (Mo.)</div><div class="mc-v" style="color:var(--green)">892</div></div>
+      </div>
+      <div style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:11px;color:var(--gray-600)"><span>Enrichment Credits</span><span style="font-weight:600;color:var(--navy)">2,400 / 5,000 used</span></div>
+        <div class="pw"><div class="pb" style="width:48%;background:var(--teal)"></div></div>
+        <div style="font-size:10px;color:var(--gray-400);margin-top:3px">2,600 credits remaining</div>
+      </div>
+      <table class="dt"><thead><tr><th>SKU</th><th>Category</th><th>Priority</th><th>Status</th></tr></thead><tbody>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">PVF-GV-2250</td><td><span class="cb cb-v">PVF</span></td><td><span class="sp sp-r">91</span></td><td style="color:var(--amber);font-size:10px;font-weight:600">In Progress</td></tr>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">PVF-CS-4480</td><td><span class="cb cb-v">PVF</span></td><td><span class="sp sp-r">88</span></td><td style="color:var(--amber);font-size:10px;font-weight:600">In Progress</td></tr>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">ELEC-CB-1182</td><td><span class="cb cb-e">Electrical</span></td><td><span class="sp sp-y">74</span></td><td style="color:var(--gray-500);font-size:10px;font-weight:600">Queued</td></tr>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">HVAC-TC-0930</td><td><span class="cb cb-h">HVAC</span></td><td><span class="sp sp-y">71</span></td><td style="color:var(--gray-500);font-size:10px;font-weight:600">Queued</td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div class="sec-ttl" style="margin-bottom:12px">Category Scoring</div>
+      <table class="dt"><thead><tr><th>Category</th><th>Composite</th><th>Completeness</th><th>Standards</th><th>Web Perf.</th><th>Below 50</th></tr></thead><tbody>
+        <tr><td style="font-weight:600">Lighting</td><td><span class="sp sp-g">88</span></td><td>92%</td><td>88%</td><td>85%</td><td style="color:var(--green)">48</td></tr>
+        <tr><td style="font-weight:600">Electrical</td><td><span class="sp sp-y">67</span></td><td>71%</td><td>64%</td><td>68%</td><td style="color:var(--amber)">1,840</td></tr>
+        <tr><td style="font-weight:600">HVAC</td><td><span class="sp sp-y">61</span></td><td>63%</td><td>58%</td><td>62%</td><td style="color:var(--amber)">1,420</td></tr>
+        <tr><td style="font-weight:600">Plumbing</td><td><span class="sp sp-y">58</span></td><td>60%</td><td>55%</td><td>59%</td><td style="color:var(--amber)">1,680</td></tr>
+        <tr><td style="font-weight:600">Tools &amp; Safety</td><td><span class="sp sp-y">55</span></td><td>58%</td><td>51%</td><td>57%</td><td style="color:var(--amber)">950</td></tr>
+        <tr><td style="font-weight:600">PVF</td><td><span class="sp sp-r">43</span></td><td>41%</td><td>38%</td><td>50%</td><td style="color:var(--red)">8,520</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+
+  <!-- Priority Engine -->
+  <div class="sec-hdr mb16"><div class="sec-ttl">Priority Engine</div><span style="font-size:11px;color:var(--gray-500)">Items most likely to benefit from enrichment</span></div>
+  <div class="g3">
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+        <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--navy)" stroke-width="1.4"/><path d="M9.5 9.5l3 3" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <div class="card-ttl" style="margin-bottom:0">Search Priorities</div>
+      </div>
+      <div class="card-sub" style="margin-bottom:10px">Worst search visibility — enrich first</div>
+      <table class="dt"><thead><tr><th>Category / Brand</th><th>Score</th><th></th></tr></thead><tbody>
+        <tr><td><div style="font-weight:500;font-size:11px">PVF / Matco-Norca</div><div class="pri-issue">Missing titles, no structured data</div></td><td><span class="sp sp-r">28</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Matco-Norca PVF')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">PVF / Smith-Cooper</div><div class="pri-issue">Missing material grade</div></td><td><span class="sp sp-r">31</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Smith-Cooper PVF')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">Electrical / Southwire</div><div class="pri-issue">Incomplete descriptions</div></td><td><span class="sp sp-r">39</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Southwire')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">HVAC / Danfoss</div><div class="pri-issue">Missing voltage, refrigerant type</div></td><td><span class="sp sp-r">42</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Danfoss HVAC')">Queue</button></td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+        <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="var(--navy)" stroke-width="1.4"/><path d="M4 7h6M4 4.5h3M4 9.5h4" stroke="var(--navy)" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <div class="card-ttl" style="margin-bottom:0">Find Priorities</div>
+      </div>
+      <div class="card-sub" style="margin-bottom:10px">Appearing in search — can't be compared on-site</div>
+      <table class="dt"><thead><tr><th>Category / Brand</th><th>Score</th><th></th></tr></thead><tbody>
+        <tr><td><div style="font-weight:500;font-size:11px">HVAC / Thermostats</div><div class="pri-issue">Missing voltage, stage count</div></td><td><span class="sp sp-r">36</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'HVAC Thermostats')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">PVF / Bonney Forge</div><div class="pri-issue">Missing filterable attributes</div></td><td><span class="sp sp-r">38</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Bonney Forge')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">Plumbing / Charlotte Pipe</div><div class="pri-issue">Missing thread type</div></td><td><span class="sp sp-y">44</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Charlotte Pipe')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">Electrical / Conduit</div><div class="pri-issue">Missing diameter, material</div></td><td><span class="sp sp-y">47</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Electrical Conduit')">Queue</button></td></tr>
+      </tbody></table>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+        <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1 1h2l1.5 7h6l1-4H5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="12" r="1" fill="var(--navy)"/><circle cx="10" cy="12" r="1" fill="var(--navy)"/></svg>
+        <div class="card-ttl" style="margin-bottom:0">Buy Priorities</div>
+      </div>
+      <div class="card-sub" style="margin-bottom:10px">Traffic present — not converting or high returns</div>
+      <table class="dt"><thead><tr><th>Category / Brand</th><th>Score</th><th></th></tr></thead><tbody>
+        <tr><td><div style="font-weight:500;font-size:11px">PVF / Stockham</div><div class="pri-issue">Missing certifications — 14.7% return rate</div></td><td><span class="sp sp-r">34</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Stockham PVF')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">Plumbing / Watts</div><div class="pri-issue">Missing NSF cert, PSI rating</div></td><td><span class="sp sp-y">49</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Watts Plumbing')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">HVAC / Emerson</div><div class="pri-issue">Missing SEER, BTU range</div></td><td><span class="sp sp-y">51</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Emerson HVAC')">Queue</button></td></tr>
+        <tr><td><div style="font-weight:500;font-size:11px">Electrical / Boxes</div><div class="pri-issue">Missing UL listing</div></td><td><span class="sp sp-y">53</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Electrical Boxes')">Queue</button></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SALES & MARKETING ===== -->
+<div id="tab-sales" class="tab">
+  <div class="card mb20">
+    <div class="sec-hdr"><div><div class="sec-ttl">Ready to Promote</div><div style="font-size:11px;color:var(--gray-500)">Composite &gt;75 · high quality across all dimensions</div></div><button class="btn btn-s btn-sm" onclick="showToast('List downloaded','↓')">Download List</button></div>
+    <table class="dt"><thead><tr><th>Rank</th><th>Category / Brand</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th>Gross Margin</th><th>SKUs</th><th></th></tr></thead><tbody>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#1</td><td><div style="font-weight:600;font-size:12px">Lighting — Commercial Fixtures</div><div style="font-size:10px;color:var(--gray-500)">Philips Signify, Lithonia, RAB</div></td><td><span class="sp sp-g">92</span></td><td>89</td><td>91</td><td>96</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">62.4%</td><td>4,200</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#2</td><td><div style="font-weight:600;font-size:12px">Electrical — Eaton</div><div style="font-size:10px;color:var(--gray-500)">Circuit Breakers, Switchgear</div></td><td><span class="sp sp-g">84</span></td><td>82</td><td>83</td><td>88</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">48.3%</td><td>3,100</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#3</td><td><div style="font-weight:600;font-size:12px">HVAC — Honeywell</div><div style="font-size:10px;color:var(--gray-500)">Thermostats, Controls</div></td><td><span class="sp sp-g">81</span></td><td>79</td><td>80</td><td>84</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">44.7%</td><td>2,800</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#4</td><td><div style="font-weight:600;font-size:12px">Tools &amp; Safety — Klein Tools</div></td><td><span class="sp sp-g">79</span></td><td>77</td><td>78</td><td>82</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">54.1%</td><td>1,900</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
+    </tbody></table>
+  </div>
+  <div class="card mb20">
+    <div class="sec-hdr"><div><div class="sec-ttl">Needs Enrichment Before Promotion</div><div style="font-size:11px;color:var(--gray-500)">High demand signal · low catalog quality · promoting these wastes spend</div></div></div>
+    <table class="dt"><thead><tr><th>Category / Brand</th><th>Demand</th><th>Composite</th><th>Gross Margin</th><th>Return Rate</th><th>Top Gap</th><th>Recommendation</th></tr></thead><tbody>
+      <tr><td><div style="font-weight:600;font-size:12px">PVF / Matco-Norca</div></td><td><span style="background:var(--navy-light);color:var(--navy);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">High</span></td><td><span class="sp sp-r">28</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">36.8%</td><td style="color:var(--red);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">14.7%</td><td style="font-size:11px">Pressure rating, material grade</td><td style="color:var(--orange);font-size:11px;font-weight:500">Enrich first</td></tr>
+      <tr><td><div style="font-weight:600;font-size:12px">PVF / Smith-Cooper</div></td><td><span style="background:var(--navy-light);color:var(--navy);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">High</span></td><td><span class="sp sp-r">31</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">36.8%</td><td style="color:var(--red);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">12.4%</td><td style="font-size:11px">Schedule/wall thickness</td><td style="color:var(--orange);font-size:11px;font-weight:500">Add to queue</td></tr>
+      <tr><td><div style="font-weight:600;font-size:12px">Electrical / Southwire</div></td><td><span style="background:var(--gray-100);color:var(--gray-600);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">Medium</span></td><td><span class="sp sp-r">39</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">48.3%</td><td style="color:var(--amber);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">9.1%</td><td style="font-size:11px">Amperage, voltage, UL listing</td><td style="color:var(--orange);font-size:11px;font-weight:500">Enrich before Q2</td></tr>
+      <tr><td><div style="font-weight:600;font-size:12px">HVAC / Danfoss</div></td><td><span style="background:var(--gray-100);color:var(--gray-600);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">Medium</span></td><td><span class="sp sp-r">42</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">44.7%</td><td style="color:var(--amber);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">7.8%</td><td style="font-size:11px">Refrigerant type, op. temp</td><td style="color:var(--orange);font-size:11px;font-weight:500">Add to queue</td></tr>
+    </tbody></table>
+  </div>
+  <div class="dlcard">
+    <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;margin-bottom:6px">Download Reports</div>
+    <div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:18px;line-height:1.6">Export promotion-ready products with scores and margin data, or download the enrichment priority report including return rate attribution from Epicor.</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-w btn-sm" onclick="showToast('Promotion-Ready Report downloading','↓')">Download Promotion-Ready Report</button>
+      <button class="btn btn-ow btn-sm" onclick="showToast('Enrichment Priority Report downloading','↓')">Download Enrichment Priority Report</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== AGENTIC ===== -->
+<div id="tab-agentic" class="tab">
+  <div class="ag-wrap">
+    <div class="ag-side">
+      <div class="card" style="height:100%;overflow-y:auto">
+        <div class="slbl2">How to Get Started</div>
+        <div class="sq" onclick="sendP('Which categories have the biggest gap between search volume and conversion?')">Which categories have the biggest gap between search and conversion?</div>
+        <div class="sq" onclick="sendP('Show me the top 10 underperforming sub-categories by composite score')">Top 10 underperforming sub-categories</div>
+        <div class="sq" onclick="sendP('Which brand has the most incomplete product data?')">Which brand has the most incomplete product data?</div>
+        <div class="sq" onclick="sendP('How many SKUs are stuck in the normalization phase?')">How many SKUs are in normalization?</div>
+        <div class="sq" onclick="sendP('What is the estimated revenue impact of enriching PVF to a score of 70?')">Estimated revenue impact of enriching PVF to 70?</div>
+        <div class="sq" onclick="sendP('Which categories have the highest return rates and how does that link to data quality?')">Which categories have the highest return rates?</div>
+        <div class="sq" onclick="sendP('List the top-performing brands in Electrical by overall score')">Top-performing brands in Electrical</div>
+        <div class="sq" onclick="sendP('Show me gross margin by category and which ones are ready to promote')">Gross margin by category — ready to promote?</div>
+        <div class="divider"></div>
+        <div style="font-size:10px;color:var(--gray-400);line-height:1.6">Scoped to Summit Supply Co. catalog data. Connected to OroCommerce, Epicor ERP, Akeneo, GSC &amp; GA4.</div>
+      </div>
+    </div>
+    <div class="ag-main">
+      <div class="chat-area" id="chat-area">
+        <div class="msg msg-a"><div class="ai-av">PT</div><div><div class="bub-a"><strong>Welcome to Ascend Catalog Pro Agentic Query</strong> — Summit Supply Co.<br><br>I'm connected to OroCommerce, Epicor ERP, Akeneo PIM, Google Search Console, and GA4. Ask me about catalog scores, pipeline status, financial impact, return rates, margin attribution, or brand performance across your 91,800 SKUs.</div><div class="mtag">Pivotree TowerTalk v2.1 · 5 sources connected</div></div></div>
+      </div>
+      <div id="typing-ind" style="display:none;padding:8px 18px;background:var(--gray-50);border-left:1px solid var(--gray-200);border-right:1px solid var(--gray-200)">
+        <div class="msg msg-a"><div class="ai-av">PT</div><div class="bub-a"><div class="typing"><span></span><span></span><span></span></div></div></div>
+      </div>
+      <div class="chat-bar">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="color:var(--gray-400);cursor:pointer;flex-shrink:0" onclick="showToast('CSV upload ready','↑')"><path d="M7 1v8M4 4l3-3 3 3M2 10v1.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <input class="chat-inp" id="chat-inp" placeholder="Ask about scores, revenue impact, return rates, margin, pipeline..." onkeydown="if(event.key==='Enter')sendChat()">
+        <button class="chat-send" onclick="sendChat()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LIBRARY ===== -->
+<div id="tab-library" class="tab">
+  <div class="sec-hdr mb20">
+    <div><div class="sec-ttl" style="font-size:18px">Pivotree Product Library</div><div style="font-size:12px;color:var(--gray-500);margin-top:2px">11,247,000+ enriched SKUs across 2,400+ brands</div></div>
+  </div>
+  <div style="margin-bottom:18px"><input class="lib-sb" placeholder="Search — try 'gate valve', 'LED fixture', '20A breaker'..." id="lib-inp" onkeydown="if(event.key==='Enter')libSearch()"></div>
+  <div class="lib-wrap">
+    <div class="lib-filt">
+      <div class="card">
+        <div class="filt-sec"><div class="filt-lbl">Category</div>
+          <label class="filt-opt"><input type="checkbox" checked> Electrical</label>
+          <label class="filt-opt"><input type="checkbox" checked> HVAC</label>
+          <label class="filt-opt"><input type="checkbox" checked> Plumbing</label>
+          <label class="filt-opt"><input type="checkbox" checked> Lighting</label>
+          <label class="filt-opt"><input type="checkbox" checked> PVF</label>
+          <label class="filt-opt"><input type="checkbox" checked> Tools &amp; Safety</label>
+        </div>
+        <div class="filt-sec"><div class="filt-lbl">Brand</div>
+          <label class="filt-opt"><input type="checkbox" checked> Eaton</label>
+          <label class="filt-opt"><input type="checkbox" checked> Honeywell</label>
+          <label class="filt-opt"><input type="checkbox" checked> Philips</label>
+          <label class="filt-opt"><input type="checkbox" checked> Smith-Cooper</label>
+          <label class="filt-opt"><input type="checkbox" checked> Watts</label>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div class="pgrid" id="pgrid"></div>
+      <div class="divider"></div>
+      <div class="card">
+        <div class="sec-hdr"><div class="sec-ttl">Match Your Catalog</div><a href="#" style="font-size:11px;color:var(--navy);text-decoration:none" onclick="showToast('Template downloaded','↓')">Download Template</a></div>
+        <div id="match-up">
+          <div style="margin-bottom:12px"><label class="fl">Process Type</label><select class="fs"><option>SKU ID Match</option><option>New Product Introduction</option><option>Manufacturer Data Refresh</option></select></div>
+          <div class="ua" onclick="simMatch()"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="margin-bottom:8px"><rect x="4" y="6" width="20" height="16" rx="2" stroke="var(--gray-400)" stroke-width="1.5"/><path d="M14 10v6M11 13l3-3 3 3" stroke="var(--gray-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-weight:600;color:var(--gray-700);font-size:12px;margin-bottom:3px">Choose CSV or drag &amp; drop</div><div style="font-size:11px;color:var(--gray-400)">Upload your SKU list to find matches</div></div>
+        </div>
+        <div id="match-res" style="display:none">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="width:28px;height:28px;background:var(--green-light);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 6-6" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div style="font-weight:600;color:var(--navy);font-size:12px">summitsupply_pvf_skus.csv uploaded</div><div style="font-size:11px;color:var(--gray-500)">Matching 1,200 SKUs against library...</div></div></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px">
+            <div style="padding:13px;border-radius:var(--r-md);background:var(--green-light);border:1px solid #6ee7b7;text-align:center"><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--green)">847</div><div style="font-size:10px;color:var(--green);font-weight:600;margin-top:3px">Total 70.6%</div></div>
+            <div style="padding:13px;border-radius:var(--r-md);background:var(--blue-light);border:1px solid #bfdbfe;text-align:center"><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--blue)">412</div><div style="font-size:10px;color:var(--blue);font-weight:600;margin-top:3px">Exact Match</div></div>
+            <div style="padding:13px;border-radius:var(--r-md);background:var(--amber-light);border:1px solid #fde68a;text-align:center"><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--amber)">435</div><div style="font-size:10px;color:var(--amber);font-weight:600;margin-top:3px">Partial</div></div>
+            <div style="padding:13px;border-radius:var(--r-md);background:var(--red-light);border:1px solid #fecdd3;text-align:center"><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--red)">353</div><div style="font-size:10px;color:var(--red);font-weight:600;margin-top:3px">No Match</div></div>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="btn btn-p" onclick="showToast('847 matches sent to queue','→')">Send All Matches to Queue</button>
+            <button class="btn btn-s" onclick="document.getElementById('match-res').style.display='none';document.getElementById('match-up').style.display='block'">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div class="moverlay" id="modal">
+  <div class="modal">
+    <div id="modal-form">
+      <div class="modal-ttl">Add to Catalog</div>
+      <div class="modal-sub">Import a manufacturer file or product list to start the enrichment process.</div>
+      <label class="fl">Process Type</label>
+      <select class="fs"><option>New Product Introduction</option><option>Manufacturer Data Refresh</option><option>SKU ID Match</option></select>
+      <div style="margin-bottom:12px"><a href="#" style="font-size:11px;color:var(--navy)" onclick="showToast('Template downloaded','↓')">Download template</a></div>
+      <label class="fl">Upload File</label>
+      <div class="ua" id="modal-ua" onclick="modalUp()" style="margin-bottom:12px;padding:20px">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="margin-bottom:6px"><rect x="4" y="6" width="20" height="16" rx="2" stroke="var(--gray-400)" stroke-width="1.5"/><path d="M14 10v6M11 13l3-3 3 3" stroke="var(--gray-400)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div style="font-weight:600;color:var(--gray-700);font-size:12px">Choose CSV or drag &amp; drop</div>
+      </div>
+      <div id="modal-map" style="display:none;margin-bottom:12px">
+        <div style="font-size:11px;font-weight:600;color:var(--navy);margin-bottom:7px">Column Mapping Preview</div>
+        <table class="dt" style="font-size:11px"><thead><tr><th>Your Column</th><th>Mapped To</th><th>Status</th></tr></thead><tbody>
+          <tr><td>part_number</td><td>SKU ID</td><td style="color:var(--green)">Matched</td></tr>
+          <tr><td>product_name</td><td>Product Title</td><td style="color:var(--green)">Matched</td></tr>
+          <tr><td>category_code</td><td>Category</td><td style="color:var(--amber)">Review</td></tr>
+        </tbody></table>
+      </div>
+      <div class="macts"><button class="btn btn-s" onclick="closeModal()">Cancel</button><button class="btn btn-p" onclick="modalSubmit()">Upload to Queue</button></div>
+    </div>
+    <div id="modal-suc" style="display:none;text-align:center;padding:18px 0">
+      <div style="width:44px;height:44px;background:var(--green-light);border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;margin:0 auto 12px"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div style="font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">1,200 SKUs Uploaded</div>
+      <div style="font-size:12px;color:var(--gray-500);line-height:1.6;margin-bottom:18px">Items will begin processing in the Normalization phase.</div>
+      <div style="display:flex;justify-content:center;gap:8px"><button class="btn btn-p" onclick="closeModal();switchTab('operations',null)">View Pipeline</button><button class="btn btn-s" onclick="closeModal()">Done</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="tc" id="tc"></div>
+
+<script>
+document.getElementById('ld').textContent=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
+function switchTab(id,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  else document.querySelectorAll('.tbtn').forEach(b=>{if(b.dataset.tab===id)b.classList.add('active');});
+  if(id==='operations')setTimeout(drawGrowthChart,100);
+}
+function openLib(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-library').classList.add('active');
+  initLib();
+}
+function showToast(msg,icon='→'){
+  const c=document.getElementById('tc'),t=document.createElement('div');
+  t.className='toast';t.innerHTML=`<span class="ti2">${icon}</span><span>${msg}</span>`;
+  c.appendChild(t);setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),350);},3000);
+}
+function addQ(btn,name){btn.className='btn btn-q btn-sm';btn.textContent='Queued';btn.disabled=true;showToast(name+' added to queue');}
+
+// MODAL
+let muploaded=false;
+function openModal(){document.getElementById('modal').classList.add('open');document.getElementById('modal-form').style.display='block';document.getElementById('modal-suc').style.display='none';document.getElementById('modal-map').style.display='none';muploaded=false;}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeModal();});
+function modalUp(){if(!muploaded){muploaded=true;document.getElementById('modal-ua').innerHTML='<div style="font-size:12px;font-weight:600;color:var(--green)">summitsupply_new_products.csv ready</div>';document.getElementById('modal-map').style.display='block';}}
+function modalSubmit(){if(!muploaded){showToast('Please select a file first');return;}document.getElementById('modal-form').style.display='none';document.getElementById('modal-suc').style.display='block';showToast('1,200 SKUs added to queue');}
+
+// ===== FINANCIAL IMPACT =====
+const finData={
+  post:{rev:'$4.82M',revDelta:'+$1.14M vs pre',aov:'$847',aovDelta:'+$112 vs pre',conv:'12.4%',convDelta:'+3.1pp vs pre',ret:'7.8%',retDelta:'−4.2pp vs pre'},
+  pre:{rev:'$3.68M',revDelta:'Before enrichment',aov:'$735',aovDelta:'Before enrichment',conv:'9.3%',convDelta:'Before enrichment',ret:'12.0%',retDelta:'Before enrichment'}
+};
+let finView='post';
+function setFinView(v){
+  finView=v;
+  document.getElementById('fin-pre').classList.toggle('active',v==='pre');
+  document.getElementById('fin-post').classList.toggle('active',v==='post');
+  renderFinCards();
+}
+function renderFinCards(){
+  const d=finData[finView];
+  const isPost=finView==='post';
+  document.getElementById('fin-cards').innerHTML=`
+    <div class="fin-card"><div class="fin-card-label">Revenue / Product Page View</div><div class="fin-card-val">${d.rev}</div><div class="fin-card-delta ${isPost?'up':''}">${d.revDelta}</div></div>
+    <div class="fin-card"><div class="fin-card-label">Avg Order Value</div><div class="fin-card-val">${d.aov}</div><div class="fin-card-delta ${isPost?'up':''}">${d.aovDelta}</div></div>
+    <div class="fin-card"><div class="fin-card-label">Conversion Rate</div><div class="fin-card-val">${d.conv}</div><div class="fin-card-delta ${isPost?'up':''}">${d.convDelta}</div></div>
+    <div class="fin-card"><div class="fin-card-label">Return Rate (catalog attr.)</div><div class="fin-card-val">${d.ret}</div><div class="fin-card-delta ${isPost?'up dn':''}">${d.retDelta}</div></div>`;
+  document.getElementById('fin-insight').innerHTML=isPost
+    ?`<strong>Post-enrichment impact (Lighting + Electrical batches, Nov 2025–Apr 2026):</strong> Revenue per product page view improved by $1.14M attributed to enriched SKUs. Return rate dropped 4.2 percentage points — Epicor data attributes $840K in reduced return processing costs. OroCommerce conversion rate up 3.1pp on enriched categories.`
+    :`<strong>Pre-enrichment baseline (Oct 2025):</strong> Before the Lighting and Electrical enrichment cycles, conversion rate was 9.3% and return rate was 12.0% across catalog-attributed orders. Toggle to Post-Enrichment to see the impact.`;
+}
+renderFinCards();
+
+// ===== SCORECARD DATA =====
+const profiles={
+  all:{search:{score:62,delta:9.7,trend:[48,51,53,55,57,59,60,62]},find:{score:54,delta:4.2,trend:[46,47,48,49,50,51,52,54]},buy:{score:71,delta:2.8,trend:[64,65,66,67,68,69,70,71]}},
+  Lighting:{search:{score:85,delta:6.1,trend:[74,76,78,79,81,82,84,85]},find:{score:88,delta:5.3,trend:[78,80,82,83,84,86,87,88]},buy:{score:92,delta:3.2,trend:[84,86,87,88,89,90,91,92]}},
+  Electrical:{search:{score:71,delta:7.4,trend:[58,61,63,65,66,68,69,71]},find:{score:62,delta:3.1,trend:[55,56,57,58,59,60,61,62]},buy:{score:68,delta:2.0,trend:[62,63,64,65,65,66,67,68]}},
+  HVAC:{search:{score:58,delta:1.2,trend:[53,54,55,55,56,56,57,58]},find:{score:55,delta:-0.8,trend:[57,57,56,56,55,55,55,55]},buy:{score:71,delta:4.1,trend:[63,64,65,67,68,69,70,71]}},
+  Plumbing:{search:{score:62,delta:5.9,trend:[51,53,55,56,57,59,60,62]},find:{score:51,delta:2.4,trend:[45,46,47,48,48,49,50,51]},buy:{score:60,delta:1.8,trend:[55,56,57,57,58,58,59,60]}},
+  'Tools & Safety':{search:{score:52,delta:0.6,trend:[49,49,50,50,51,51,51,52]},find:{score:48,delta:-1.4,trend:[51,50,50,49,49,48,48,48]},buy:{score:64,delta:3.5,trend:[57,58,59,60,61,62,63,64]}},
+  PVF:{search:{score:38,delta:-3.2,trend:[44,43,43,42,41,40,39,38]},find:{score:41,delta:-2.1,trend:[46,45,45,44,43,43,42,41]},buy:{score:51,delta:0.4,trend:[49,49,50,50,50,51,51,51]}},
+  Eaton:{search:{score:82,delta:8.3,trend:[69,72,74,75,77,78,80,82]},find:{score:83,delta:6.2,trend:[72,74,76,77,78,80,82,83]},buy:{score:88,delta:4.1,trend:[79,81,82,83,84,85,87,88]}},
+  Southwire:{search:{score:39,delta:-4.8,trend:[48,46,45,44,43,42,41,39]},find:{score:43,delta:-3.1,trend:[50,49,48,47,46,45,44,43]},buy:{score:52,delta:0.9,trend:[49,49,50,51,51,51,52,52]}},
+  Honeywell:{search:{score:79,delta:5.7,trend:[68,70,72,73,75,76,78,79]},find:{score:80,delta:4.9,trend:[70,72,74,75,76,77,79,80]},buy:{score:84,delta:3.6,trend:[75,77,78,79,80,81,83,84]}},
+  'Philips Signify':{search:{score:89,delta:7.2,trend:[77,79,81,83,84,86,87,89]},find:{score:91,delta:5.8,trend:[80,82,84,86,87,88,90,91]},buy:{score:95,delta:4.0,trend:[86,88,89,90,91,92,94,95]}},
+  'Smith-Cooper':{search:{score:32,delta:-5.9,trend:[43,41,40,38,37,35,34,32]},find:{score:36,delta:-4.2,trend:[46,44,43,41,40,39,38,36]},buy:{score:45,delta:-1.1,trend:[49,48,48,47,47,46,46,45]}},
+  'Matco-Norca':{search:{score:28,delta:-6.7,trend:[40,38,36,34,33,31,30,28]},find:{score:31,delta:-5.3,trend:[42,40,38,37,35,33,32,31]},buy:{score:43,delta:-2.4,trend:[49,48,47,46,46,45,44,43]}},
+  'Klein Tools':{search:{score:77,delta:6.3,trend:[65,67,69,71,72,74,75,77]},find:{score:78,delta:5.1,trend:[67,69,71,72,73,75,76,78]},buy:{score:82,delta:4.4,trend:[72,74,75,76,78,79,80,82]}},
+  Milwaukee:{search:{score:74,delta:4.8,trend:[63,65,67,68,70,71,72,74]},find:{score:75,delta:3.9,trend:[65,67,68,70,71,72,73,75]},buy:{score:79,delta:3.1,trend:[70,72,73,74,75,76,77,79]}},
+  Watts:{search:{score:55,delta:3.2,trend:[47,49,50,51,52,53,54,55]},find:{score:49,delta:1.8,trend:[43,44,45,46,47,47,48,49]},buy:{score:58,delta:2.6,trend:[51,52,53,54,55,56,57,58]}},
+  'Charlotte Pipe':{search:{score:51,delta:1.4,trend:[45,46,47,48,48,49,50,51]},find:{score:46,delta:-0.6,trend:[49,48,48,47,47,47,46,46]},buy:{score:54,delta:1.9,trend:[48,49,50,51,51,52,53,54]}},
+};
+const drLabels={'30d':'last 30 days','90d':'last 90 days','6m':'last 6 months','12m':'last 12 months'};
+let activeDate='30d',activeKey='all';
+
+function setDate(v,btn){activeDate=v;document.querySelectorAll('.fpill').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyF();}
+function applyF(){
+  const cat=document.getElementById('cat-f').value,brand=document.getElementById('brand-f').value;
+  activeKey=brand!=='all'?brand:cat!=='all'?cat:'all';
+  const filt=activeKey!=='all';
+  document.getElementById('reset-f').style.display=filt?'inline-flex':'none';
+  document.getElementById('cat-f').className='fsel'+(cat!=='all'?' af':'');
+  document.getElementById('brand-f').className='fsel'+(brand!=='all'?' af':'');
+  const p=profiles[activeKey]||profiles.all;
+  renderScorecards(p,activeKey,filt);
+  renderExec(p,activeKey,filt);
+  renderMovers();
+  renderHeatmap();
+}
+function resetF(){
+  document.getElementById('cat-f').value='all';document.getElementById('brand-f').value='all';
+  document.getElementById('cat-f').className='fsel';document.getElementById('brand-f').className='fsel';
+  document.getElementById('reset-f').style.display='none';activeKey='all';applyF();
+}
+
+function scColor(s){return s>=75?'var(--green)':s>=50?'var(--amber-mid)':'var(--red)';}
+function scTrack(s){return s>=75?'#6ee7b7':s>=50?'#fcd34d':'#fecdd3';}
+function scBg(s){return s>=75?'sbg-g':s>=50?'sbg-y':'sbg-r';}
+function scNum(s){return s>=75?'sg':s>=50?'sy':'sr';}
+function deltaHtml(d){
+  if(d>0)return`<span class="sdelta dup">▲ +${Math.abs(d).toFixed(1)}%</span>`;
+  if(d<0)return`<span class="sdelta ddn">▼ −${Math.abs(d).toFixed(1)}%</span>`;
+  return`<span class="sdelta dfl">— 0.0%</span>`;
+}
+const cardMeta=[
+  {id:'sp-search',label:'Search Visibility',src:'Google Search Console',key:'search'},
+  {id:'sp-find',label:'Findability Score',src:'GA4 on-site data',key:'find'},
+  {id:'sp-buy',label:'Conversion Score',src:'OroCommerce + GA4',key:'buy'},
+];
+function renderScorecards(p,key,filt){
+  const pl=activeDate==='30d'?'30 days':activeDate==='90d'?'90 days':activeDate==='6m'?'6 months':'12 months';
+  document.getElementById('scorecard-grid').innerHTML=cardMeta.map(m=>{
+    const d=p[m.key],dash=Math.round(314*(1-d.score/100));
+    return`<div class="card scard ${scBg(d.score)}">
+      <svg class="sring" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="${scTrack(d.score)}" stroke-width="14"/><circle cx="50" cy="50" r="42" fill="none" stroke="${scColor(d.score)}" stroke-width="14" stroke-dasharray="264" stroke-dashoffset="${Math.round(264*(1-d.score/100))}" stroke-linecap="round" transform="rotate(-90 50 50)"/></svg>
+      <div class="slbl">${m.label}</div>
+      <div class="snum ${scNum(d.score)}">${d.score}</div>
+      <div style="font-size:10px;color:var(--gray-500);margin:1px 0 4px">/ 100</div>
+      ${deltaHtml(d.delta)}
+      <div style="font-size:9px;color:var(--gray-400);margin-bottom:5px">vs. previous ${pl}</div>
+      <canvas id="${m.id}" width="200" height="38" style="width:100%;height:38px;display:block"></canvas>
+      <div style="font-size:10px;color:var(--gray-500);margin-top:5px">${m.src}</div>
+      ${filt?`<div style="font-size:9px;color:var(--gray-400);font-style:italic;margin-top:2px">Filtered: ${key}</div>`:''}
+    </div>`;
+  }).join('');
+  requestAnimationFrame(()=>cardMeta.forEach(m=>drawSparkline(m.id,p[m.key].trend,scColor(p[m.key].score))));
+}
+function drawSparkline(id,vals,color){
+  const canvas=document.getElementById(id);if(!canvas)return;
+  const W=canvas.offsetWidth||200,H=38;canvas.width=W;canvas.height=H;
+  const ctx=canvas.getContext('2d');ctx.clearRect(0,0,W,H);
+  const mn=Math.min(...vals)-4,mx=Math.max(...vals)+4,rng=mx-mn||1;
+  const pts=vals.map((v,i)=>({x:(i/(vals.length-1))*(W-8)+4,y:H-((v-mn)/rng)*(H-8)-4}));
+  ctx.beginPath();ctx.moveTo(pts[0].x,H);pts.forEach(p=>ctx.lineTo(p.x,p.y));ctx.lineTo(pts[pts.length-1].x,H);ctx.closePath();ctx.fillStyle=color.replace(')',',0.12)').replace('var(','rgba(').replace('--green','13,107,64').replace('--amber-mid','217,119,6').replace('--red','153,27,27');
+  try{ctx.fill();}catch(e){}
+  ctx.beginPath();pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.strokeStyle=color;ctx.lineWidth=1.5;ctx.lineJoin='round';ctx.stroke();
+  const last=pts[pts.length-1];ctx.beginPath();ctx.arc(last.x,last.y,3,0,Math.PI*2);ctx.fillStyle=color;
+  try{ctx.fill();}catch(e){}
+}
+
+function renderExec(p,key,filt){
+  const period=drLabels[activeDate];
+  const avg=((p.search.delta+p.find.delta+p.buy.delta)/3).toFixed(1);
+  const avgS=Math.round((p.search.score+p.find.score+p.buy.score)/3);
+  const ctx=filt?`<strong>${key}</strong>`:'the full catalog';
+  const trend=parseFloat(avg)>0?`improved <span class="hl-g">+${avg}%</span>`:parseFloat(avg)<0?`declined <span class="hl-r">${avg}%</span>`:'remained flat';
+  let concern='';
+  if(!filt)concern='PVF remains the primary drag — <span class="hl-r">21,300 SKUs at 43/100</span> with a 14.7% return rate attributed to missing specs. PVF Phase 1 is in the pipeline.';
+  else if(['Lighting','Philips Signify','Eaton','Klein Tools','Honeywell'].includes(key))concern=`<span class="hl-g">All dimensions performing above target.</span> OroCommerce data shows strong conversion and low return rates. Ready for promotion investment.`;
+  else if(['PVF','Matco-Norca','Smith-Cooper','Southwire'].includes(key))concern=`<span class="hl-r">Scores are declining.</span> Epicor return data confirms spec mismatch as the primary driver. Prioritize enrichment before any promotion spend.`;
+  else concern=`Composite at <strong>${avgS}/100</strong>. Continued enrichment should move scores toward the 75+ target.`;
+  document.getElementById('exec-sum-body').innerHTML=`<div class="es-ttl">Executive Summary · ${period.charAt(0).toUpperCase()+period.slice(1)}</div><div class="es-txt">Catalog quality for ${ctx} has ${trend} over the ${period}. Search visibility is <strong>${p.search.score}/100</strong>, Findability is <strong>${p.find.score}/100</strong>, and Conversion is <strong>${p.buy.score}/100</strong>. ${concern}</div>`;
+}
+
+const movers=[{name:'Eaton',sub:'Electrical',score:82,d:8.3},{name:'Philips Signify',sub:'Lighting',score:89,d:7.2},{name:'Electrical',sub:'All brands',score:71,d:7.4},{name:'Honeywell',sub:'HVAC',score:79,d:5.7}];
+const decliners=[{name:'Matco-Norca',sub:'PVF',score:28,d:-6.7},{name:'Smith-Cooper',sub:'PVF',score:32,d:-5.9},{name:'Southwire',sub:'Electrical',score:39,d:-4.8},{name:'PVF',sub:'All brands',score:43,d:-3.2}];
+function renderMovers(){
+  const lbl=drLabels[activeDate];const cap=lbl.charAt(0).toUpperCase()+lbl.slice(1);
+  document.getElementById('mv-lbl').textContent=cap;document.getElementById('dc-lbl').textContent=cap;
+  document.getElementById('mv-list').innerHTML=movers.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-up">▲ +${m.d.toFixed(1)}%</div></div>`).join('');
+  document.getElementById('dc-list').innerHTML=decliners.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-dn">▼ ${m.d.toFixed(1)}%</div></div>`).join('');
+}
+
+const hmCats=[{name:'Lighting',search:85,find:88,buy:92},{name:'Electrical',search:71,find:62,buy:68},{name:'HVAC',search:58,find:55,buy:71},{name:'Plumbing',search:62,find:51,buy:60},{name:'Tools & Safety',search:52,find:48,buy:64},{name:'PVF',search:38,find:41,buy:51}];
+function hmCol(s){return s>=75?{bg:'#d1fae5',c:'#0d6b40'}:s>=50?{bg:'#fef3c7',c:'#b45309'}:{bg:'#fee2e2',c:'#991b1b'};}
+function renderHeatmap(){
+  let h=`<div class="hm-hdr"></div><div class="hm-hdr">Search</div><div class="hm-hdr">Find</div><div class="hm-hdr">Buy</div>`;
+  hmCats.forEach(r=>{const s=hmCol(r.search),f=hmCol(r.find),b=hmCol(r.buy);h+=`<div class="hm-lbl">${r.name}</div><div class="hm-cell" style="background:${s.bg};color:${s.c}">${r.search}</div><div class="hm-cell" style="background:${f.bg};color:${f.c}">${r.find}</div><div class="hm-cell" style="background:${b.bg};color:${b.c}">${r.buy}</div>`;});
+  document.getElementById('heatmap').innerHTML=h;
+}
+
+// DRILL-DOWN
+const catD=[{name:'Lighting',score:88,search:85,find:88,buy:92,skus:'11,600',trend:'▲',tc:'tu'},{name:'Electrical',score:67,search:71,find:62,buy:68,skus:'18,400',trend:'▲',tc:'tu'},{name:'HVAC',score:61,search:58,find:55,buy:71,skus:'14,200',trend:'►',tc:'tf'},{name:'Plumbing',score:58,search:62,find:51,buy:60,skus:'16,800',trend:'▲',tc:'tu'},{name:'Tools & Safety',score:55,search:52,find:48,buy:64,skus:'9,500',trend:'►',tc:'tf'},{name:'PVF',score:43,search:38,find:41,buy:51,skus:'21,300',trend:'▼',tc:'td2'}];
+const subD={PVF:[{name:'Carbon Steel Pipe',score:41,search:36,find:39,buy:48,skus:'6,200',trend:'▼',tc:'td2'},{name:'Stainless Fittings',score:44,search:40,find:43,buy:49,skus:'4,100',trend:'►',tc:'tf'},{name:'Gate/Globe/Check Valves',score:38,search:32,find:36,buy:46,skus:'5,800',trend:'▼',tc:'td2'},{name:'Flanges',score:47,search:43,find:46,buy:52,skus:'3,100',trend:'►',tc:'tf'},{name:'Gaskets & Seals',score:48,search:44,find:47,buy:53,skus:'2,100',trend:'►',tc:'tf'}],Electrical:[{name:'Circuit Breakers',score:74,search:78,find:71,buy:73,skus:'3,200',trend:'▲',tc:'tu'},{name:'Conduit & Fittings',score:61,search:65,find:58,buy:60,skus:'2,800',trend:'►',tc:'tf'},{name:'Wire & Cable',score:58,search:62,find:53,buy:59,skus:'4,100',trend:'►',tc:'tf'},{name:'Switchgear',score:71,search:74,find:68,buy:71,skus:'2,400',trend:'▲',tc:'tu'},{name:'Wiring Devices',score:63,search:67,find:60,buy:62,skus:'2,800',trend:'▲',tc:'tu'}],HVAC:[{name:'Ductwork',score:62,search:60,find:58,buy:68,skus:'2,800',trend:'►',tc:'tf'},{name:'Thermostats & Controls',score:54,search:52,find:47,buy:63,skus:'3,200',trend:'►',tc:'tf'},{name:'Motors & Blowers',score:65,search:62,find:63,buy:70,skus:'3,100',trend:'▲',tc:'tu'},{name:'Air Handling Units',score:68,search:65,find:63,buy:76,skus:'2,700',trend:'▲',tc:'tu'}],Plumbing:[{name:'Copper Fittings',score:63,search:67,find:58,buy:64,skus:'3,200',trend:'▲',tc:'tu'},{name:'PVC/CPVC',score:55,search:58,find:49,buy:58,skus:'3,800',trend:'►',tc:'tf'},{name:'Valves',score:52,search:56,find:46,buy:54,skus:'3,600',trend:'►',tc:'tf'},{name:'Water Heaters',score:61,search:65,find:56,buy:62,skus:'2,400',trend:'▲',tc:'tu'}],Lighting:[{name:'Commercial Fixtures',score:92,search:89,find:91,buy:96,skus:'4,200',trend:'▲',tc:'tu'},{name:'Lamps & Bulbs',score:88,search:85,find:87,buy:92,skus:'2,800',trend:'▲',tc:'tu'},{name:'Controls & Dimmers',score:84,search:81,find:83,buy:88,skus:'1,600',trend:'▲',tc:'tu'},{name:'Emergency & Exit',score:87,search:84,find:86,buy:91,skus:'1,400',trend:'▲',tc:'tu'}],'Tools & Safety':[{name:'Hand Tools',score:62,search:59,find:57,buy:70,skus:'2,200',trend:'▲',tc:'tu'},{name:'Power Tools',score:58,search:55,find:52,buy:67,skus:'1,800',trend:'►',tc:'tf'},{name:'PPE',score:54,search:51,find:48,buy:63,skus:'1,900',trend:'►',tc:'tf'},{name:'Testing & Meters',score:61,search:58,find:55,buy:70,skus:'1,800',trend:'▲',tc:'tu'}]};
+const skuD={'Gate/Globe/Check Valves':[{sku:'PVF-GV-2250',name:'2" Gate Valve — Carbon Steel',score:29,search:24,find:28,buy:35,brand:'Smith-Cooper'},{sku:'PVF-GV-3380',name:'3" Gate Valve — Stainless',score:33,search:28,find:32,buy:39,brand:'Matco-Norca'},{sku:'PVF-GV-4420',name:'4" Globe Valve — Carbon Steel',score:31,search:26,find:30,buy:37,brand:'Bonney Forge'},{sku:'PVF-CV-1140',name:'1.5" Check Valve — Swing',score:36,search:31,find:35,buy:42,brand:'Stockham'},{sku:'PVF-GV-6610',name:'6" Gate Valve — Flanged',score:27,search:22,find:26,buy:33,brand:'Anvil'},{sku:'PVF-BV-2260',name:'2" Ball Valve — NPT',score:41,search:36,find:40,buy:47,brand:'Smith-Cooper'}]};
+let dLevel='cat',dCat=null,dSub=null;
+function spCls(s){return s>=75?'sp-g':s>=50?'sp-y':'sp-r';}
+function renderDrill(data,level){
+  const isSku=level==='sku';
+  let h='<table class="dt"><thead><tr>';
+  if(isSku)h+='<th>SKU</th><th>Product</th><th>Brand</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th>';
+  else h+='<th>'+(level==='cat'?'Category':'Sub-category')+'</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th>SKUs</th><th>Trend</th><th></th>';
+  h+='</tr></thead><tbody>';
+  data.forEach(r=>{
+    if(isSku){h+=`<tr><td style="font-family:'DM Mono',monospace;font-size:10px">${r.sku}</td><td style="font-weight:500;font-size:11px">${r.name}</td><td style="font-size:11px;color:var(--gray-500)">${r.brand}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td></tr>`;}
+    else{const cl=level==='cat'?`onclick="dCat='${r.name}';drillSub('${r.name}')"`:`onclick="dSub='${r.name}';drillSku('${r.name}')"`;h+=`<tr><td style="font-weight:600;cursor:pointer;color:var(--navy);font-size:12px" ${cl}>${r.name}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td><td style="font-family:'DM Mono',monospace;font-size:10px">${r.skus}</td><td class="${r.tc}">${r.trend}</td><td><button class="btn btn-g btn-sm" ${cl}>View</button></td></tr>`;}
+  });
+  h+='</tbody></table>';document.getElementById('drill-wrap').innerHTML=h;
+}
+function renderBC(){
+  const bc=document.getElementById('drill-bc');if(dLevel==='cat'){bc.innerHTML='';return;}
+  let h=`<div style="display:flex;align-items:center;gap:6px;padding:4px 10px;background:var(--navy-light);border-radius:var(--r-md);font-size:11px"><span style="color:var(--navy);cursor:pointer;font-weight:500" onclick="resetDrill()">All Categories</span>`;
+  if(dLevel==='sub'||dLevel==='sku')h+=`<span style="color:var(--gray-400)">›</span><span style="${dLevel==='sub'?'color:var(--gray-700);font-weight:600':'color:var(--navy);cursor:pointer;font-weight:500'}" onclick="drillSub('${dCat}')">${dCat}</span>`;
+  if(dLevel==='sku')h+=`<span style="color:var(--gray-400)">›</span><span style="color:var(--gray-700);font-weight:600">${dSub}</span>`;
+  bc.innerHTML=h+'</div>';
+}
+function resetDrill(){dLevel='cat';dCat=null;dSub=null;document.getElementById('drill-ttl').textContent='Category Performance';document.getElementById('drill-sub').textContent='Click any row to drill into sub-categories';renderDrill(catD,'cat');renderBC();}
+function drillSub(cat){dLevel='sub';dCat=cat;dSub=null;document.getElementById('drill-ttl').textContent=cat+' — Sub-categories';document.getElementById('drill-sub').textContent='Click any row to see SKU-level data';renderDrill(subD[cat]||[],'sub');renderBC();}
+function drillSku(sub){dLevel='sku';dSub=sub;document.getElementById('drill-ttl').textContent=sub+' — SKU Level';document.getElementById('drill-sub').textContent='Individual SKU scores';const d=skuD[sub]||[];renderDrill(d,'sku');renderBC();}
+
+// PIPELINE
+const phaseInfo=[
+  {color:'#475569',bg:'#e2e8f0',border:'#64748b',cats:[{n:'PVF',v:980},{n:'Electrical',v:420},{n:'Plumbing',v:280},{n:'HVAC',v:167}],desc:'Items submitted and awaiting normalization. Priority score determines processing order.',brand:'Smith-Cooper (412 SKUs)',eta:'Processing begins within 24h',avgScore:76,action:'SKUs sorted by priority. High-priority PVF items enter Normalization within 24 hours.'},
+  {color:'#1d4ed8',bg:'#dbeafe',border:'#3b82f6',cats:[{n:'PVF',v:380},{n:'Electrical',v:190},{n:'Plumbing',v:110},{n:'HVAC',v:50}],desc:'Raw supplier data is being standardized — units, naming conventions, attribute structures aligned to schema.',brand:'Matco-Norca (180 SKUs)',eta:'Avg 2.4 days per batch',avgScore:71,action:'Normalization resolves inconsistent field formats, unit mismatches, and duplicates before enrichment begins.'},
+  {color:'#5b21b6',bg:'#ede9fe',border:'#7c3aed',cats:[{n:'PVF',v:310},{n:'HVAC',v:148},{n:'Electrical',v:122},{n:'Plumbing',v:74}],desc:'Missing attributes are being sourced and applied — specs, certifications, images, descriptions.',brand:'Bonney Forge (154 SKUs)',eta:'Avg 3.1 days per batch',avgScore:68,action:'AI-assisted enrichment pulls from the Pivotree Library and verified manufacturer data.'},
+  {color:'#92400e',bg:'#fef3c7',border:'#d97706',cats:[{n:'PVF',v:140},{n:'Electrical',v:88},{n:'HVAC',v:66},{n:'Lighting',v:40}],desc:'Enriched SKUs awaiting catalog manager sign-off before publishing.',brand:'Stockham (88 SKUs)',eta:'Avg 1.8 days turnaround',avgScore:82,action:'Approve batches to push to Published. Items rejected here return to Enrichment.'},
+  {color:'#0d6b40',bg:'#d1fae5',border:'#6ee7b7',cats:[{n:'Lighting',v:1840},{n:'Electrical',v:1100},{n:'HVAC',v:800},{n:'Plumbing',v:478}],desc:'Enriched and approved SKUs live on the Summit Supply Co. catalog.',brand:'Philips Signify (2,400 this cycle)',eta:'Live on site',avgScore:79,action:'Published SKUs are indexed by Google Search Console and reflected in Strategic tab scores within 48–72h.'},
+];
+const phNames=['Queue','Normalization','Enrichment','Review','Published'];
+const phCounts=[1847,730,654,334,4218];
+let selPhaseIdx=null;
+const phBase=[
+  'flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;text-align:center;transition:all .15s;border-radius:var(--r-lg) 0 0 var(--r-lg);background:#f1f5f9;border:1.5px solid #cbd5e1;',
+  'flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;text-align:center;transition:all .15s;background:#eff6ff;border:1.5px solid #bfdbfe;',
+  'flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;text-align:center;transition:all .15s;background:#f5f3ff;border:1.5px solid #ddd6fe;',
+  'flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;text-align:center;transition:all .15s;background:#fffbeb;border:1.5px solid #fde68a;',
+  'flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;text-align:center;transition:all .15s;border-radius:0 var(--r-lg) var(--r-lg) 0;background:#f0fdf9;border:1.5px solid #6ee7b7;',
+];
+function selPhase(i){
+  const det=document.getElementById('phase-detail');
+  [0,1,2,3,4].forEach(j=>document.getElementById('ph'+j).style.cssText=phBase[j]);
+  if(selPhaseIdx===i){selPhaseIdx=null;det.style.display='none';return;}
+  selPhaseIdx=i;
+  const el=document.getElementById('ph'+i),info=phaseInfo[i];
+  el.style.cssText=phBase[i]+`border-color:${info.border};border-width:2px;box-shadow:0 2px 8px ${info.color}30;`;
+  const bars=info.cats.map(c=>`<div style="display:flex;align-items:center;gap:7px;margin-bottom:5px"><span style="font-size:10px;color:var(--gray-600);width:75px;flex-shrink:0">${c.n}</span><div style="flex:1;background:rgba(0,0,0,.08);border-radius:99px;height:4px"><div style="width:${Math.round(c.v/phCounts[i]*100)}%;height:4px;border-radius:99px;background:${info.color}"></div></div><span style="font-size:10px;font-family:'DM Mono',monospace;color:${info.color};font-weight:600;min-width:26px">${c.v}</span></div>`).join('');
+  det.style.display='block';det.style.background=info.bg;det.style.borderColor=info.border;
+  det.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px"><div><div style="font-size:10px;font-weight:700;color:${info.color};text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px">${phNames[i]} — ${phCounts[i].toLocaleString()} items</div><div style="font-size:11px;color:var(--gray-600);line-height:1.6;margin-bottom:8px">${info.desc}</div><div style="font-size:10px;color:var(--gray-500)"><strong style="color:var(--gray-700)">Top brand:</strong> ${info.brand}</div><div style="font-size:10px;color:var(--gray-500);margin-top:3px"><strong style="color:var(--gray-700)">Est. time:</strong> ${info.eta}</div><div style="font-size:10px;color:var(--gray-500);margin-top:3px"><strong style="color:var(--gray-700)">Avg quality:</strong> ${info.avgScore}/100</div></div><div><div style="font-size:10px;font-weight:700;color:${info.color};text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">By Category</div>${bars}</div><div><div style="font-size:10px;font-weight:700;color:${info.color};text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px">What Happens Here</div><div style="font-size:11px;color:var(--gray-600);line-height:1.6">${info.action}</div>${i<4?`<button class="btn btn-sm" style="margin-top:10px;background:${info.color};color:#fff;border:none" onclick="showToast('${phNames[i]} batch actioned')">Action Batch</button>`:''}</div></div>`;
+}
+
+// GROWTH CHART
+const months=['Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr'];
+const chartCats=[{label:'Lighting',color:'#b45309',data:[180,210,240,280,320,380,440,490]},{label:'Electrical',color:'#1d4ed8',data:[120,140,160,180,200,240,280,320]},{label:'HVAC',color:'#9d174d',data:[80,90,100,110,120,140,160,180]},{label:'Plumbing',color:'#0d6b40',data:[60,70,80,90,100,110,120,130]},{label:'PVF',color:'#5b21b6',data:[10,12,14,14,16,18,20,22]},{label:'Tools',color:'#7c2d12',data:[40,44,48,52,56,60,64,70]}];
+function drawGrowthChart(){
+  const canvas=document.getElementById('growth-chart');if(!canvas)return;
+  const W=canvas.offsetWidth||500,H=180;canvas.width=W;canvas.height=H;
+  const ctx=canvas.getContext('2d');ctx.clearRect(0,0,W,H);
+  const pad={l:34,r:10,t:8,b:24},cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+  const totals=months.map((_,i)=>chartCats.reduce((s,c)=>s+c.data[i],0));
+  const maxV=Math.max(...totals)*1.1;
+  const bw=cw/months.length*0.65,gap=cw/months.length;
+  [0,.25,.5,.75,1].forEach(f=>{
+    const y=pad.t+ch*(1-f);ctx.strokeStyle='#e2e8f0';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+    ctx.fillStyle='#94a3b8';ctx.font='9px Inter';ctx.textAlign='right';ctx.fillText(Math.round(f*maxV),pad.l-3,y+3);
+  });
+  months.forEach((m,i)=>{
+    let yOff=0;const x=pad.l+i*gap+(gap-bw)/2;
+    chartCats.forEach(c=>{const bh=ch*(c.data[i]/maxV);const y=pad.t+ch-yOff-bh;ctx.fillStyle=c.color;ctx.fillRect(x,y,bw,bh);yOff+=bh;});
+    ctx.fillStyle='#94a3b8';ctx.font='9px Inter';ctx.textAlign='center';ctx.fillText(m,x+bw/2,H-6);
+  });
+  document.getElementById('chart-legend').innerHTML=chartCats.map(c=>`<span style="display:flex;align-items:center;gap:3px;font-size:10px;color:var(--gray-600)"><span style="width:8px;height:8px;border-radius:1px;background:${c.color};display:inline-block;flex-shrink:0"></span>${c.label}</span>`).join('');
+}
+
+// AGENTIC
+const responses={
+  'gap between search volume and conversion':`<strong>Search-to-Conversion Gap Analysis</strong><div class="mono"><span class="mh">CATEGORY          SEARCH  BUY   GAP</span><br><span class="mw">PVF               38      51    -13  ← widest gap</span><br><span class="mw">HVAC Thermostats  52      63    -11</span><br>Plumbing          62      60    -2<br>Electrical        71      68    -3<br><span class="mh">Lighting          85      92    +7  ← positive</span></div>`,
+  'underperforming sub-categories':`<strong>Top 10 Underperforming Sub-categories</strong><div class="mono"><span class="mh">RANK  SUB-CATEGORY              CAT       SCORE</span><br><span class="mw">1     Gate/Globe/Check Valves   PVF       38</span><br><span class="mw">2     Carbon Steel Pipe         PVF       41</span><br><span class="mw">3     Stainless Fittings        PVF       44</span><br><span class="mw">4     Thermostats &amp; Controls    HVAC      54</span><br>5     PVC/CPVC                  Plumbing  55<br>6     Jobsite Equipment         Tools     49<br>7     PPE                       Tools     54<br>8     Valves                    Plumbing  52</div>`,
+  'incomplete product data':`<strong>Brand with Most Incomplete Product Data</strong><div class="mono"><span class="mh">BRAND           CAT    COMPLETE  SOURCE</span><br><span class="mw">Matco-Norca     PVF    34%       Akeneo PIM</span><br>Smith-Cooper    PVF    41%       Akeneo PIM<br>Southwire       Elec   48%       Akeneo PIM<br>Danfoss         HVAC   52%       Akeneo PIM<br><span class="mh">Completeness scores pulled from Akeneo attribute coverage data</span></div>`,
+  'normalization phase':`<strong>SKUs in Normalization Phase</strong><div class="mono"><span class="mh">PHASE          COUNT</span><br>Queue          1,847<br><span class="mw">Normalization  730  ← current</span><br>Enrichment     654<br>Review         334<br>Published      4,218<br><span class="mh">730 SKUs — 52% are PVF items</span></div>`,
+  'revenue impact':`<strong>Estimated Revenue Impact — PVF Enrichment to Score 70</strong><div class="mono"><span class="mh">CURRENT STATE (OroCommerce + Epicor)</span><br>PVF Composite Score:      43/100<br>PVF Conversion Rate:      6.0%<br>PVF Return Rate:          14.7%  (Epicor)<br>PVF Avg Order Value:      $612   (OroCommerce)<br><span class="md">─────────────────────────────────────────</span><br><span class="mh">PROJECTED AT SCORE 70</span><br>Conversion Rate (est.):   +3.8pp → 9.8%<br>Return Rate (est.):       -5.1pp → 9.6%<br>Incremental Revenue:      <span class="mh">+$2.4M annually</span><br>Reduced Return Costs:     <span class="mh">+$840K annually</span><br>Total Financial Impact:   <span class="mh">~$3.2M</span><br><span class="md">Projection based on Lighting/Electrical enrichment benchmarks</span></div>`,
+  'return rates':`<strong>Return Rate by Category — Epicor Attribution</strong><div class="mono"><span class="mh">CATEGORY       RETURN RATE  PRIMARY CAUSE</span><br><span class="mw">PVF            14.7%        Spec mismatch (pressure/material)</span><br><span class="mw">Plumbing       7.2%         Wrong thread type ordered</span><br>HVAC           6.1%         Compatibility missing (voltage)<br>Tools          8.4%         Missing fit/compatibility data<br>Electrical     4.3%         Improving post-Eaton enrich.<br><span class="mh">Lighting       2.1%         Lowest — 92% enrichment coverage</span><br><span class="md">Source: Epicor return reason codes mapped to catalog attr. gaps</span></div>`,
+  'top-performing brands in electrical':`<strong>Top Brands — Electrical (Composite Score)</strong><div class="mono"><span class="mh">RANK  BRAND      COMPOSITE  MARGIN</span><br><span class="mh">1     Eaton       84         48.3%</span><br>2     Hubbell     79         45.1%<br>3     Leviton     76         43.8%<br>4     Square D    74         44.2%<br>5     Lutron      71         46.0%<br><span class="mw">6     Southwire   39         48.3%  ← outlier, high margin low quality</span></div>`,
+  'gross margin':`<strong>Gross Margin by Category — Epicor ERP</strong><div class="mono"><span class="mh">CATEGORY        MARGIN  SCORE  STATUS</span><br><span class="mh">Lighting        62.4%   88     Ready to promote</span><br>Tools & Safety  54.1%   55     Enrich to unlock<br>Electrical      48.3%   67     Partially ready<br>HVAC            44.7%   61     Partially ready<br>Plumbing        41.2%   58     Enrich to unlock<br><span class="mw">PVF             36.8%   43     Do not promote yet</span><br><span class="md">Southwire (Elec): 48.3% margin, 39 score — high-value enrich target</span></div>`,
+};
+function getResp(t){const tl=t.toLowerCase();for(const[k,v]of Object.entries(responses)){if(k.split(' ').filter(w=>w.length>3).some(w=>tl.includes(w)))return v;}return`<strong>Query processed across all connected sources.</strong><br><br>I can answer questions about catalog scores (Akeneo), revenue and margin (Epicor), conversion and returns (OroCommerce), and search performance (GSC/GA4).<div class="mono"><span class="mh">CATALOG SUMMARY</span><br>Total SKUs:    91,800<br>Composite:     62/100<br>Return Rate:   7.8% overall<br><span class="mw">Critical: PVF 43/100 · 14.7% return rate</span></div>`;}
+function sendP(t){document.getElementById('chat-inp').value=t;switchTab('agentic',document.querySelector('[data-tab="agentic"]'));sendChat();}
+function sendChat(){
+  const inp=document.getElementById('chat-inp'),t=inp.value.trim();if(!t)return;inp.value='';
+  const area=document.getElementById('chat-area');
+  const u=document.createElement('div');u.className='msg msg-u';u.innerHTML=`<div class="bub-u">${t}</div>`;area.appendChild(u);
+  document.getElementById('typing-ind').style.display='block';area.scrollTop=area.scrollHeight;
+  setTimeout(()=>{
+    document.getElementById('typing-ind').style.display='none';
+    const a=document.createElement('div');a.className='msg msg-a';
+    a.innerHTML=`<div class="ai-av">PT</div><div><div class="bub-a">${getResp(t)}</div><div class="mtag">Pivotree TowerTalk v2.1 · OroCommerce · Epicor · Akeneo · GSC · GA4</div></div>`;
+    area.appendChild(a);area.scrollTop=area.scrollHeight;
+  },1200);
+}
+
+// LIBRARY
+const libProds=[
+  {brand:'Eaton',name:'BR120 20A 1P Circuit Breaker',cat:'Electrical',cc:'cb-e',attrs:'20A · 120/240V · UL Listed',pn:'BR120',bg:'#dbeafe'},
+  {brand:'Honeywell',name:'T6 Pro Programmable Thermostat',cat:'HVAC',cc:'cb-h',attrs:'24V · 2-Stage · WiFi',pn:'TH6320U2008',bg:'#fce7f3'},
+  {brand:'Philips Signify',name:'CorePro LED T8 18W 4000K',cat:'Lighting',cc:'cb-l',attrs:'18W · 4000K · 2400lm · DLC',pn:'534779',bg:'#fef3c7'},
+  {brand:'Smith-Cooper',name:'2" Carbon Steel Gate Valve',cat:'PVF',cc:'cb-v',attrs:'2" · 150 PSI · NPT',pn:'SCG200',bg:'#ede9fe'},
+  {brand:'Southwire',name:'12 AWG THHN Wire 500ft',cat:'Electrical',cc:'cb-e',attrs:'12 AWG · THHN · 600V',pn:'12BK-500',bg:'#dbeafe'},
+  {brand:'Charlotte Pipe',name:'2" SCH 40 PVC Pipe 10ft',cat:'Plumbing',cc:'cb-p',attrs:'2" · SCH 40 · NSF 61',pn:'PVC040020600',bg:'#d1fae5'},
+  {brand:'Klein Tools',name:'500A Clamp Meter AC/DC',cat:'Tools & Safety',cc:'cb-t',attrs:'500A · TRMS · Cat IV',pn:'CL800',bg:'#fee2e2'},
+  {brand:'RAB Lighting',name:'WPLED26 26W LED Wallpack',cat:'Lighting',cc:'cb-l',attrs:'26W · 5000K · 2860lm',pn:'WPLED26',bg:'#fef3c7'},
+  {brand:'Watts',name:'1" Lead-Free Ball Valve FPT',cat:'Plumbing',cc:'cb-p',attrs:'1" · 600 WOG · Bronze',pn:'LF600-1',bg:'#d1fae5'},
+  {brand:'Emerson',name:'Copeland Scroll Compressor 3T',cat:'HVAC',cc:'cb-h',attrs:'3 Ton · R-410A · 208-230V',pn:'ZP36K5E-PFV',bg:'#fce7f3'},
+  {brand:'Leviton',name:'20A Duplex Outlet TR',cat:'Electrical',cc:'cb-e',attrs:'20A · 125V · TR · UL',pn:'T5820-W',bg:'#dbeafe'},
+  {brand:'Hubbell',name:'100A 3P Safety Switch NEMA 3R',cat:'Electrical',cc:'cb-e',attrs:'100A · 240V · NEMA 3R',pn:'HU362R',bg:'#dbeafe'},
+];
+let libDone=false;
+function initLib(){
+  if(libDone)return;libDone=true;
+  document.getElementById('pgrid').innerHTML=libProds.map(p=>`<div class="pc"><div class="pc-img" style="background:${p.bg}"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="16" rx="2" stroke="#94a3b8" stroke-width="1.5"/><path d="M11 14h10M11 18h6" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="pc-body"><div class="pc-brand">${p.brand}</div><div class="pc-name">${p.name}</div><span class="cb ${p.cc}">${p.cat}</span><div class="pc-attrs">${p.attrs}</div><div class="pn">P/N: ${p.pn}</div><button class="btn btn-g btn-sm" style="width:100%" onclick="libQ(this,'${p.name.replace(/'/g,"\\'")}')">Send to Queue</button></div></div>`).join('');
+}
+function libQ(btn,n){btn.className='btn btn-q btn-sm';btn.style.width='100%';btn.textContent='Queued';btn.disabled=true;showToast(n.substring(0,28)+'... queued');}
+function libSearch(){const q=document.getElementById('lib-inp').value.toLowerCase();const all=document.getElementById('pgrid').querySelectorAll('.pc');all.forEach(c=>c.style.display='block');if(!q)return;all.forEach(c=>{const t=c.textContent.toLowerCase();c.style.display=t.includes(q)?'block':'none';});}
+function simMatch(){document.getElementById('match-up').style.display='none';document.getElementById('match-res').style.display='block';showToast('1,200 SKUs matched against library');}
+
+// LOOP DIAGRAM
+function drawLoopDiagram(){
+  const canvas=document.getElementById('loop-diagram');
+  if(!canvas)return;
+  const W=700,H=520;
+  canvas.width=W;canvas.height=H;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,W,H);
+
+  const cx=W/2,cy=H/2,r=168;
+  const navy='#001f5b',teal='#0f9d82',gray='#e2e8f0',lightgray='#f1f5f9',mid='#64748b';
+
+  // Stage definitions: angle in degrees (0 = right, clockwise)
+  const stages=[
+    {angle:-90, label:'1. Data Sources',    sub:'GSC · GA4 · Akeneo\nOroCommerce',  col:navy,  icon:'data'},
+    {angle:-18, label:'2. Ascend Scores',   sub:'Search · Find · Buy\nComposite scoring', col:teal,  icon:'score'},
+    {angle:54,  label:'3. Client Prioritizes', sub:'Adds categories &\nbrands to queue', col:navy,  icon:'queue'},
+    {angle:126, label:'4. Pivotree Enriches', sub:'Normalize · Enrich\nQA review',    col:teal,  icon:'enrich'},
+    {angle:198, label:'5. Back to PIM',     sub:'Akeneo review\nPublish to eCommerce', col:navy,  icon:'publish'},
+  ];
+
+  // Draw arc arrows between nodes
+  function nodePos(angleDeg){
+    const a=angleDeg*Math.PI/180;
+    return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)};
+  }
+
+  // Draw dashed circle track
+  ctx.setLineDash([4,4]);
+  ctx.strokeStyle=gray;ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Draw arc arrows
+  stages.forEach((s,i)=>{
+    const next=stages[(i+1)%stages.length];
+    const a1=(s.angle+14)*Math.PI/180;
+    const a2=(next.angle-14)*Math.PI/180;
+    const isEven=i%2===0;
+    ctx.beginPath();
+    ctx.arc(cx,cy,r,a1,a2);
+    ctx.strokeStyle=isEven?navy:teal;
+    ctx.lineWidth=2;ctx.setLineDash([]);
+    ctx.stroke();
+    // arrowhead
+    const headAngle=a2;
+    const hx=cx+r*Math.cos(headAngle),hy=cy+r*Math.sin(headAngle);
+    const tangentAngle=headAngle+Math.PI/2;
+    const al=8;
+    ctx.beginPath();
+    ctx.moveTo(hx,hy);
+    ctx.lineTo(hx-al*Math.cos(tangentAngle-0.4),hy-al*Math.sin(tangentAngle-0.4));
+    ctx.lineTo(hx-al*Math.cos(tangentAngle+0.4),hy-al*Math.sin(tangentAngle+0.4));
+    ctx.closePath();
+    ctx.fillStyle=isEven?navy:teal;ctx.fill();
+  });
+
+  // Draw node circles and labels
+  stages.forEach((s,i)=>{
+    const p=nodePos(s.angle);
+    const isEven=i%2===0;
+    const nc=s.col;
+
+    // Outer glow ring
+    ctx.beginPath();ctx.arc(p.x,p.y,34,0,Math.PI*2);
+    ctx.fillStyle=isEven?'rgba(0,31,91,0.07)':'rgba(15,157,130,0.1)';ctx.fill();
+
+    // Node circle
+    ctx.beginPath();ctx.arc(p.x,p.y,28,0,Math.PI*2);
+    ctx.fillStyle=nc;ctx.fill();
+
+    // Icon
+    ctx.save();ctx.translate(p.x,p.y);
+    ctx.strokeStyle='#fff';ctx.lineWidth=1.4;ctx.lineCap='round';ctx.lineJoin='round';
+    if(s.icon==='data'){
+      // Cloud/data icon
+      ctx.beginPath();ctx.arc(-5,-2,5,0,Math.PI*2);ctx.strokeStyle='rgba(255,255,255,.9)';ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-9,2);ctx.lineTo(7,2);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,2);ctx.lineTo(0,7);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-3,5);ctx.lineTo(0,8);ctx.lineTo(3,5);ctx.stroke();
+    } else if(s.icon==='score'){
+      // Gauge/score icon
+      ctx.beginPath();ctx.arc(0,1,6,Math.PI,0);ctx.strokeStyle='rgba(255,255,255,.9)';ctx.stroke();
+      ctx.beginPath();ctx.moveTo(0,1);ctx.lineTo(4,-3);ctx.stroke();
+      ctx.beginPath();ctx.arc(0,1,1.5,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.9)';ctx.fill();
+    } else if(s.icon==='queue'){
+      // List/queue icon
+      ctx.strokeStyle='rgba(255,255,255,.9)';
+      [-4,0,4].forEach(y=>{
+        ctx.beginPath();ctx.moveTo(-7,y);ctx.lineTo(7,y);ctx.stroke();
+      });
+      ctx.beginPath();ctx.arc(8,4,3,0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.9)';ctx.fill();
+      ctx.fillStyle=nc;ctx.font='bold 5px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('+',8,4);
+    } else if(s.icon==='enrich'){
+      // Star/enrich icon
+      ctx.strokeStyle='rgba(255,255,255,.9)';
+      ctx.beginPath();
+      for(let j=0;j<5;j++){
+        const a1=(-90+j*72)*Math.PI/180,a2=(-90+j*72+36)*Math.PI/180;
+        const ox=Math.cos(a1)*7,oy=Math.sin(a1)*7;
+        const ix=Math.cos(a2)*3,iy=Math.sin(a2)*3;
+        if(j===0)ctx.moveTo(ox,oy);else ctx.lineTo(ox,oy);
+        ctx.lineTo(ix,iy);
+      }
+      ctx.closePath();ctx.stroke();
+    } else if(s.icon==='publish'){
+      // Upload/publish icon
+      ctx.strokeStyle='rgba(255,255,255,.9)';
+      ctx.beginPath();ctx.moveTo(0,-7);ctx.lineTo(0,4);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-4,-3);ctx.lineTo(0,-7);ctx.lineTo(4,-3);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(-7,5);ctx.lineTo(-7,8);ctx.lineTo(7,8);ctx.lineTo(7,5);ctx.stroke();
+    }
+    ctx.restore();
+
+    // Label positioning — push outward from center
+    const labelR=r+60;
+    const la=s.angle*Math.PI/180;
+    const lx=cx+labelR*Math.cos(la),ly=cy+labelR*Math.sin(la);
+
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.font='bold 11px Poppins, Inter, sans-serif';
+    ctx.fillStyle=nc;
+    ctx.fillText(s.label,lx,ly-10);
+
+    ctx.font='10px Inter, sans-serif';
+    ctx.fillStyle=mid;
+    s.sub.split('\n').forEach((line,li)=>{
+      ctx.fillText(line,lx,ly+4+li*13);
+    });
+  });
+
+  // Center label
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.font='bold 13px Poppins, Inter, sans-serif';
+  ctx.fillStyle=navy;ctx.fillText('Ascend',cx,cy-8);
+  ctx.font='bold 13px Poppins, Inter, sans-serif';
+  ctx.fillStyle=teal;ctx.fillText('Catalog Pro',cx,cy+8);
+
+  // Center circle
+  ctx.beginPath();ctx.arc(cx,cy,42,0,Math.PI*2);
+  ctx.strokeStyle=teal;ctx.lineWidth=1.5;
+  ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+}
+
+setTimeout(drawLoopDiagram,150);
+
+setTimeout(()=>{if(document.getElementById('tab-operations').classList.contains('active'))drawGrowthChart();},150);
+</script>
+</body>
+</html>
