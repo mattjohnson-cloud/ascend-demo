@@ -1273,6 +1273,7 @@ function switchTab(id,btn){
   if(btn)btn.classList.add('active');
   else document.querySelectorAll('.tbtn').forEach(b=>{if(b.dataset.tab===id)b.classList.add('active');});
   if(id==='operations')setTimeout(drawGrowthChart,100);
+  if(id==='howitworks')setTimeout(drawLoopDiagram,50);
 }
 function openLib(){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
