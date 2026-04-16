@@ -140,7 +140,7 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
 .fin-insight strong{font-weight:600;}
 
 /* HEATMAP */
-.hm-grid{display:grid;grid-template-columns:130px repeat(3,1fr);gap:2px;font-size:12px;}
+.hm-grid{display:grid;grid-template-columns:130px repeat(3,1fr) 68px;gap:2px;font-size:12px;}
 .hm-hdr{padding:6px 8px;font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;text-align:center;}
 .hm-lbl{padding:8px 10px;font-weight:600;color:var(--navy);display:flex;align-items:center;font-size:11px;}
 .hm-cell{padding:9px 6px;border-radius:var(--r-sm);text-align:center;font-weight:700;font-size:12px;transition:transform .1s;}
@@ -184,7 +184,7 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
 .sr2{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--gray-100);}
 .sr2:last-child{border-bottom:none;}
 .sr-l{font-size:11px;color:var(--gray-600);}
-.sr-v{font-size:12px;font-weight:600;color:var(--navy);font-family:'DM Mono',monospace;}
+.sr-v{font-size:12px;font-weight:600;color:var(--navy);font-family:'Poppins',sans-serif;}
 
 /* METRIC CARD */
 .mc{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:11px 13px;}
@@ -798,7 +798,6 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
       <div style="display:flex;align-items:center;gap:10px">
         <div class="fin-sources">
           <div class="fin-src-badge"><div class="fin-src-dot"></div>OroCommerce</div>
-          <div class="fin-src-badge"><div class="fin-src-dot"></div>Epicor ERP</div>
         </div>
         <div class="fin-toggle">
           <button class="fin-toggle-btn" id="fin-pre" onclick="setFinView('pre')">Pre-Enrichment</button>
@@ -923,9 +922,10 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
     </div>
   </div>
 
-  <div class="insight">
-    <svg class="ins-ico" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--navy)" stroke-width="1.3"/><path d="M8 7v4M8 5v.5" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/></svg>
-    <div class="ins-txt"><strong>PVF has the highest SKU count but the lowest composite score and highest return rate (14.7%).</strong> Epicor data shows $2.1M in attributed return costs this year from spec mismatch orders. Improving PVF catalog quality to 70+ is estimated to reduce returns by 40% and increase organic traffic by a similar margin.</div>
+  <div class="insight" style="align-items:center">
+    <svg class="ins-ico" width="14" height="14" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:0"><circle cx="8" cy="8" r="7" stroke="var(--navy)" stroke-width="1.3"/><path d="M8 7v4M8 5v.5" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <div class="ins-txt" style="flex:1"><strong>PVF has the highest SKU count but the lowest composite score and highest return rate (14.7%).</strong> OroCommerce RMA data shows $2.1M in attributed return costs this year from spec mismatch orders. Improving PVF catalog quality to 70+ is estimated to reduce returns by 40% and increase organic traffic by a similar margin.</div>
+    <button class="btn btn-p btn-sm" style="flex-shrink:0;white-space:nowrap;margin-left:16px" onclick="addQ(this,'PVF — All Sub-categories')">+ Add PVF to Queue</button>
   </div>
 </div>
 
@@ -1131,7 +1131,7 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
   </div>
   <div class="dlcard">
     <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;margin-bottom:6px">Download Reports</div>
-    <div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:18px;line-height:1.6">Export promotion-ready products with scores and margin data, or download the enrichment priority report including return rate attribution from Epicor.</div>
+    <div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:18px;line-height:1.6">Export promotion-ready products with scores and margin data, or download the enrichment priority report including return rate attribution from OroCommerce.</div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <button class="btn btn-w btn-sm" onclick="showToast('Promotion-Ready Report downloading','↓')">Download Promotion-Ready Report</button>
       <button class="btn btn-ow btn-sm" onclick="showToast('Enrichment Priority Report downloading','↓')">Download Enrichment Priority Report</button>
@@ -1154,12 +1154,12 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
         <div class="sq" onclick="sendP('List the top-performing brands in Electrical by overall score')">Top-performing brands in Electrical</div>
         <div class="sq" onclick="sendP('Show me gross margin by category and which ones are ready to promote')">Gross margin by category — ready to promote?</div>
         <div class="divider"></div>
-        <div style="font-size:10px;color:var(--gray-400);line-height:1.6">Scoped to Summit Supply Co. catalog data. Connected to OroCommerce, Epicor ERP, Akeneo, GSC &amp; GA4.</div>
+        <div style="font-size:10px;color:var(--gray-400);line-height:1.6">Scoped to Summit Supply Co. catalog data. Connected to OroCommerce, Akeneo, GSC &amp; GA4.</div>
       </div>
     </div>
     <div class="ag-main">
       <div class="chat-area" id="chat-area">
-        <div class="msg msg-a"><div class="ai-av">PT</div><div><div class="bub-a"><strong>Welcome to Ascend Catalog Pro Agentic Query</strong> — Summit Supply Co.<br><br>I'm connected to OroCommerce, Epicor ERP, Akeneo PIM, Google Search Console, and GA4. Ask me about catalog scores, pipeline status, financial impact, return rates, margin attribution, or brand performance across your 91,800 SKUs.</div><div class="mtag">Pivotree TowerTalk v2.1 · 5 sources connected</div></div></div>
+        <div class="msg msg-a"><div class="ai-av">PT</div><div><div class="bub-a"><strong>Welcome to Ascend Catalog Pro Agentic Query</strong> — Summit Supply Co.<br><br>I'm connected to OroCommerce, Akeneo PIM, Google Search Console, and GA4. Ask me about catalog scores, pipeline status, financial impact, return rates, and brand performance across your 91,800 SKUs.</div><div class="mtag">Pivotree TowerTalk v2.1 · 5 sources connected</div></div></div>
       </div>
       <div id="typing-ind" style="display:none;padding:8px 18px;background:var(--gray-50);border-left:1px solid var(--gray-200);border-right:1px solid var(--gray-200)">
         <div class="msg msg-a"><div class="ai-av">PT</div><div class="bub-a"><div class="typing"><span></span><span></span><span></span></div></div></div>
@@ -1317,7 +1317,7 @@ function renderFinCards(){
     <div class="fin-card"><div class="fin-card-label">Conversion Rate</div><div class="fin-card-val">${d.conv}</div><div class="fin-card-delta ${isPost?'up':''}">${d.convDelta}</div></div>
     <div class="fin-card"><div class="fin-card-label">Return Rate (catalog attr.)</div><div class="fin-card-val">${d.ret}</div><div class="fin-card-delta ${isPost?'up dn':''}">${d.retDelta}</div></div>`;
   document.getElementById('fin-insight').innerHTML=isPost
-    ?`<strong>Post-enrichment impact (Lighting + Electrical batches, Nov 2025–Apr 2026):</strong> Revenue per product page view improved by $1.14M attributed to enriched SKUs. Return rate dropped 4.2 percentage points — Epicor data attributes $840K in reduced return processing costs. OroCommerce conversion rate up 3.1pp on enriched categories.`
+    ?`<strong>Post-enrichment impact (Lighting + Electrical batches, Nov 2025–Apr 2026):</strong> Revenue per product page view improved by $1.14M attributed to enriched SKUs. Return rate dropped 4.2 percentage points — OroCommerce RMA data attributes $840K in reduced return processing costs. Conversion rate up 3.1pp on enriched categories.`
     :`<strong>Pre-enrichment baseline (Oct 2025):</strong> Before the Lighting and Electrical enrichment cycles, conversion rate was 9.3% and return rate was 12.0% across catalog-attributed orders. Toggle to Post-Enrichment to see the impact.`;
 }
 renderFinCards();
@@ -1420,7 +1420,7 @@ function renderExec(p,key,filt){
   let concern='';
   if(!filt)concern='PVF remains the primary drag — <span class="hl-r">21,300 SKUs at 43/100</span> with a 14.7% return rate attributed to missing specs. PVF Phase 1 is in the pipeline.';
   else if(['Lighting','Philips Signify','Eaton','Klein Tools','Honeywell'].includes(key))concern=`<span class="hl-g">All dimensions performing above target.</span> OroCommerce data shows strong conversion and low return rates. Ready for promotion investment.`;
-  else if(['PVF','Matco-Norca','Smith-Cooper','Southwire'].includes(key))concern=`<span class="hl-r">Scores are declining.</span> Epicor return data confirms spec mismatch as the primary driver. Prioritize enrichment before any promotion spend.`;
+  else if(['PVF','Matco-Norca','Smith-Cooper','Southwire'].includes(key))concern=`<span class="hl-r">Scores are declining.</span> OroCommerce RMA data confirms spec mismatch as the primary driver. Prioritize enrichment before any promotion spend.`;
   else concern=`Composite at <strong>${avgS}/100</strong>. Continued enrichment should move scores toward the 75+ target.`;
   document.getElementById('exec-sum-body').innerHTML=`<div class="es-ttl">Executive Summary · ${period.charAt(0).toUpperCase()+period.slice(1)}</div><div class="es-txt">Catalog quality for ${ctx} has ${trend} over the ${period}. Search visibility is <strong>${p.search.score}/100</strong>, Findability is <strong>${p.find.score}/100</strong>, and Conversion is <strong>${p.buy.score}/100</strong>. ${concern}</div>`;
 }
@@ -1431,32 +1431,38 @@ function renderMovers(){
   const lbl=drLabels[activeDate];const cap=lbl.charAt(0).toUpperCase()+lbl.slice(1);
   document.getElementById('mv-lbl').textContent=cap;document.getElementById('dc-lbl').textContent=cap;
   document.getElementById('mv-list').innerHTML=movers.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-up">▲ +${m.d.toFixed(1)}%</div></div>`).join('');
-  document.getElementById('dc-list').innerHTML=decliners.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-dn">▼ ${m.d.toFixed(1)}%</div></div>`).join('');
+  document.getElementById('dc-list').innerHTML=decliners.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-dn">▼ ${m.d.toFixed(1)}%</div><button class="btn btn-g btn-sm" onclick="addQ(this,'${m.name}')">Queue</button></div>`).join('');
 }
 
 const hmCats=[{name:'Lighting',search:85,find:88,buy:92},{name:'Electrical',search:71,find:62,buy:68},{name:'HVAC',search:58,find:55,buy:71},{name:'Plumbing',search:62,find:51,buy:60},{name:'Tools & Safety',search:52,find:48,buy:64},{name:'PVF',search:38,find:41,buy:51}];
 function hmCol(s){return s>=75?{bg:'#d1fae5',c:'#0d6b40'}:s>=50?{bg:'#fef3c7',c:'#b45309'}:{bg:'#fee2e2',c:'#991b1b'};}
 function renderHeatmap(){
-  let h=`<div class="hm-hdr"></div><div class="hm-hdr">Search</div><div class="hm-hdr">Find</div><div class="hm-hdr">Buy</div>`;
-  hmCats.forEach(r=>{const s=hmCol(r.search),f=hmCol(r.find),b=hmCol(r.buy);h+=`<div class="hm-lbl">${r.name}</div><div class="hm-cell" style="background:${s.bg};color:${s.c}">${r.search}</div><div class="hm-cell" style="background:${f.bg};color:${f.c}">${r.find}</div><div class="hm-cell" style="background:${b.bg};color:${b.c}">${r.buy}</div>`;});
+  let h=`<div class="hm-hdr"></div><div class="hm-hdr">Search</div><div class="hm-hdr">Find</div><div class="hm-hdr">Buy</div><div class="hm-hdr"></div>`;
+  hmCats.forEach(r=>{const s=hmCol(r.search),f=hmCol(r.find),b=hmCol(r.buy);const comp=Math.round((r.search+r.find+r.buy)/3);const qBtn=comp<75?`<button class="btn btn-g btn-sm" style="font-size:9px;padding:3px 7px" onclick="addQ(this,'${r.name}')">Queue</button>`:`<span style="font-size:9px;color:var(--green);font-weight:600">✓ Ready</span>`;h+=`<div class="hm-lbl">${r.name}</div><div class="hm-cell" style="background:${s.bg};color:${s.c}">${r.search}</div><div class="hm-cell" style="background:${f.bg};color:${f.c}">${r.find}</div><div class="hm-cell" style="background:${b.bg};color:${b.c}">${r.buy}</div><div style="display:flex;align-items:center;justify-content:center">${qBtn}</div>`;});
   document.getElementById('heatmap').innerHTML=h;
 }
 
 // DRILL-DOWN
 const catD=[{name:'Lighting',score:88,search:85,find:88,buy:92,skus:'11,600',trend:'▲',tc:'tu'},{name:'Electrical',score:67,search:71,find:62,buy:68,skus:'18,400',trend:'▲',tc:'tu'},{name:'HVAC',score:61,search:58,find:55,buy:71,skus:'14,200',trend:'►',tc:'tf'},{name:'Plumbing',score:58,search:62,find:51,buy:60,skus:'16,800',trend:'▲',tc:'tu'},{name:'Tools & Safety',score:55,search:52,find:48,buy:64,skus:'9,500',trend:'►',tc:'tf'},{name:'PVF',score:43,search:38,find:41,buy:51,skus:'21,300',trend:'▼',tc:'td2'}];
 const subD={PVF:[{name:'Carbon Steel Pipe',score:41,search:36,find:39,buy:48,skus:'6,200',trend:'▼',tc:'td2'},{name:'Stainless Fittings',score:44,search:40,find:43,buy:49,skus:'4,100',trend:'►',tc:'tf'},{name:'Gate/Globe/Check Valves',score:38,search:32,find:36,buy:46,skus:'5,800',trend:'▼',tc:'td2'},{name:'Flanges',score:47,search:43,find:46,buy:52,skus:'3,100',trend:'►',tc:'tf'},{name:'Gaskets & Seals',score:48,search:44,find:47,buy:53,skus:'2,100',trend:'►',tc:'tf'}],Electrical:[{name:'Circuit Breakers',score:74,search:78,find:71,buy:73,skus:'3,200',trend:'▲',tc:'tu'},{name:'Conduit & Fittings',score:61,search:65,find:58,buy:60,skus:'2,800',trend:'►',tc:'tf'},{name:'Wire & Cable',score:58,search:62,find:53,buy:59,skus:'4,100',trend:'►',tc:'tf'},{name:'Switchgear',score:71,search:74,find:68,buy:71,skus:'2,400',trend:'▲',tc:'tu'},{name:'Wiring Devices',score:63,search:67,find:60,buy:62,skus:'2,800',trend:'▲',tc:'tu'}],HVAC:[{name:'Ductwork',score:62,search:60,find:58,buy:68,skus:'2,800',trend:'►',tc:'tf'},{name:'Thermostats & Controls',score:54,search:52,find:47,buy:63,skus:'3,200',trend:'►',tc:'tf'},{name:'Motors & Blowers',score:65,search:62,find:63,buy:70,skus:'3,100',trend:'▲',tc:'tu'},{name:'Air Handling Units',score:68,search:65,find:63,buy:76,skus:'2,700',trend:'▲',tc:'tu'}],Plumbing:[{name:'Copper Fittings',score:63,search:67,find:58,buy:64,skus:'3,200',trend:'▲',tc:'tu'},{name:'PVC/CPVC',score:55,search:58,find:49,buy:58,skus:'3,800',trend:'►',tc:'tf'},{name:'Valves',score:52,search:56,find:46,buy:54,skus:'3,600',trend:'►',tc:'tf'},{name:'Water Heaters',score:61,search:65,find:56,buy:62,skus:'2,400',trend:'▲',tc:'tu'}],Lighting:[{name:'Commercial Fixtures',score:92,search:89,find:91,buy:96,skus:'4,200',trend:'▲',tc:'tu'},{name:'Lamps & Bulbs',score:88,search:85,find:87,buy:92,skus:'2,800',trend:'▲',tc:'tu'},{name:'Controls & Dimmers',score:84,search:81,find:83,buy:88,skus:'1,600',trend:'▲',tc:'tu'},{name:'Emergency & Exit',score:87,search:84,find:86,buy:91,skus:'1,400',trend:'▲',tc:'tu'}],'Tools & Safety':[{name:'Hand Tools',score:62,search:59,find:57,buy:70,skus:'2,200',trend:'▲',tc:'tu'},{name:'Power Tools',score:58,search:55,find:52,buy:67,skus:'1,800',trend:'►',tc:'tf'},{name:'PPE',score:54,search:51,find:48,buy:63,skus:'1,900',trend:'►',tc:'tf'},{name:'Testing & Meters',score:61,search:58,find:55,buy:70,skus:'1,800',trend:'▲',tc:'tu'}]};
-const skuD={'Gate/Globe/Check Valves':[{sku:'PVF-GV-2250',name:'2" Gate Valve — Carbon Steel',score:29,search:24,find:28,buy:35,brand:'Smith-Cooper'},{sku:'PVF-GV-3380',name:'3" Gate Valve — Stainless',score:33,search:28,find:32,buy:39,brand:'Matco-Norca'},{sku:'PVF-GV-4420',name:'4" Globe Valve — Carbon Steel',score:31,search:26,find:30,buy:37,brand:'Bonney Forge'},{sku:'PVF-CV-1140',name:'1.5" Check Valve — Swing',score:36,search:31,find:35,buy:42,brand:'Stockham'},{sku:'PVF-GV-6610',name:'6" Gate Valve — Flanged',score:27,search:22,find:26,buy:33,brand:'Anvil'},{sku:'PVF-BV-2260',name:'2" Ball Valve — NPT',score:41,search:36,find:40,buy:47,brand:'Smith-Cooper'}]};
+const skuD={
+'Gate/Globe/Check Valves':[{sku:'PVF-GV-2250',name:'2" Gate Valve — Carbon Steel',score:29,search:24,find:28,buy:35,brand:'Smith-Cooper'},{sku:'PVF-GV-3380',name:'3" Gate Valve — Stainless',score:33,search:28,find:32,buy:39,brand:'Matco-Norca'},{sku:'PVF-GV-4420',name:'4" Globe Valve — Carbon Steel',score:31,search:26,find:30,buy:37,brand:'Bonney Forge'},{sku:'PVF-CV-1140',name:'1.5" Check Valve — Swing',score:36,search:31,find:35,buy:42,brand:'Stockham'},{sku:'PVF-GV-6610',name:'6" Gate Valve — Flanged',score:27,search:22,find:26,buy:33,brand:'Anvil'},{sku:'PVF-BV-2260',name:'2" Ball Valve — NPT',score:41,search:36,find:40,buy:47,brand:'Smith-Cooper'}],
+'Carbon Steel Pipe':[{sku:'PVF-CS-1040',name:'1" Sch 40 Carbon Steel Pipe — 21ft',score:38,search:33,find:37,buy:44,brand:'Bonney Forge'},{sku:'PVF-CS-2040',name:'2" Sch 40 Carbon Steel Pipe — 21ft',score:42,search:37,find:41,buy:48,brand:'Bonney Forge'},{sku:'PVF-CS-3080',name:'3" Sch 80 Carbon Steel Pipe — 21ft',score:35,search:30,find:34,buy:41,brand:'Anvil'},{sku:'PVF-CS-4040',name:'4" Sch 40 Carbon Steel Pipe — 21ft',score:31,search:26,find:30,buy:37,brand:'Anvil'},{sku:'PVF-CS-6040',name:'6" Sch 40 Carbon Steel Pipe — 21ft',score:28,search:23,find:27,buy:34,brand:'Smith-Cooper'},{sku:'PVF-CS-0580',name:'0.5" Sch 80 Carbon Steel Nipple — 6"',score:44,search:39,find:43,buy:50,brand:'Matco-Norca'}],
+'Stainless Fittings':[{sku:'PVF-SS-E2150',name:'2" 150# SS Elbow — 90°',score:46,search:41,find:45,buy:52,brand:'Matco-Norca'},{sku:'PVF-SS-T2150',name:'2" 150# SS Tee — Equal',score:43,search:38,find:42,buy:49,brand:'Matco-Norca'},{sku:'PVF-SS-C3150',name:'3" 150# SS Coupling — Threaded',score:40,search:35,find:39,buy:46,brand:'Anvil'},{sku:'PVF-SS-R1150',name:'1.5" 150# SS Reducer — 1.5x1"',score:37,search:32,find:36,buy:43,brand:'Smith-Cooper'},{sku:'PVF-SS-U2300',name:'2" 300# SS Union — Threaded',score:49,search:44,find:48,buy:55,brand:'Bonney Forge'},{sku:'PVF-SS-C4150',name:'4" 150# SS Cap — Welded',score:34,search:29,find:33,buy:40,brand:'Stockham'}],
+'Flanges':[{sku:'PVF-FL-S2150',name:'2" 150# SS Slip-On Flange',score:50,search:45,find:49,buy:56,brand:'Bonney Forge'},{sku:'PVF-FL-W4150',name:'4" 150# CS Weld Neck Flange',score:44,search:39,find:43,buy:50,brand:'Anvil'},{sku:'PVF-FL-B3150',name:'3" 150# CS Blind Flange',score:48,search:43,find:47,buy:54,brand:'Smith-Cooper'},{sku:'PVF-FL-S6150',name:'6" 150# CS Slip-On Flange',score:41,search:36,find:40,buy:47,brand:'Anvil'},{sku:'PVF-FL-T2300',name:'2" 300# CS Threaded Flange',score:46,search:41,find:45,buy:52,brand:'Bonney Forge'},{sku:'PVF-FL-L4150',name:'4" 150# SS Lap Joint Flange',score:38,search:33,find:37,buy:44,brand:'Matco-Norca'}],
+'Gaskets & Seals':[{sku:'PVF-GK-S2150',name:'2" 150# Spiral Wound Gasket — SS/Flex',score:52,search:47,find:51,buy:58,brand:'Garlock'},{sku:'PVF-GK-R4150',name:'4" 150# Ring Gasket — PTFE',score:49,search:44,find:48,buy:55,brand:'Garlock'},{sku:'PVF-GK-F3150',name:'3" 150# Full Face Gasket — Neoprene',score:46,search:41,find:45,buy:52,brand:'Flexitallic'},{sku:'PVF-GK-M2300',name:'2" 300# Metal Ring Joint Gasket',score:43,search:38,find:42,buy:49,brand:'Flexitallic'},{sku:'PVF-GK-K1150',name:'1" 150# Kammprofile Gasket — SS',score:40,search:35,find:39,buy:46,brand:'Garlock'},{sku:'PVF-GK-S6150',name:'6" 150# Spiral Wound Gasket — CS/Flex',score:37,search:32,find:36,buy:43,brand:'Flexitallic'}]
+};
 let dLevel='cat',dCat=null,dSub=null;
 function spCls(s){return s>=75?'sp-g':s>=50?'sp-y':'sp-r';}
 function renderDrill(data,level){
   const isSku=level==='sku';
   let h='<table class="dt"><thead><tr>';
-  if(isSku)h+='<th>SKU</th><th>Product</th><th>Brand</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th>';
-  else h+='<th>'+(level==='cat'?'Category':'Sub-category')+'</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th>SKUs</th><th>Trend</th><th></th>';
+  if(isSku)h+='<th>SKU</th><th>Product</th><th>Brand</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th></th>';
+  else h+='<th>'+(level==='cat'?'Category':'Sub-category')+'</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th>SKUs</th><th></th><th></th>';
   h+='</tr></thead><tbody>';
   data.forEach(r=>{
-    if(isSku){h+=`<tr><td style="font-family:'DM Mono',monospace;font-size:10px">${r.sku}</td><td style="font-weight:500;font-size:11px">${r.name}</td><td style="font-size:11px;color:var(--gray-500)">${r.brand}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td></tr>`;}
-    else{const cl=level==='cat'?`onclick="dCat='${r.name}';drillSub('${r.name}')"`:`onclick="dSub='${r.name}';drillSku('${r.name}')"`;h+=`<tr><td style="font-weight:600;cursor:pointer;color:var(--navy);font-size:12px" ${cl}>${r.name}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td><td style="font-family:'DM Mono',monospace;font-size:10px">${r.skus}</td><td class="${r.tc}">${r.trend}</td><td><button class="btn btn-g btn-sm" ${cl}>View</button></td></tr>`;}
+    if(isSku){h+=`<tr><td style="font-family:'DM Mono',monospace;font-size:10px">${r.sku}</td><td style="font-weight:500;font-size:11px">${r.name}</td><td style="font-size:11px;color:var(--gray-500)">${r.brand}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'${r.sku}')">Queue</button></td></tr>`;}
+    else{const cl=level==='cat'?`onclick="dCat='${r.name}';drillSub('${r.name}')"`:`onclick="dSub='${r.name}';drillSku('${r.name}')"`;h+=`<tr><td style="font-weight:600;cursor:pointer;color:var(--navy);font-size:12px" ${cl}>${r.name}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td><td style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:500">${r.skus}</td><td><button class="btn btn-g btn-sm" ${cl}>View</button></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'${r.name}')">Queue</button></td></tr>`;}
   });
   h+='</tbody></table>';document.getElementById('drill-wrap').innerHTML=h;
 }
@@ -1530,12 +1536,12 @@ const responses={
   'underperforming sub-categories':`<strong>Top 10 Underperforming Sub-categories</strong><div class="mono"><span class="mh">RANK  SUB-CATEGORY              CAT       SCORE</span><br><span class="mw">1     Gate/Globe/Check Valves   PVF       38</span><br><span class="mw">2     Carbon Steel Pipe         PVF       41</span><br><span class="mw">3     Stainless Fittings        PVF       44</span><br><span class="mw">4     Thermostats &amp; Controls    HVAC      54</span><br>5     PVC/CPVC                  Plumbing  55<br>6     Jobsite Equipment         Tools     49<br>7     PPE                       Tools     54<br>8     Valves                    Plumbing  52</div>`,
   'incomplete product data':`<strong>Brand with Most Incomplete Product Data</strong><div class="mono"><span class="mh">BRAND           CAT    COMPLETE  SOURCE</span><br><span class="mw">Matco-Norca     PVF    34%       Akeneo PIM</span><br>Smith-Cooper    PVF    41%       Akeneo PIM<br>Southwire       Elec   48%       Akeneo PIM<br>Danfoss         HVAC   52%       Akeneo PIM<br><span class="mh">Completeness scores pulled from Akeneo attribute coverage data</span></div>`,
   'normalization phase':`<strong>SKUs in Normalization Phase</strong><div class="mono"><span class="mh">PHASE          COUNT</span><br>Queue          1,847<br><span class="mw">Normalization  730  ← current</span><br>Enrichment     654<br>Review         334<br>Published      4,218<br><span class="mh">730 SKUs — 52% are PVF items</span></div>`,
-  'revenue impact':`<strong>Estimated Revenue Impact — PVF Enrichment to Score 70</strong><div class="mono"><span class="mh">CURRENT STATE (OroCommerce + Epicor)</span><br>PVF Composite Score:      43/100<br>PVF Conversion Rate:      6.0%<br>PVF Return Rate:          14.7%  (Epicor)<br>PVF Avg Order Value:      $612   (OroCommerce)<br><span class="md">─────────────────────────────────────────</span><br><span class="mh">PROJECTED AT SCORE 70</span><br>Conversion Rate (est.):   +3.8pp → 9.8%<br>Return Rate (est.):       -5.1pp → 9.6%<br>Incremental Revenue:      <span class="mh">+$2.4M annually</span><br>Reduced Return Costs:     <span class="mh">+$840K annually</span><br>Total Financial Impact:   <span class="mh">~$3.2M</span><br><span class="md">Projection based on Lighting/Electrical enrichment benchmarks</span></div>`,
-  'return rates':`<strong>Return Rate by Category — Epicor Attribution</strong><div class="mono"><span class="mh">CATEGORY       RETURN RATE  PRIMARY CAUSE</span><br><span class="mw">PVF            14.7%        Spec mismatch (pressure/material)</span><br><span class="mw">Plumbing       7.2%         Wrong thread type ordered</span><br>HVAC           6.1%         Compatibility missing (voltage)<br>Tools          8.4%         Missing fit/compatibility data<br>Electrical     4.3%         Improving post-Eaton enrich.<br><span class="mh">Lighting       2.1%         Lowest — 92% enrichment coverage</span><br><span class="md">Source: Epicor return reason codes mapped to catalog attr. gaps</span></div>`,
+  'revenue impact':`<strong>Estimated Revenue Impact — PVF Enrichment to Score 70</strong><div class="mono"><span class="mh">CURRENT STATE (OroCommerce)</span><br>PVF Composite Score:      43/100<br>PVF Conversion Rate:      6.0%<br>PVF Return Rate:          14.7%  (OroCommerce RMA)<br>PVF Avg Order Value:      $612   (OroCommerce)<br><span class="md">─────────────────────────────────────────</span><br><span class="mh">PROJECTED AT SCORE 70</span><br>Conversion Rate (est.):   +3.8pp → 9.8%<br>Return Rate (est.):       -5.1pp → 9.6%<br>Incremental Revenue:      <span class="mh">+$2.4M annually</span><br>Reduced Return Costs:     <span class="mh">+$840K annually</span><br>Total Financial Impact:   <span class="mh">~$3.2M</span><br><span class="md">Projection based on Lighting/Electrical enrichment benchmarks</span></div>`,
+  'return rates':`<strong>Return Rate by Category — OroCommerce RMA Data</strong><div class="mono"><span class="mh">CATEGORY       RETURN RATE  PRIMARY CAUSE</span><br><span class="mw">PVF            14.7%        Spec mismatch (pressure/material)</span><br><span class="mw">Plumbing       7.2%         Wrong thread type ordered</span><br>HVAC           6.1%         Compatibility missing (voltage)<br>Tools          8.4%         Missing fit/compatibility data<br>Electrical     4.3%         Improving post-Eaton enrich.<br><span class="mh">Lighting       2.1%         Lowest — 92% enrichment coverage</span><br><span class="md">Source: OroCommerce RMA reason codes mapped to catalog attr. gaps</span></div>`,
   'top-performing brands in electrical':`<strong>Top Brands — Electrical (Composite Score)</strong><div class="mono"><span class="mh">RANK  BRAND      COMPOSITE  MARGIN</span><br><span class="mh">1     Eaton       84         48.3%</span><br>2     Hubbell     79         45.1%<br>3     Leviton     76         43.8%<br>4     Square D    74         44.2%<br>5     Lutron      71         46.0%<br><span class="mw">6     Southwire   39         48.3%  ← outlier, high margin low quality</span></div>`,
-  'gross margin':`<strong>Gross Margin by Category — Epicor ERP</strong><div class="mono"><span class="mh">CATEGORY        MARGIN  SCORE  STATUS</span><br><span class="mh">Lighting        62.4%   88     Ready to promote</span><br>Tools & Safety  54.1%   55     Enrich to unlock<br>Electrical      48.3%   67     Partially ready<br>HVAC            44.7%   61     Partially ready<br>Plumbing        41.2%   58     Enrich to unlock<br><span class="mw">PVF             36.8%   43     Do not promote yet</span><br><span class="md">Southwire (Elec): 48.3% margin, 39 score — high-value enrich target</span></div>`,
+  'gross margin':`<strong>Gross Margin by Category — OroCommerce</strong><div class="mono"><span class="mh">CATEGORY        MARGIN  SCORE  STATUS</span><br><span class="mh">Lighting        62.4%   88     Ready to promote</span><br>Tools & Safety  54.1%   55     Enrich to unlock<br>Electrical      48.3%   67     Partially ready<br>HVAC            44.7%   61     Partially ready<br>Plumbing        41.2%   58     Enrich to unlock<br><span class="mw">PVF             36.8%   43     Do not promote yet</span><br><span class="md">Southwire (Elec): 48.3% margin, 39 score — high-value enrich target</span></div>`,
 };
-function getResp(t){const tl=t.toLowerCase();for(const[k,v]of Object.entries(responses)){if(k.split(' ').filter(w=>w.length>3).some(w=>tl.includes(w)))return v;}return`<strong>Query processed across all connected sources.</strong><br><br>I can answer questions about catalog scores (Akeneo), revenue and margin (Epicor), conversion and returns (OroCommerce), and search performance (GSC/GA4).<div class="mono"><span class="mh">CATALOG SUMMARY</span><br>Total SKUs:    91,800<br>Composite:     62/100<br>Return Rate:   7.8% overall<br><span class="mw">Critical: PVF 43/100 · 14.7% return rate</span></div>`;}
+function getResp(t){const tl=t.toLowerCase();for(const[k,v]of Object.entries(responses)){if(k.split(' ').filter(w=>w.length>3).some(w=>tl.includes(w)))return v;}return`<strong>Query processed across all connected sources.</strong><br><br>I can answer questions about catalog scores (Akeneo), revenue, margin, and returns (OroCommerce), and search performance (GSC/GA4).<div class="mono"><span class="mh">CATALOG SUMMARY</span><br>Total SKUs:    91,800<br>Composite:     62/100<br>Return Rate:   7.8% overall<br><span class="mw">Critical: PVF 43/100 · 14.7% return rate</span></div>`;}
 function sendP(t){document.getElementById('chat-inp').value=t;switchTab('agentic',document.querySelector('[data-tab="agentic"]'));sendChat();}
 function sendChat(){
   const inp=document.getElementById('chat-inp'),t=inp.value.trim();if(!t)return;inp.value='';
@@ -1545,7 +1551,7 @@ function sendChat(){
   setTimeout(()=>{
     document.getElementById('typing-ind').style.display='none';
     const a=document.createElement('div');a.className='msg msg-a';
-    a.innerHTML=`<div class="ai-av">PT</div><div><div class="bub-a">${getResp(t)}</div><div class="mtag">Pivotree TowerTalk v2.1 · OroCommerce · Epicor · Akeneo · GSC · GA4</div></div>`;
+    a.innerHTML=`<div class="ai-av">PT</div><div><div class="bub-a">${getResp(t)}</div><div class="mtag">Pivotree TowerTalk v2.1 · OroCommerce · Akeneo · GSC · GA4</div></div>`;
     area.appendChild(a);area.scrollTop=area.scrollHeight;
   },1200);
 }
@@ -1722,6 +1728,10 @@ function drawLoopDiagram(){
 setTimeout(drawLoopDiagram,150);
 
 setTimeout(()=>{if(document.getElementById('tab-operations').classList.contains('active'))drawGrowthChart();},150);
+
+// Initialize Strategic tab on load
+applyF();
+renderDrill(catD,'cat');
 </script>
 </body>
 </html>
