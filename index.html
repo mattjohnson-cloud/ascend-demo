@@ -135,15 +135,15 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
 .fin-bar-lbl{font-size:10px;color:var(--gray-600);width:100px;flex-shrink:0;}
 .fin-bar-track{flex:1;background:var(--gray-200);border-radius:99px;height:5px;}
 .fin-bar-fill{height:5px;border-radius:99px;background:var(--navy);}
-.fin-bar-val{font-size:10px;font-weight:600;color:var(--navy);min-width:36px;text-align:right;font-family:'DM Mono',monospace;}
+.fin-bar-val{font-size:10px;font-weight:600;color:var(--navy);min-width:36px;text-align:right;font-family:'Poppins',sans-serif;}
 .fin-insight{background:var(--navy-light);border-radius:var(--r-md);padding:10px 14px;font-size:11px;color:var(--navy);line-height:1.6;margin-top:12px;}
 .fin-insight strong{font-weight:600;}
 
 /* HEATMAP */
-.hm-grid{display:grid;grid-template-columns:130px repeat(3,1fr) 68px;gap:2px;font-size:12px;}
+.hm-grid{display:grid;grid-template-columns:130px repeat(3,1fr);gap:2px;font-size:12px;}
 .hm-hdr{padding:6px 8px;font-size:10px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;text-align:center;}
 .hm-lbl{padding:8px 10px;font-weight:600;color:var(--navy);display:flex;align-items:center;font-size:11px;}
-.hm-cell{padding:9px 6px;border-radius:var(--r-sm);text-align:center;font-weight:700;font-size:12px;transition:transform .1s;}
+.hm-cell{padding:9px 6px;border-radius:var(--r-sm);text-align:center;font-weight:700;font-size:12px;font-family:'Poppins',sans-serif;transition:transform .1s;}
 .hm-cell:hover{transform:scale(1.03);}
 
 /* MOVERS */
@@ -190,6 +190,31 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
 .mc{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:11px 13px;}
 .mc-l{font-size:10px;color:var(--gray-500);margin-bottom:3px;text-transform:uppercase;letter-spacing:.3px;}
 .mc-v{font-family:'Poppins',sans-serif;font-weight:700;font-size:19px;color:var(--navy);}
+/* ── NUMBER FONT SYSTEM ──────────────────────────────────────
+   Poppins  → all display numbers (scores, counts, $, %)
+   DM Mono  → all tabular reference data (SKU codes, dates, IDs)
+   ---------------------------------------------------------- */
+.num-p{font-family:'Poppins',sans-serif;font-weight:700;}
+.num-m{font-family:'DM Mono',monospace;font-weight:500;}
+/* Score badges */
+.sp{font-family:'Poppins',sans-serif !important;font-weight:700 !important;}
+/* Metric cards */
+.mc-v{font-family:'Poppins',sans-serif !important;font-weight:700 !important;}
+/* Scorecard big number */
+.snum{font-family:'Poppins',sans-serif !important;font-weight:700 !important;}
+/* Financial cards */
+.fin-card-val{font-family:'Poppins',sans-serif !important;font-weight:700 !important;}
+/* Pipeline phase counts */
+.pipe-cnt{font-family:'Poppins',sans-serif !important;font-weight:700 !important;}
+/* Mover deltas */
+.mv-up,.mv-dn{font-family:'Poppins',sans-serif !important;font-weight:700 !important;}
+/* Table numeric cells — Poppins for scores/%, DM Mono for SKU/ID columns */
+.dt td{font-family:'Poppins',sans-serif;font-weight:500;}
+.dt td:first-child{font-family:'Inter',sans-serif;font-weight:500;}
+/* SKU/code cells get mono explicitly */
+.dt td[data-mono]{font-family:'DM Mono',monospace !important;font-weight:500 !important;}
+/* Stat row values — Poppins: these are display numbers, not codes */
+.sr-v{font-family:'Poppins',sans-serif !important;}
 
 /* CAT BADGES */
 .cb{display:inline-block;padding:1px 7px;border-radius:3px;font-size:9px;font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;}
@@ -362,22 +387,22 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
   <span class="src-label">Connected Sources</span>
   <div class="src-badge">
     <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#94a3b8" stroke-width="1.2"/><path d="M8 2.5c-2 2-2 9 0 11M8 2.5c2 2 2 9 0 11M1.5 8h13" stroke="#94a3b8" stroke-width="1.2"/></svg>
-    <span class="src-dot"></span>Google Search Console
+    <span class="src-dot"></span>Google Search Console <span style="font-size:9px;font-weight:700;color:#1d4ed8;margin-left:3px">Search</span>
   </div>
   <div class="src-divider"></div>
   <div class="src-badge">
     <svg viewBox="0 0 16 16" fill="none"><path d="M2 12l4-5 3 3 2-4 3 6" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <span class="src-dot"></span>Google Analytics 4
+    <span class="src-dot"></span>Google Analytics 4 <span style="font-size:9px;font-weight:700;color:var(--green);margin-left:3px">Conversion</span>
   </div>
   <div class="src-divider"></div>
   <div class="src-badge">
     <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#94a3b8" stroke-width="1.2"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1M8 8v2M6 9h4" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/></svg>
-    <span class="src-dot"></span>OroCommerce
+    <span class="src-dot"></span>OroCommerce <span style="font-size:9px;font-weight:700;color:var(--green);margin-left:3px">Conversion</span>
   </div>
   <div class="src-divider"></div>
   <div class="src-badge">
     <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#94a3b8" stroke-width="1.2"/><path d="M8 5v3l2 2" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/></svg>
-    <span class="src-dot"></span>Akeneo PIM
+    <span class="src-dot"></span>Akeneo PIM <span style="font-size:9px;font-weight:700;color:var(--amber);margin-left:3px">Data Quality</span>
   </div>
   <div style="margin-left:auto;font-size:9px;color:var(--gray-400);font-family:'DM Mono',monospace;white-space:nowrap">Last sync: 4 min ago</div>
 </div>
@@ -410,8 +435,8 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
       <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-top:3px">Connected Sources</div>
     </div>
     <div class="mc" style="border-left:2px solid var(--teal);text-align:center;padding:16px">
-      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:var(--navy)">3</div>
-      <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-top:3px">Score Dimensions</div>
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:var(--navy)">2+1</div>
+      <div style="font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.4px;margin-top:3px">Signals + Modifier</div>
     </div>
     <div class="mc" style="border-left:2px solid var(--teal);text-align:center;padding:16px">
       <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;color:var(--navy)">&lt;90</div>
@@ -440,7 +465,7 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
       <div style="text-align:center">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--teal);margin:0 auto 5px"></div>
         <div style="font-size:10px;font-weight:700;color:var(--navy);margin-bottom:2px">2. Ascend Scores</div>
-        <div style="font-size:10px;color:var(--gray-500);line-height:1.4">Search · Find · Buy composite scoring</div>
+        <div style="font-size:10px;color:var(--gray-500);line-height:1.4">Search (35%) + Conversion (65%) × Data Quality</div>
       </div>
       <div style="text-align:center">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--navy);margin:0 auto 5px"></div>
@@ -478,7 +503,7 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
           </div>
           <div style="flex:1">
             <div style="font-size:11px;font-weight:600;color:var(--navy)">Google Search Console</div>
-            <div style="font-size:10px;color:var(--gray-400)">Impressions · Clicks · CTR · SERP position</div>
+            <div style="font-size:10px;color:var(--gray-400)">Impressions · Clicks · CTR · Avg. position per SKU</div>
           </div>
           <span style="font-size:9px;font-weight:700;background:#dbeafe;color:#1e40af;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Search</span>
         </div>
@@ -488,9 +513,9 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
           </div>
           <div style="flex:1">
             <div style="font-size:11px;font-weight:600;color:var(--navy)">Google Analytics 4</div>
-            <div style="font-size:10px;color:var(--gray-400)">Bounce rate · Filter usage · Engagement · Pages/session</div>
+            <div style="font-size:10px;color:var(--gray-400)">view_item · add_to_cart · purchase events at SKU level</div>
           </div>
-          <span style="font-size:9px;font-weight:700;background:var(--purple-light);color:var(--purple);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Find</span>
+          <span style="font-size:9px;font-weight:700;background:var(--green-light);color:var(--green);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Conversion</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
           <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
@@ -498,12 +523,9 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
           </div>
           <div style="flex:1">
             <div style="font-size:11px;font-weight:600;color:var(--navy)">OroCommerce Enterprise</div>
-            <div style="font-size:10px;color:var(--gray-400)">Onsite search · RFQ · Orders · AOV · Returns</div>
+            <div style="font-size:10px;color:var(--gray-400)">RFQ initiation · Orders · AOV · Returns (B2B conversion)</div>
           </div>
-          <div style="display:flex;gap:3px">
-            <span style="font-size:9px;font-weight:700;background:#dbeafe;color:#1e40af;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Search</span>
-            <span style="font-size:9px;font-weight:700;background:var(--green-light);color:var(--green);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Buy</span>
-          </div>
+          <span style="font-size:9px;font-weight:700;background:var(--green-light);color:var(--green);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Conversion</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
           <div style="width:32px;height:32px;border-radius:var(--r-sm);background:var(--purple-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
@@ -511,9 +533,9 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
           </div>
           <div style="flex:1">
             <div style="font-size:11px;font-weight:600;color:var(--navy)">Akeneo PIM Enterprise</div>
-            <div style="font-size:10px;color:var(--gray-400)">Attribute completeness · Schema coverage · DQ grade</div>
+            <div style="font-size:10px;color:var(--gray-400)">Attribute completeness · T1/T2/T3 tier scoring per category</div>
           </div>
-          <span style="font-size:9px;font-weight:700;background:var(--purple-light);color:var(--purple);padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px">Find</span>
+          <span style="font-size:9px;font-weight:700;background:var(--amber-light);color:var(--amber);padding:2px 7px;border-radius:3px;border:1px solid #fcd34d;text-transform:uppercase;letter-spacing:.3px">Data Quality</span>
         </div>
       </div>
       <div style="margin-top:12px;padding:10px 12px;background:var(--navy-light);border-radius:var(--r-md);font-size:11px;color:var(--navy);line-height:1.6">
@@ -527,65 +549,92 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
         <div style="width:28px;height:28px;border-radius:var(--r-md);background:var(--navy-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="var(--navy)" stroke-width="1.3"/><path d="M7 4v3l2 1.5" stroke="var(--navy)" stroke-width="1.3" stroke-linecap="round"/></svg>
         </div>
-        <div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy)">Scoring Methodology</div><div style="font-size:10px;color:var(--gray-500)">Three equally weighted dimensions · 0–100 composite</div></div>
+        <div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy)">Priority Scoring Model</div><div style="font-size:10px;color:var(--gray-500)">Search · Conversion · Data Quality · 0–100 output</div></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+        <!-- S1 -->
         <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:12px 14px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy)">Search Visibility</div>
-            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:var(--gray-500)">33.3%</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:9px;font-weight:700;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace">Search</span>
+              <div style="font-size:11px;font-weight:700;color:var(--navy)">Search Score</div>
+            </div>
+            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:700;color:#1e40af;background:#dbeafe;padding:2px 8px;border-radius:3px">35%</span>
           </div>
-          <div style="font-size:10px;color:var(--gray-500);margin-bottom:6px">Can customers find your products on Google and in your portal?</div>
+          <div style="font-size:10px;color:var(--gray-500);margin-bottom:7px">How badly does this SKU underperform on Google relative to its ranking position? Measures how your SKUs perform on Google relative to their ranking position.</div>
           <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
-            <div style="width:60%;height:4px;border-radius:99px;background:var(--navy)"></div>
-            <span style="font-size:9px;color:var(--gray-500)">OroCommerce onsite search — 60%</span>
+            <div style="width:35%;height:4px;border-radius:99px;background:#1d4ed8"></div>
+            <span style="font-size:9px;color:var(--gray-500)">Weight in formula — 35%</span>
           </div>
-          <div style="display:flex;align-items:center;gap:4px">
-            <div style="width:40%;height:4px;border-radius:99px;background:var(--gray-300)"></div>
-            <span style="font-size:9px;color:var(--gray-500)">Google Search Console — 40%</span>
-          </div>
+          <div style="font-size:9px;color:var(--gray-400);margin-top:4px">Source: Google Search Console · impressions, clicks, CTR, avg. position per SKU</div>
         </div>
+        <!-- S2 -->
         <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:12px 14px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy)">Findability</div>
-            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:var(--gray-500)">33.3%</span>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:9px;font-weight:700;background:var(--green-light);color:var(--green);padding:1px 6px;border-radius:3px;font-family:'DM Mono',monospace">Conversion</span>
+              <div style="font-size:11px;font-weight:700;color:var(--navy)">Conversion Score</div>
+            </div>
+            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:700;color:var(--green);background:var(--green-light);padding:2px 8px;border-radius:3px">65%</span>
           </div>
-          <div style="font-size:10px;color:var(--gray-500);margin-bottom:6px">Can customers filter, compare, and navigate to the right product?</div>
+          <div style="font-size:10px;color:var(--gray-500);margin-bottom:7px">Carries more weight — a product found but not bought is a direct revenue loss. Measures whether visitors convert after landing on a product page. Benchmarked against your catalog average.</div>
           <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
-            <div style="width:50%;height:4px;border-radius:99px;background:var(--navy)"></div>
-            <span style="font-size:9px;color:var(--gray-500)">Akeneo attribute completeness — 50%</span>
+            <div style="width:65%;height:4px;border-radius:99px;background:var(--green)"></div>
+            <span style="font-size:9px;color:var(--gray-500)">Weight in formula — 65%</span>
           </div>
-          <div style="display:flex;align-items:center;gap:4px">
-            <div style="width:50%;height:4px;border-radius:99px;background:var(--gray-300)"></div>
-            <span style="font-size:9px;color:var(--gray-500)">GA4 on-site behaviour — 50%</span>
-          </div>
+          <div style="font-size:9px;color:var(--gray-400);margin-top:4px">Source: GA4 · view_item, add_to_cart, purchase events at SKU level</div>
         </div>
-        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);padding:12px 14px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-            <div style="font-size:11px;font-weight:700;color:var(--navy)">Conversion</div>
-            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:600;color:var(--gray-500)">33.3%</span>
+        <!-- S3 -->
+        <div style="background:var(--amber-light);border:1px solid #fcd34d;border-radius:var(--r-md);padding:12px 14px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-size:9px;font-weight:700;background:var(--amber-light);color:var(--amber);padding:1px 6px;border-radius:3px;border:1px solid #fcd34d;font-family:'DM Mono',monospace">Data Quality</span>
+              <div style="font-size:11px;font-weight:700;color:var(--navy)">Data Quality Score</div>
+            </div>
+            <span style="font-size:9px;font-family:'DM Mono',monospace;font-weight:700;color:var(--amber);padding:2px 8px;border-radius:3px;background:rgba(255,255,255,.6)">× multiplier</span>
           </div>
-          <div style="font-size:10px;color:var(--gray-500);margin-bottom:6px">Do customers add to cart, submit RFQs, and complete orders?</div>
-          <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
-            <div style="width:70%;height:4px;border-radius:99px;background:var(--navy)"></div>
-            <span style="font-size:9px;color:var(--gray-500)">Purchase intent (cart + RFQ + order) — 70%</span>
+          <div style="font-size:10px;color:var(--gray-700);margin-bottom:7px"><strong>Completeness modifier</strong> — amplifies priority when data is incomplete. Suppresses it when data is already complete. Amplifies priority when data is missing. Suppresses it when data is already complete. This is the relevance gate: it ensures Ascend only flags SKUs where enrichment is the correct fix.</div>
+          <div style="display:flex;gap:6px;margin-bottom:4px">
+            <span style="font-size:9px;font-weight:600;background:#fff;color:var(--navy);padding:2px 7px;border-radius:3px">Tier 1 (60%) — Purchase decision attrs</span>
+            <span style="font-size:9px;font-weight:600;background:#fff;color:var(--navy);padding:2px 7px;border-radius:3px">Tier 2 (30%) — Search findability</span>
+            <span style="font-size:9px;font-weight:600;background:#fff;color:var(--navy);padding:2px 7px;border-radius:3px">Tier 3 (10%) — Conversion copy</span>
           </div>
-          <div style="display:flex;align-items:center;gap:4px">
-            <div style="width:30%;height:4px;border-radius:99px;background:var(--gray-300)"></div>
-            <span style="font-size:9px;color:var(--gray-500)">Order quality (returns + AOV + repeat) — 30%</span>
-          </div>
+          <div style="font-size:9px;color:var(--amber);margin-top:4px">Source: Akeneo PIM · attribute completeness per tier, per category schema</div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--navy);border-radius:var(--r-md)">
-        <span style="font-size:10px;color:rgba(255,255,255,.6);font-weight:600;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap">Composite</span>
-        <span style="font-size:10px;color:rgba(255,255,255,.4)">=</span>
-        <span style="font-size:10px;font-weight:600;color:#93c5fd">Search</span>
-        <span style="font-size:10px;color:rgba(255,255,255,.4)">+</span>
-        <span style="font-size:10px;font-weight:600;color:#c4b5fd">Find</span>
-        <span style="font-size:10px;color:rgba(255,255,255,.4)">+</span>
-        <span style="font-size:10px;font-weight:600;color:#6ee7b7">Buy</span>
-        <span style="font-size:10px;color:rgba(255,255,255,.4)">÷ 3</span>
-        <span style="margin-left:auto;font-family:'Poppins',sans-serif;font-weight:700;font-size:12px;color:#fff">0 – 100</span>
+      <!-- Formula bar -->
+      <div style="background:var(--navy);border-radius:var(--r-md);padding:12px 16px;margin-bottom:10px">
+        <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Priority Score Formula (MVP — Studio Version)</div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+          <span style="font-family:'DM Mono',monospace;font-weight:700;font-size:12px;color:#fff">Score</span>
+          <span style="color:rgba(255,255,255,.4);font-size:12px">=</span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.45)">(</span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:#93c5fd">Search × 0.35</span>
+          <span style="color:rgba(255,255,255,.4);font-size:12px">+</span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:#6ee7b7">Conversion × 0.65</span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(255,255,255,.45)">)</span>
+          <span style="color:rgba(255,255,255,.4);font-size:12px">×</span>
+          <span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:#fcd34d">Data Quality</span>
+          <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,.4)">Low score = Red = Urgent</span>
+        </div>
+      </div>
+      <!-- Score bands -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+        <div style="background:var(--red-light);border:1px solid #fecdd3;border-radius:var(--r-md);padding:9px 11px;text-align:center">
+          <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--red);margin-bottom:2px">0 – 40</div>
+          <div style="font-size:9px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px">🔴 Urgent</div>
+          <div style="font-size:9px;color:var(--gray-600)">ENRICH or INVESTIGATE</div>
+        </div>
+        <div style="background:var(--amber-light);border:1px solid #fcd34d;border-radius:var(--r-md);padding:9px 11px;text-align:center">
+          <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--amber);margin-bottom:2px">41 – 69</div>
+          <div style="font-size:9px;font-weight:700;color:var(--amber);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px">🟡 Moderate</div>
+          <div style="font-size:9px;color:var(--gray-600)">ENRICH or INVESTIGATE</div>
+        </div>
+        <div style="background:var(--green-light);border:1px solid #6ee7b7;border-radius:var(--r-md);padding:9px 11px;text-align:center">
+          <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:var(--green);margin-bottom:2px">70 – 100</div>
+          <div style="font-size:9px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px">🟢 Healthy</div>
+          <div style="font-size:9px;color:var(--gray-600)">MONITOR</div>
+        </div>
       </div>
     </div>
   </div>
@@ -596,37 +645,37 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
       <div style="width:28px;height:28px;border-radius:var(--r-md);background:var(--navy-light);display:flex;align-items:center;justify-content:center;flex-shrink:0">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M2 7h7M2 10h5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
       </div>
-      <div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy)">Priority Engine</div><div style="font-size:10px;color:var(--gray-500)">Tells your team exactly which categories, brands, and SKUs to enrich first — and why</div></div>
+      <div><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;color:var(--navy)">Priority Engine — Action Tags</div><div style="font-size:10px;color:var(--gray-500)">Every SKU gets a score, a colour, and a tag that tells you exactly what to do next</div></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-      <div style="padding:14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+      <div style="padding:14px;background:var(--red-light);border:1px solid #fecdd3;border-radius:var(--r-md)">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="5" cy="5" r="4" stroke="var(--navy)" stroke-width="1.3"/><path d="M8 8l3 3" stroke="var(--navy)" stroke-width="1.3" stroke-linecap="round"/></svg>
-          <div style="font-size:11px;font-weight:700;color:var(--navy)">Search Priorities</div>
+          <span style="font-size:9px;font-weight:700;background:var(--red);color:#fff;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.4px">ENRICH</span>
         </div>
-        <div style="font-size:11px;color:var(--gray-600);line-height:1.6">Identifies categories and brands with the worst search visibility scores. Surfaces missing titles, descriptions, and structured data gaps that are suppressing Google indexing.</div>
-        <div style="margin-top:8px;font-size:10px;font-weight:600;color:var(--teal)">Source: GSC + OroCommerce search logs</div>
+        <div style="font-size:11px;color:var(--gray-700);line-height:1.6;margin-bottom:8px">Any Tier 1 attribute is missing. Experience is breaking down <em>and</em> data is incomplete. Enrichment will fix it. Ascend owns execution — queue it and we handle the rest.</div>
+        <div style="font-size:10px;font-weight:600;color:var(--red)">Condition: Tier 1 attributes incomplete</div>
+        <div style="margin-top:5px;font-size:10px;color:var(--gray-500)">Data Quality confirms enrichment is the right intervention</div>
       </div>
-      <div style="padding:14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+      <div style="padding:14px;background:var(--amber-light);border:1px solid #fcd34d;border-radius:var(--r-md)">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="1.5" stroke="var(--navy)" stroke-width="1.3"/><path d="M3 6h6M3 4h4M3 8h5" stroke="var(--navy)" stroke-width="1.1" stroke-linecap="round"/></svg>
-          <div style="font-size:11px;font-weight:700;color:var(--navy)">Find Priorities</div>
+          <span style="font-size:9px;font-weight:700;background:var(--amber);color:#fff;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.4px">INVESTIGATE</span>
         </div>
-        <div style="font-size:11px;color:var(--gray-600);line-height:1.6">Surfaces products that appear in search but can't be filtered or compared on-site due to missing attributes. High bounce rate + low attribute completeness = Find priority.</div>
-        <div style="margin-top:8px;font-size:10px;font-weight:600;color:var(--teal)">Source: Akeneo completeness + GA4 bounce data</div>
+        <div style="font-size:11px;color:var(--gray-700);line-height:1.6;margin-bottom:8px">Tier 1 is 100% complete — but the experience gap still exists. This is <em>not</em> an enrichment problem. Escalate to merchandising, pricing, or demand team for root cause.</div>
+        <div style="font-size:10px;font-weight:600;color:var(--amber)">Condition: Tier 1 complete · gap persists</div>
+        <div style="margin-top:5px;font-size:10px;color:var(--gray-500)">Ascend surfaces the signal. Does not own the fix.</div>
       </div>
-      <div style="padding:14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md)">
+      <div style="padding:14px;background:var(--green-light);border:1px solid #6ee7b7;border-radius:var(--r-md)">
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1h2l1.2 6h5.5l.9-3.5H4.5" stroke="var(--navy)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="10.5" r=".8" fill="var(--navy)"/><circle cx="9" cy="10.5" r=".8" fill="var(--navy)"/></svg>
-          <div style="font-size:11px;font-weight:700;color:var(--navy)">Buy Priorities</div>
+          <span style="font-size:9px;font-weight:700;background:var(--green);color:#fff;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.4px">MONITOR</span>
         </div>
-        <div style="font-size:11px;color:var(--gray-600);line-height:1.6">Identifies high-traffic products that aren't converting or have elevated return rates. Missing certifications, compatibility data, or specs are the most common causes.</div>
-        <div style="margin-top:8px;font-size:10px;font-weight:600;color:var(--teal)">Source: OroCommerce RFQ, orders &amp; return data</div>
+        <div style="font-size:11px;color:var(--gray-700);line-height:1.6;margin-bottom:8px">Score ≥ 70. No significant experience gap. No immediate action needed — review quarterly. Ascend tracks for degradation and will re-flag if score drops below threshold.</div>
+        <div style="font-size:10px;font-weight:600;color:var(--green)">Condition: Score ≥ 70 · low gap</div>
+        <div style="margin-top:5px;font-size:10px;color:var(--gray-500)">Watch for degradation over time.</div>
       </div>
     </div>
     <div style="margin-top:12px;padding:12px 14px;background:var(--navy-light);border-radius:var(--r-md);font-size:11px;color:var(--navy);line-height:1.6;display:flex;gap:10px;align-items:flex-start">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px"><circle cx="7" cy="7" r="6" stroke="var(--navy)" stroke-width="1.2"/><path d="M7 5v3M7 9.5v.5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <div><strong>How it works:</strong> Your catalog owner reviews the Priority Engine and adds items to the enrichment queue with one click. Pivotree's team processes the queue — normalizing, enriching, and QA-ing every SKU. Enriched data is returned to Akeneo for client review, then published to the OroCommerce eCommerce channel. Scores update within 48–72 hours of publish.</div>
+      <div><strong>How it works:</strong> Each month, your catalog owner reviews the Priority Engine. SKUs tagged ENRICH go into the queue with one click — Pivotree handles normalization, enrichment, and QA. INVESTIGATE flags go to your merchandising or demand team. MONITOR items are tracked automatically. Scores update within 48–72 hours of publish.</div>
     </div>
   </div>
 
@@ -798,6 +847,7 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
       <div style="display:flex;align-items:center;gap:10px">
         <div class="fin-sources">
           <div class="fin-src-badge"><div class="fin-src-dot"></div>OroCommerce</div>
+          <div class="fin-src-badge"><div class="fin-src-dot"></div>OroCommerce</div>
         </div>
         <div class="fin-toggle">
           <button class="fin-toggle-btn" id="fin-pre" onclick="setFinView('pre')">Pre-Enrichment</button>
@@ -830,35 +880,28 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
   </div>
 
   <!-- Movers + Timeline -->
-  <div style="display:grid;grid-template-columns:1fr 1fr 320px;gap:16px;margin-bottom:20px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
     <div class="card">
       <div class="sec-hdr"><div class="sec-ttl">Top Movers</div><span id="mv-lbl" style="font-size:10px;color:var(--gray-400)"></span></div>
       <div id="mv-list"></div>
+      <div style="margin-top:10px;padding:6px 10px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:4px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Showing top results — more available</div>
     </div>
     <div class="card">
       <div class="sec-hdr"><div class="sec-ttl">Biggest Decliners</div><span id="dc-lbl" style="font-size:10px;color:var(--gray-400)"></span></div>
       <div id="dc-list"></div>
+      <div style="margin-top:10px;padding:6px 10px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:4px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Showing top results — more available</div>
     </div>
-    <div class="card" style="overflow-y:auto;max-height:320px">
-      <div class="sec-hdr"><div class="sec-ttl">Enrichment Milestones</div></div>
-      <div class="tl">
-        <div class="tl-item"><div class="tl-dot" style="background:var(--teal);box-shadow:0 0 0 2px var(--teal-light)"></div><div class="tl-date">Apr 2, 2026</div><div class="tl-ttl">Lighting batch complete</div><div class="tl-desc">2,400 Philips &amp; Lithonia SKUs enriched.</div><div class="tl-imp ti-up">▲ Search +6.1 · Find +5.3</div></div>
-        <div class="tl-item"><div class="tl-dot" style="background:var(--teal);box-shadow:0 0 0 2px var(--teal-light)"></div><div class="tl-date">Mar 18, 2026</div><div class="tl-ttl">Eaton Electrical published</div><div class="tl-desc">1,100 circuit breaker &amp; switchgear SKUs live.</div><div class="tl-imp ti-up">▲ Electrical composite +7.4</div></div>
-        <div class="tl-item"><div class="tl-dot" style="background:var(--blue);box-shadow:0 0 0 2px #bfdbfe"></div><div class="tl-date">Mar 5, 2026</div><div class="tl-ttl">PVF Phase 1 queued</div><div class="tl-desc">1,847 PVF SKUs entered queue.</div><div class="tl-imp ti-pend">⏳ In pipeline</div></div>
-        <div class="tl-item"><div class="tl-dot" style="background:var(--amber-mid);box-shadow:0 0 0 2px #fde68a"></div><div class="tl-date">Feb 14, 2026</div><div class="tl-ttl">HVAC Honeywell refresh</div><div class="tl-desc">800 Thermostat &amp; Controls SKUs updated.</div><div class="tl-imp ti-up">▲ HVAC Buy +4.1</div></div>
-        <div class="tl-item"><div class="tl-dot" style="background:var(--red);box-shadow:0 0 0 2px #fecdd3"></div><div class="tl-date">Jan 10, 2026</div><div class="tl-ttl">Southwire audit flagged</div><div class="tl-desc">Missing amperage &amp; voltage on 3,200 SKUs.</div><div class="tl-imp ti-dn">▼ Electrical Search −4.8</div></div>
-      </div>
-    </div>
+
   </div>
 
   <!-- Heatmap -->
   <div class="card mb20">
     <div class="sec-hdr">
-      <div><div class="sec-ttl">Category Health Heatmap</div><div style="font-size:11px;color:var(--gray-500)">Search · Find · Buy scores — one-glance exec view</div></div>
+      <div><div class="sec-ttl">Category Priority Heatmap</div><div style="font-size:11px;color:var(--gray-500)">Quality · Search · Conversion — one-glance exec view</div></div>
       <div style="display:flex;gap:10px;align-items:center;font-size:10px;color:var(--gray-500)">
-        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--green-light);display:inline-block;border:1px solid #6ee7b7"></span>≥75</span>
-        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--amber-light);display:inline-block;border:1px solid #fcd34d"></span>50–74</span>
-        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--red-light);display:inline-block;border:1px solid #fecdd3"></span>&lt;50</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--green-light);display:inline-block;border:1px solid #6ee7b7"></span>≥70 MONITOR</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--amber-light);display:inline-block;border:1px solid #fcd34d"></span>41–69 ENRICH/INV.</span>
+        <span style="display:flex;align-items:center;gap:3px"><span style="width:8px;height:8px;border-radius:2px;background:var(--red-light);display:inline-block;border:1px solid #fecdd3"></span>&lt;40 URGENT</span>
       </div>
     </div>
     <div class="hm-grid" id="heatmap"></div>
@@ -868,18 +911,39 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
   <div class="card mb20">
     <div class="sec-hdr">
       <div><div class="card-ttl" id="drill-ttl">Category Performance</div><div class="card-sub" id="drill-sub">Click any row to drill into sub-categories</div></div>
-      <div id="drill-bc"></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div style="position:relative">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--gray-400);pointer-events:none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 9.5l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <input id="drill-search" placeholder="Filter categories..." oninput="filterDrill(this.value)" style="padding:5px 9px 5px 26px;border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:11px;font-family:'Inter',sans-serif;color:var(--gray-700);outline:none;width:180px;background:#fff;" onfocus="this.style.borderColor='var(--navy)'" onblur="this.style.borderColor='var(--gray-200)'">
+        </div>
+        <div id="drill-bc"></div>
+      </div>
     </div>
     <div id="drill-wrap"></div>
   </div>
 
-  <!-- SFB Detail -->
+  <!-- Detail Cards: Data Quality · Search · Conversion -->
   <div class="g3 mb20">
+    <div class="card">
+      <div class="card-ttl" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="var(--navy)" stroke-width="1.4"/><path d="M4 7h6M4 4.5h3M4 9.5h4" stroke="var(--navy)" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Data Quality Detail
+        <span style="font-size:9px;background:var(--amber-light);color:var(--amber);padding:1px 6px;border-radius:3px;font-weight:600;border:1px solid #fcd34d;margin-left:2px">Akeneo PIM</span>
+      </div>
+      <div class="sr2"><span class="sr-l">Product Page Views</span><span class="sr-v">1,234,000</span></div>
+      <div class="sr2"><span class="sr-l">Avg T1 Attribute Fill</span><span class="sr-v" style="color:var(--amber)">58%</span></div>
+      <div class="sr2"><span class="sr-l">Avg T2 Attribute Fill</span><span class="sr-v" style="color:var(--amber)">64%</span></div>
+      <div class="sr2"><span class="sr-l">Avg T3 Attribute Fill</span><span class="sr-v">74%</span></div>
+      <div style="margin:10px 0 7px;font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px">T1 Completeness by Category</div>
+      <div class="sr2"><span class="sr-l">Lighting</span><span class="sr-v" style="font-size:10px;color:var(--green)">T1: 96%</span></div>
+      <div class="sr2"><span class="sr-l">PVF</span><span class="sr-v" style="font-size:10px;color:var(--red)">T1: 31%</span></div>
+      <div class="sr2"><span class="sr-l">HVAC</span><span class="sr-v" style="font-size:10px;color:var(--amber)">T1: 54%</span></div>
+    </div>
     <div class="card">
       <div class="card-ttl" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">
         <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--navy)" stroke-width="1.4"/><path d="M9.5 9.5l3 3" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
         Search Detail
-        <span style="font-size:9px;background:var(--navy-light);color:var(--navy);padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">GSC</span>
+        <span style="font-size:9px;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">GSC</span>
       </div>
       <div class="sr2"><span class="sr-l">Total Impressions</span><span class="sr-v">2,847,300</span></div>
       <div class="sr2"><span class="sr-l">Organic Clicks</span><span class="sr-v">184,200</span></div>
@@ -892,24 +956,9 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
     </div>
     <div class="card">
       <div class="card-ttl" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="var(--navy)" stroke-width="1.4"/><path d="M4 7h6M4 4.5h3M4 9.5h4" stroke="var(--navy)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        Find Detail
-        <span style="font-size:9px;background:var(--navy-light);color:var(--navy);padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">GA4</span>
-      </div>
-      <div class="sr2"><span class="sr-l">Product Page Views</span><span class="sr-v">1,234,000</span></div>
-      <div class="sr2"><span class="sr-l">Avg Bounce Rate</span><span class="sr-v" style="color:var(--red)">61%</span></div>
-      <div class="sr2"><span class="sr-l">Filter/Facet Usage</span><span class="sr-v">34%</span></div>
-      <div class="sr2"><span class="sr-l">Pages per Session</span><span class="sr-v">3.2</span></div>
-      <div style="margin:10px 0 7px;font-size:9px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:.5px">By Category</div>
-      <div class="sr2"><span class="sr-l">Lighting</span><span class="sr-v" style="font-size:10px;color:var(--green)">Bounce 38%</span></div>
-      <div class="sr2"><span class="sr-l">PVF</span><span class="sr-v" style="font-size:10px;color:var(--red)">Bounce 74%</span></div>
-      <div class="sr2"><span class="sr-l">HVAC</span><span class="sr-v" style="font-size:10px;color:var(--amber)">Bounce 58%</span></div>
-    </div>
-    <div class="card">
-      <div class="card-ttl" style="margin-bottom:10px;display:flex;align-items:center;gap:8px">
         <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 1h2.5l1.5 7h6l1-4H5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="12" r="1" fill="var(--navy)"/><circle cx="10.5" cy="12" r="1" fill="var(--navy)"/></svg>
-        Buy Detail
-        <span style="font-size:9px;background:var(--navy-light);color:var(--navy);padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">OroCommerce + GA4</span>
+        Conversion Detail
+        <span style="font-size:9px;background:var(--green-light);color:var(--green);padding:1px 6px;border-radius:3px;font-weight:600;margin-left:2px">OroCommerce + GA4</span>
       </div>
       <div class="sr2"><span class="sr-l">Add-to-Cart Rate</span><span class="sr-v">12.4%</span></div>
       <div class="sr2"><span class="sr-l">Cart-to-Order Rate</span><span class="sr-v">68%</span></div>
@@ -922,16 +971,16 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
     </div>
   </div>
 
-  <div class="insight" style="align-items:center">
-    <svg class="ins-ico" width="14" height="14" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;margin-top:0"><circle cx="8" cy="8" r="7" stroke="var(--navy)" stroke-width="1.3"/><path d="M8 7v4M8 5v.5" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/></svg>
-    <div class="ins-txt" style="flex:1"><strong>PVF has the highest SKU count but the lowest composite score and highest return rate (14.7%).</strong> OroCommerce RMA data shows $2.1M in attributed return costs this year from spec mismatch orders. Improving PVF catalog quality to 70+ is estimated to reduce returns by 40% and increase organic traffic by a similar margin.</div>
-    <button class="btn btn-p btn-sm" style="flex-shrink:0;white-space:nowrap;margin-left:16px" onclick="addQ(this,'PVF — All Sub-categories')">+ Add PVF to Queue</button>
+  <div class="insight">
+    <svg class="ins-ico" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--navy)" stroke-width="1.3"/><path d="M8 7v4M8 5v.5" stroke="var(--navy)" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <div class="ins-txt"><strong>PVF has the highest SKU count but the lowest composite score and highest return rate (14.7%).</strong> OroCommerce data shows $2.1M in attributed return costs this year from spec mismatch orders. Improving PVF catalog quality to 70+ is estimated to reduce returns by 40% and increase organic traffic by a similar margin.</div>
   </div>
 </div>
 
 <!-- ===== OPERATIONS ===== -->
 <div id="tab-operations" class="tab">
-  <!-- Pipeline -->
+
+  <!-- 1. Pipeline -->
   <div class="card mb16">
     <div class="sec-hdr">
       <div class="sec-ttl">Enrichment Pipeline</div>
@@ -939,45 +988,35 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
     </div>
     <div class="pipe-wrap" id="pipe-wrap">
       <div id="ph0" class="pipe-ph" style="border-radius:var(--r-lg) 0 0 var(--r-lg);background:#f1f5f9;border-color:#cbd5e1" onclick="selPhase(0)">
-        <div class="pipe-icon-wrap" style="background:#e2e8f0">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#475569" stroke-width="1.4"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1" stroke="#475569" stroke-width="1.4" stroke-linecap="round"/><path d="M8 8v2M6 9h4" stroke="#475569" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </div>
+        <div class="pipe-icon-wrap" style="background:#e2e8f0"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="1.5" stroke="#475569" stroke-width="1.4"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1" stroke="#475569" stroke-width="1.4" stroke-linecap="round"/><path d="M8 8v2M6 9h4" stroke="#475569" stroke-width="1.3" stroke-linecap="round"/></svg></div>
         <div class="pipe-lbl" style="color:#475569">Queue</div>
         <div class="pipe-cnt" style="color:#334155">1,847</div>
         <div class="pipe-sub" style="color:#94a3b8">items waiting</div>
       </div>
       <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
       <div id="ph1" class="pipe-ph" style="background:#eff6ff;border-color:#bfdbfe" onclick="selPhase(1)">
-        <div class="pipe-icon-wrap" style="background:#dbeafe">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1d4ed8" stroke-width="1.4"/><path d="M8 5v3l2 1.5" stroke="#1d4ed8" stroke-width="1.4" stroke-linecap="round"/></svg>
-        </div>
+        <div class="pipe-icon-wrap" style="background:#dbeafe"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#1d4ed8" stroke-width="1.4"/><path d="M8 5v3l2 1.5" stroke="#1d4ed8" stroke-width="1.4" stroke-linecap="round"/></svg></div>
         <div class="pipe-lbl" style="color:#1d4ed8">Normalization</div>
         <div class="pipe-cnt" style="color:#1e3a8a">730</div>
         <div class="pipe-sub" style="color:#93c5fd">in progress</div>
       </div>
       <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
       <div id="ph2" class="pipe-ph" style="background:#f5f3ff;border-color:#ddd6fe" onclick="selPhase(2)">
-        <div class="pipe-icon-wrap" style="background:#ede9fe">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4.5H14l-3.7 2.7 1.4 4.3L8 11l-3.7 2.5 1.4-4.3L2 6.5h4.5z" stroke="#5b21b6" stroke-width="1.3" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="pipe-icon-wrap" style="background:#ede9fe"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 4.5H14l-3.7 2.7 1.4 4.3L8 11l-3.7 2.5 1.4-4.3L2 6.5h4.5z" stroke="#5b21b6" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
         <div class="pipe-lbl" style="color:#5b21b6">Enrichment</div>
         <div class="pipe-cnt" style="color:#4c1d95">654</div>
         <div class="pipe-sub" style="color:#c4b5fd">in progress</div>
       </div>
       <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
       <div id="ph3" class="pipe-ph" style="background:#fffbeb;border-color:#fde68a" onclick="selPhase(3)">
-        <div class="pipe-icon-wrap" style="background:#fef3c7">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#b45309" stroke-width="1.4"/><path d="M5.5 8l2 2 3-3" stroke="#b45309" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="pipe-icon-wrap" style="background:#fef3c7"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#b45309" stroke-width="1.4"/><path d="M5.5 8l2 2 3-3" stroke="#b45309" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="pipe-lbl" style="color:#92400e">Review</div>
         <div class="pipe-cnt" style="color:#78350f">334</div>
         <div class="pipe-sub" style="color:#fbbf24">awaiting approval</div>
       </div>
       <div class="pipe-arr"><div class="pipe-arr-inner"></div></div>
       <div id="ph4" class="pipe-ph" style="border-radius:0 var(--r-lg) var(--r-lg) 0;background:#f0fdf9;border-color:#6ee7b7" onclick="selPhase(4)">
-        <div class="pipe-icon-wrap" style="background:var(--green-light)">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="var(--green)" stroke-width="1.4"/><path d="M5 8l2.5 2.5 4-4" stroke="var(--green)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="pipe-icon-wrap" style="background:var(--green-light)"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="var(--green)" stroke-width="1.4"/><path d="M5 8l2.5 2.5 4-4" stroke="var(--green)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="pipe-lbl" style="color:var(--green)">Published</div>
         <div class="pipe-cnt" style="color:var(--green)">4,218</div>
         <div class="pipe-sub" style="color:#6ee7b7">cumulative live</div>
@@ -986,8 +1025,139 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
     <div id="phase-detail" style="display:none;margin-top:12px;border-radius:var(--r-md);padding:14px 18px;border:1.5px solid var(--gray-200)"></div>
   </div>
 
-  <!-- Catalog Growth -->
-  <div class="card mb20">
+  <!-- 2. PRIORITY ENGINE — full-width stacked -->
+  <div class="card mb16" id="pe-card">
+    <!-- Header row -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+      <div>
+        <div class="sec-ttl">Priority Engine — Action Queue</div>
+        <div style="font-size:11px;color:var(--gray-500);margin-top:2px" id="pe-context-label">Showing all categories · click any row to drill in</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <!-- Search bar -->
+        <div style="position:relative">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--gray-400);pointer-events:none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 9.5l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <input id="pe-search" placeholder="Filter by name..." oninput="filterPE(this.value)" style="padding:5px 9px 5px 26px;border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:11px;font-family:'Inter',sans-serif;color:var(--gray-700);outline:none;width:170px;background:#fff;" onfocus="this.style.borderColor='var(--navy)'" onblur="this.style.borderColor='var(--gray-200)'">
+        </div>
+        <!-- Category / Brand toggle -->
+        <div style="display:flex;gap:0;border:1px solid var(--gray-200);border-radius:var(--r-md);overflow:hidden">
+          <button id="pe-tog-cat" class="fin-toggle-btn active" onclick="setPEView('cat')">Categories</button>
+          <button id="pe-tog-brand" class="fin-toggle-btn" onclick="setPEView('brand')">Brands</button>
+        </div>
+        <!-- Breadcrumb -->
+        <div id="pe-bc" style="font-size:11px;color:var(--gray-500)"></div>
+        <!-- Export -->
+        <button class="btn btn-s btn-sm" onclick="exportPE()">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3.5 5.5L6 8l2.5-2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 9v1.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          Export
+        </button>
+      </div>
+    </div>
+
+    <!-- ENRICH section -->
+    <div style="margin-bottom:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:9px;font-weight:700;background:var(--red);color:#fff;padding:3px 10px;border-radius:3px;text-transform:uppercase;letter-spacing:.4px">ENRICH</span>
+          <span style="font-size:11px;color:var(--gray-500)">Tier 1 data missing · enrichment will fix the gap</span>
+        </div>
+        
+      </div>
+      <div style="border:1px solid #fecdd3;border-radius:var(--r-md);overflow:hidden">
+        <table class="dt" id="pe-enrich-table">
+          <thead><tr>
+            <th id="pe-enrich-name-col">Category</th>
+            <th>Priority Score</th><th>Quality</th><th>Search</th><th>Conversion</th><th>SKUs</th><th></th>
+          </tr></thead>
+          <tbody id="pe-enrich-body"></tbody>
+        </table>
+        <div style="padding:7px 12px;background:var(--gray-50);border-top:1px solid var(--gray-200);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>View more — showing top results</div>
+      </div>
+    </div>
+
+    <!-- INVESTIGATE section -->
+    <div style="margin-bottom:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:9px;font-weight:700;background:var(--amber);color:#fff;padding:3px 10px;border-radius:3px;text-transform:uppercase;letter-spacing:.4px">INVESTIGATE</span>
+          <span style="font-size:11px;color:var(--gray-500)">Tier 1 complete · gap persists · not an enrichment problem</span>
+        </div>
+        
+      </div>
+      <div style="border:1px solid #fcd34d;border-radius:var(--r-md);overflow:hidden">
+        <table class="dt" id="pe-inv-table">
+          <thead><tr>
+            <th id="pe-inv-name-col">Category</th>
+            <th>Priority Score</th><th>Quality</th><th>Search</th><th>Conversion</th><th>SKUs</th><th></th>
+          </tr></thead>
+          <tbody id="pe-inv-body"></tbody>
+        </table>
+        <div style="padding:7px 12px;background:var(--gray-50);border-top:1px solid var(--gray-200);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>View more — showing top results</div>
+      </div>
+    </div>
+
+    <!-- MONITOR section -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:9px;font-weight:700;background:var(--green);color:#fff;padding:3px 10px;border-radius:3px;text-transform:uppercase;letter-spacing:.4px">MONITOR</span>
+          <span style="font-size:11px;color:var(--gray-500)">Score ≥ 70 · no action needed · watch for degradation</span>
+        </div>
+        
+      </div>
+      <div style="border:1px solid #6ee7b7;border-radius:var(--r-md);overflow:hidden">
+        <table class="dt" id="pe-mon-table">
+          <thead><tr>
+            <th id="pe-mon-name-col">Category</th>
+            <th>Priority Score</th><th>Quality</th><th>Search</th><th>Conversion</th><th>SKUs</th>
+          </tr></thead>
+          <tbody id="pe-mon-body"></tbody>
+        </table>
+        <div style="padding:7px 12px;background:var(--gray-50);border-top:1px solid var(--gray-200);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>View more — showing top results</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Queue + Category Scores -->
+  <div class="g2 mb16">
+    <div class="card">
+      <div class="sec-hdr"><div class="sec-ttl">Enrichment Queue</div><button class="btn btn-p btn-sm">+ Add Credits</button></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+        <div class="mc"><div class="mc-l">In Queue</div><div class="mc-v">1,847</div></div>
+        <div class="mc"><div class="mc-l">In Progress</div><div class="mc-v">1,718</div></div>
+        <div class="mc"><div class="mc-l">Completed (Mo.)</div><div class="mc-v" style="color:var(--green)">892</div></div>
+      </div>
+      <div style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:11px;color:var(--gray-600)"><span>Enrichment Credits</span><span style="font-weight:600;color:var(--navy)">2,400 / 5,000 used</span></div>
+        <div class="pw"><div class="pb" style="width:48%;background:var(--teal)"></div></div>
+        <div style="font-size:10px;color:var(--gray-400);margin-top:3px">2,600 credits remaining</div>
+      </div>
+      <table class="dt"><thead><tr><th>SKU</th><th>Category</th><th>Priority</th><th>Status</th></tr></thead><tbody>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">PVF-GV-2250</td><td><span class="cb cb-v">PVF</span></td><td><span class="sp sp-r">91</span></td><td style="color:var(--amber);font-size:10px;font-weight:600">In Progress</td></tr>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">PVF-CS-4480</td><td><span class="cb cb-v">PVF</span></td><td><span class="sp sp-r">88</span></td><td style="color:var(--amber);font-size:10px;font-weight:600">In Progress</td></tr>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">ELEC-CB-1182</td><td><span class="cb cb-e">Electrical</span></td><td><span class="sp sp-y">74</span></td><td style="color:var(--gray-500);font-size:10px;font-weight:600">Queued</td></tr>
+        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">HVAC-TC-0930</td><td><span class="cb cb-h">HVAC</span></td><td><span class="sp sp-y">71</span></td><td style="color:var(--gray-500);font-size:10px;font-weight:600">Queued</td></tr>
+      </tbody></table>
+      <div style="margin-top:10px;padding:6px 10px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:4px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Showing top results — more available</div>
+    </div>
+<div class="card" style="overflow-y:auto;max-height:360px">
+      <div class="sec-hdr"><div class="sec-ttl">Enrichment Milestones</div></div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-dot" style="background:var(--teal);box-shadow:0 0 0 2px var(--teal-light)"></div><div class="tl-date">Apr 2, 2026</div><div class="tl-ttl">Lighting batch complete</div><div class="tl-desc">2,400 Philips &amp; Lithonia SKUs enriched.</div><div class="tl-imp ti-up">▲ Quality +5.3 · Search +6.1</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--teal);box-shadow:0 0 0 2px var(--teal-light)"></div><div class="tl-date">Mar 18, 2026</div><div class="tl-ttl">Eaton Electrical published</div><div class="tl-desc">1,100 circuit breaker &amp; switchgear SKUs live.</div><div class="tl-imp ti-up">▲ Electrical priority score +7.4</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--blue);box-shadow:0 0 0 2px #bfdbfe"></div><div class="tl-date">Mar 5, 2026</div><div class="tl-ttl">PVF Phase 1 queued</div><div class="tl-desc">1,847 PVF SKUs entered queue.</div><div class="tl-imp ti-pend">⏳ In pipeline</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--amber-mid);box-shadow:0 0 0 2px #fde68a"></div><div class="tl-date">Feb 14, 2026</div><div class="tl-ttl">HVAC Honeywell refresh</div><div class="tl-desc">800 Thermostat &amp; Controls SKUs updated.</div><div class="tl-imp ti-up">▲ HVAC Conversion +4.1</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--red);box-shadow:0 0 0 2px #fecdd3"></div><div class="tl-date">Jan 10, 2026</div><div class="tl-ttl">Southwire audit flagged</div><div class="tl-desc">Missing amperage &amp; voltage on 3,200 SKUs.</div><div class="tl-imp ti-dn">▼ Electrical Search −4.8</div></div>
+        <div class="tl-item"><div class="tl-dot" style="background:var(--gray-300);box-shadow:0 0 0 2px var(--gray-200)"></div><div class="tl-date">Dec 12, 2025</div><div class="tl-ttl">Plumbing Phase 2 started</div><div class="tl-desc">Charlotte Pipe &amp; Watts batch in normalization.</div><div class="tl-imp ti-pend">⏳ In normalization</div></div>
+      </div>
+      <div style="margin-top:10px;padding:8px 10px;background:var(--gray-50);border-radius:var(--r-md);font-size:10px;color:var(--gray-400);text-align:center;cursor:default">
+        ↓ View all milestones — showing most recent 6
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Catalog Growth (moved to bottom) -->
+  <div class="card mb16">
     <div class="sec-hdr">
       <div class="sec-ttl">Catalog Growth</div>
       <span style="font-size:11px;color:var(--gray-500)">Enrichment coverage &amp; publishing momentum</span>
@@ -996,7 +1166,7 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
       <div class="mc" style="border-left:2px solid var(--teal)"><div class="mc-l">Total Enriched SKUs</div><div class="mc-v">42,180</div><div style="font-size:10px;color:var(--gray-400);margin-top:2px">of 91,800 total</div></div>
       <div class="mc" style="border-left:2px solid var(--green)"><div class="mc-l">Overall Coverage</div><div class="mc-v">45.9%</div><div style="font-size:10px;color:var(--green);margin-top:2px">▲ +3.2% this month</div></div>
       <div class="mc" style="border-left:2px solid var(--navy)"><div class="mc-l">Published This Month</div><div class="mc-v">892</div><div style="font-size:10px;color:var(--gray-400);margin-top:2px">SKUs pushed live</div></div>
-      <div class="mc" style="border-left:2px solid var(--amber-mid)"><div class="mc-l">Avg Quality Score</div><div class="mc-v">67.4</div><div style="font-size:10px;color:var(--green);margin-top:2px">▲ +4.1 pts vs last mo.</div></div>
+      <div class="mc" style="border-left:2px solid var(--amber-mid)"><div class="mc-l">Avg Priority Score</div><div class="mc-v">67.4</div><div style="font-size:10px;color:var(--green);margin-top:2px">▲ +4.1 pts vs last mo.</div></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
       <div>
@@ -1030,104 +1200,29 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
     </div>
   </div>
 
-  <!-- Queue + Scoring -->
-  <div class="g2 mb20">
-    <div class="card">
-      <div class="sec-hdr"><div class="sec-ttl">Enrichment Queue</div><button class="btn btn-p btn-sm">+ Add Credits</button></div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
-        <div class="mc"><div class="mc-l">In Queue</div><div class="mc-v">1,847</div></div>
-        <div class="mc"><div class="mc-l">In Progress</div><div class="mc-v">1,718</div></div>
-        <div class="mc"><div class="mc-l">Completed (Mo.)</div><div class="mc-v" style="color:var(--green)">892</div></div>
-      </div>
-      <div style="margin-bottom:14px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:11px;color:var(--gray-600)"><span>Enrichment Credits</span><span style="font-weight:600;color:var(--navy)">2,400 / 5,000 used</span></div>
-        <div class="pw"><div class="pb" style="width:48%;background:var(--teal)"></div></div>
-        <div style="font-size:10px;color:var(--gray-400);margin-top:3px">2,600 credits remaining</div>
-      </div>
-      <table class="dt"><thead><tr><th>SKU</th><th>Category</th><th>Priority</th><th>Status</th></tr></thead><tbody>
-        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">PVF-GV-2250</td><td><span class="cb cb-v">PVF</span></td><td><span class="sp sp-r">91</span></td><td style="color:var(--amber);font-size:10px;font-weight:600">In Progress</td></tr>
-        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">PVF-CS-4480</td><td><span class="cb cb-v">PVF</span></td><td><span class="sp sp-r">88</span></td><td style="color:var(--amber);font-size:10px;font-weight:600">In Progress</td></tr>
-        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">ELEC-CB-1182</td><td><span class="cb cb-e">Electrical</span></td><td><span class="sp sp-y">74</span></td><td style="color:var(--gray-500);font-size:10px;font-weight:600">Queued</td></tr>
-        <tr><td style="font-family:'DM Mono',monospace;font-size:10px">HVAC-TC-0930</td><td><span class="cb cb-h">HVAC</span></td><td><span class="sp sp-y">71</span></td><td style="color:var(--gray-500);font-size:10px;font-weight:600">Queued</td></tr>
-      </tbody></table>
-    </div>
-    <div class="card">
-      <div class="sec-ttl" style="margin-bottom:12px">Category Scoring</div>
-      <table class="dt"><thead><tr><th>Category</th><th>Composite</th><th>Completeness</th><th>Standards</th><th>Web Perf.</th><th>Below 50</th></tr></thead><tbody>
-        <tr><td style="font-weight:600">Lighting</td><td><span class="sp sp-g">88</span></td><td>92%</td><td>88%</td><td>85%</td><td style="color:var(--green)">48</td></tr>
-        <tr><td style="font-weight:600">Electrical</td><td><span class="sp sp-y">67</span></td><td>71%</td><td>64%</td><td>68%</td><td style="color:var(--amber)">1,840</td></tr>
-        <tr><td style="font-weight:600">HVAC</td><td><span class="sp sp-y">61</span></td><td>63%</td><td>58%</td><td>62%</td><td style="color:var(--amber)">1,420</td></tr>
-        <tr><td style="font-weight:600">Plumbing</td><td><span class="sp sp-y">58</span></td><td>60%</td><td>55%</td><td>59%</td><td style="color:var(--amber)">1,680</td></tr>
-        <tr><td style="font-weight:600">Tools &amp; Safety</td><td><span class="sp sp-y">55</span></td><td>58%</td><td>51%</td><td>57%</td><td style="color:var(--amber)">950</td></tr>
-        <tr><td style="font-weight:600">PVF</td><td><span class="sp sp-r">43</span></td><td>41%</td><td>38%</td><td>50%</td><td style="color:var(--red)">8,520</td></tr>
-      </tbody></table>
-    </div>
-  </div>
-
-  <!-- Priority Engine -->
-  <div class="sec-hdr mb16"><div class="sec-ttl">Priority Engine</div><span style="font-size:11px;color:var(--gray-500)">Items most likely to benefit from enrichment</span></div>
-  <div class="g3">
-    <div class="card">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-        <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="var(--navy)" stroke-width="1.4"/><path d="M9.5 9.5l3 3" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <div class="card-ttl" style="margin-bottom:0">Search Priorities</div>
-      </div>
-      <div class="card-sub" style="margin-bottom:10px">Worst search visibility — enrich first</div>
-      <table class="dt"><thead><tr><th>Category / Brand</th><th>Score</th><th></th></tr></thead><tbody>
-        <tr><td><div style="font-weight:500;font-size:11px">PVF / Matco-Norca</div><div class="pri-issue">Missing titles, no structured data</div></td><td><span class="sp sp-r">28</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Matco-Norca PVF')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">PVF / Smith-Cooper</div><div class="pri-issue">Missing material grade</div></td><td><span class="sp sp-r">31</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Smith-Cooper PVF')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">Electrical / Southwire</div><div class="pri-issue">Incomplete descriptions</div></td><td><span class="sp sp-r">39</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Southwire')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">HVAC / Danfoss</div><div class="pri-issue">Missing voltage, refrigerant type</div></td><td><span class="sp sp-r">42</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Danfoss HVAC')">Queue</button></td></tr>
-      </tbody></table>
-    </div>
-    <div class="card">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-        <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" rx="2" stroke="var(--navy)" stroke-width="1.4"/><path d="M4 7h6M4 4.5h3M4 9.5h4" stroke="var(--navy)" stroke-width="1.2" stroke-linecap="round"/></svg>
-        <div class="card-ttl" style="margin-bottom:0">Find Priorities</div>
-      </div>
-      <div class="card-sub" style="margin-bottom:10px">Appearing in search — can't be compared on-site</div>
-      <table class="dt"><thead><tr><th>Category / Brand</th><th>Score</th><th></th></tr></thead><tbody>
-        <tr><td><div style="font-weight:500;font-size:11px">HVAC / Thermostats</div><div class="pri-issue">Missing voltage, stage count</div></td><td><span class="sp sp-r">36</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'HVAC Thermostats')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">PVF / Bonney Forge</div><div class="pri-issue">Missing filterable attributes</div></td><td><span class="sp sp-r">38</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Bonney Forge')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">Plumbing / Charlotte Pipe</div><div class="pri-issue">Missing thread type</div></td><td><span class="sp sp-y">44</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Charlotte Pipe')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">Electrical / Conduit</div><div class="pri-issue">Missing diameter, material</div></td><td><span class="sp sp-y">47</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Electrical Conduit')">Queue</button></td></tr>
-      </tbody></table>
-    </div>
-    <div class="card">
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-        <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1 1h2l1.5 7h6l1-4H5" stroke="var(--navy)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="12" r="1" fill="var(--navy)"/><circle cx="10" cy="12" r="1" fill="var(--navy)"/></svg>
-        <div class="card-ttl" style="margin-bottom:0">Buy Priorities</div>
-      </div>
-      <div class="card-sub" style="margin-bottom:10px">Traffic present — not converting or high returns</div>
-      <table class="dt"><thead><tr><th>Category / Brand</th><th>Score</th><th></th></tr></thead><tbody>
-        <tr><td><div style="font-weight:500;font-size:11px">PVF / Stockham</div><div class="pri-issue">Missing certifications — 14.7% return rate</div></td><td><span class="sp sp-r">34</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Stockham PVF')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">Plumbing / Watts</div><div class="pri-issue">Missing NSF cert, PSI rating</div></td><td><span class="sp sp-y">49</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Watts Plumbing')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">HVAC / Emerson</div><div class="pri-issue">Missing SEER, BTU range</div></td><td><span class="sp sp-y">51</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Emerson HVAC')">Queue</button></td></tr>
-        <tr><td><div style="font-weight:500;font-size:11px">Electrical / Boxes</div><div class="pri-issue">Missing UL listing</div></td><td><span class="sp sp-y">53</span></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Electrical Boxes')">Queue</button></td></tr>
-      </tbody></table>
-    </div>
-  </div>
 </div>
-
 <!-- ===== SALES & MARKETING ===== -->
 <div id="tab-sales" class="tab">
   <div class="card mb20">
-    <div class="sec-hdr"><div><div class="sec-ttl">Ready to Promote</div><div style="font-size:11px;color:var(--gray-500)">Composite &gt;75 · high quality across all dimensions</div></div><button class="btn btn-s btn-sm" onclick="showToast('List downloaded','↓')">Download List</button></div>
-    <table class="dt"><thead><tr><th>Rank</th><th>Category / Brand</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th>Gross Margin</th><th>SKUs</th><th></th></tr></thead><tbody>
-      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#1</td><td><div style="font-weight:600;font-size:12px">Lighting — Commercial Fixtures</div><div style="font-size:10px;color:var(--gray-500)">Philips Signify, Lithonia, RAB</div></td><td><span class="sp sp-g">92</span></td><td>89</td><td>91</td><td>96</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">62.4%</td><td>4,200</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
-      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#2</td><td><div style="font-weight:600;font-size:12px">Electrical — Eaton</div><div style="font-size:10px;color:var(--gray-500)">Circuit Breakers, Switchgear</div></td><td><span class="sp sp-g">84</span></td><td>82</td><td>83</td><td>88</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">48.3%</td><td>3,100</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
-      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#3</td><td><div style="font-weight:600;font-size:12px">HVAC — Honeywell</div><div style="font-size:10px;color:var(--gray-500)">Thermostats, Controls</div></td><td><span class="sp sp-g">81</span></td><td>79</td><td>80</td><td>84</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">44.7%</td><td>2,800</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
-      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#4</td><td><div style="font-weight:600;font-size:12px">Tools &amp; Safety — Klein Tools</div></td><td><span class="sp sp-g">79</span></td><td>77</td><td>78</td><td>82</td><td style="font-weight:600;color:var(--green);font-family:'DM Mono',monospace;font-size:11px">54.1%</td><td>1,900</td><td><button class="btn btn-p btn-sm" onclick="showToast('Campaign brief created','→')">Promote</button></td></tr>
+    <div class="sec-hdr"><div><div class="sec-ttl">Ready to Promote</div><div style="font-size:11px;color:var(--gray-500)">Score ≥ 70 · MONITOR status · high quality confirmed across all signals</div></div><button class="btn btn-s btn-sm" onclick="showToast('List downloaded','↓')">Download List</button></div>
+    <table class="dt"><thead><tr><th>Rank</th><th>Category / Brand</th><th>Priority Score</th><th>Quality</th><th>Search</th><th>Conversion</th><th>Gross Margin</th><th>SKUs</th><th></th></tr></thead><tbody>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#1</td><td><div style="font-weight:600;font-size:12px">Lighting — Commercial Fixtures</div><div style="font-size:10px;color:var(--gray-500)">Philips Signify, Lithonia, RAB</div></td><td><span class="sp sp-g">92</span></td><td style="color:var(--green)">89</td><td style="color:var(--green)">96</td><td style="color:var(--green)">96%</td><td style="font-weight:600;color:var(--green)">62.4%</td><td>4,200</td><td><button class="btn btn-s btn-sm" onclick="openAssign(this.closest('tr').querySelector('div').textContent)"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" style="margin-right:3px"><circle cx="6" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 10c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Assign</button></td></tr>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#2</td><td><div style="font-weight:600;font-size:12px">Electrical — Eaton</div><div style="font-size:10px;color:var(--gray-500)">Circuit Breakers, Switchgear</div></td><td><span class="sp sp-g">84</span></td><td style="color:var(--green)">82</td><td style="color:var(--green)">88</td><td style="color:var(--green)">89%</td><td style="font-weight:600;color:var(--green)">48.3%</td><td>3,100</td><td><button class="btn btn-s btn-sm" onclick="openAssign(this.closest('tr').querySelector('div').textContent)"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" style="margin-right:3px"><circle cx="6" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 10c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Assign</button></td></tr>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#3</td><td><div style="font-weight:600;font-size:12px">HVAC — Honeywell</div><div style="font-size:10px;color:var(--gray-500)">Thermostats, Controls</div></td><td><span class="sp sp-g">81</span></td><td style="color:var(--green)">79</td><td style="color:var(--green)">84</td><td style="color:var(--green)">86%</td><td style="font-weight:600;color:var(--green)">44.7%</td><td>2,800</td><td><button class="btn btn-s btn-sm" onclick="openAssign(this.closest('tr').querySelector('div').textContent)"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" style="margin-right:3px"><circle cx="6" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 10c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Assign</button></td></tr>
+      <tr><td style="color:var(--gray-400);font-weight:700;font-size:11px">#4</td><td><div style="font-weight:600;font-size:12px">Tools &amp; Safety — Klein Tools</div></td><td><span class="sp sp-g">79</span></td><td style="color:var(--green)">77</td><td style="color:var(--green)">82</td><td style="color:var(--green)">83%</td><td style="font-weight:600;color:var(--green)">54.1%</td><td>1,900</td><td><button class="btn btn-s btn-sm" onclick="openAssign(this.closest('tr').querySelector('div').textContent)"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" style="margin-right:3px"><circle cx="6" cy="4" r="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 10c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Assign</button></td></tr>
     </tbody></table>
+    <div style="margin-top:10px;padding:6px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>View more — showing top 4 results</div>
   </div>
   <div class="card mb20">
     <div class="sec-hdr"><div><div class="sec-ttl">Needs Enrichment Before Promotion</div><div style="font-size:11px;color:var(--gray-500)">High demand signal · low catalog quality · promoting these wastes spend</div></div></div>
-    <table class="dt"><thead><tr><th>Category / Brand</th><th>Demand</th><th>Composite</th><th>Gross Margin</th><th>Return Rate</th><th>Top Gap</th><th>Recommendation</th></tr></thead><tbody>
-      <tr><td><div style="font-weight:600;font-size:12px">PVF / Matco-Norca</div></td><td><span style="background:var(--navy-light);color:var(--navy);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">High</span></td><td><span class="sp sp-r">28</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">36.8%</td><td style="color:var(--red);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">14.7%</td><td style="font-size:11px">Pressure rating, material grade</td><td style="color:var(--orange);font-size:11px;font-weight:500">Enrich first</td></tr>
-      <tr><td><div style="font-weight:600;font-size:12px">PVF / Smith-Cooper</div></td><td><span style="background:var(--navy-light);color:var(--navy);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">High</span></td><td><span class="sp sp-r">31</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">36.8%</td><td style="color:var(--red);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">12.4%</td><td style="font-size:11px">Schedule/wall thickness</td><td style="color:var(--orange);font-size:11px;font-weight:500">Add to queue</td></tr>
-      <tr><td><div style="font-weight:600;font-size:12px">Electrical / Southwire</div></td><td><span style="background:var(--gray-100);color:var(--gray-600);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">Medium</span></td><td><span class="sp sp-r">39</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">48.3%</td><td style="color:var(--amber);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">9.1%</td><td style="font-size:11px">Amperage, voltage, UL listing</td><td style="color:var(--orange);font-size:11px;font-weight:500">Enrich before Q2</td></tr>
-      <tr><td><div style="font-weight:600;font-size:12px">HVAC / Danfoss</div></td><td><span style="background:var(--gray-100);color:var(--gray-600);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">Medium</span></td><td><span class="sp sp-r">42</span></td><td style="font-family:'DM Mono',monospace;font-size:11px">44.7%</td><td style="color:var(--amber);font-weight:600;font-family:'DM Mono',monospace;font-size:11px">7.8%</td><td style="font-size:11px">Refrigerant type, op. temp</td><td style="color:var(--orange);font-size:11px;font-weight:500">Add to queue</td></tr>
+    <table class="dt"><thead><tr><th>Category / Brand</th><th>Demand</th><th>Priority Score</th><th>Gross Margin</th><th>Return Rate</th><th>Top Gap</th><th></th></tr></thead><tbody>
+      <tr><td><div style="font-weight:600;font-size:12px">PVF / Matco-Norca</div></td><td><span style="background:var(--navy-light);color:var(--navy);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">High</span></td><td><span class="sp sp-r">28</span></td><td>36.8%</td><td style="color:var(--red);font-weight:600">14.7%</td><td style="font-size:11px">Pressure rating, material grade</td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'PVF / Matco-Norca')">Queue</button></td></tr>
+      <tr><td><div style="font-weight:600;font-size:12px">PVF / Smith-Cooper</div></td><td><span style="background:var(--navy-light);color:var(--navy);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">High</span></td><td><span class="sp sp-r">31</span></td><td>36.8%</td><td style="color:var(--red);font-weight:600">12.4%</td><td style="font-size:11px">Schedule/wall thickness</td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'PVF / Smith-Cooper')">Queue</button></td></tr>
+      <tr><td><div style="font-weight:600;font-size:12px">Electrical / Southwire</div></td><td><span style="background:var(--gray-100);color:var(--gray-600);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">Medium</span></td><td><span class="sp sp-r">39</span></td><td>48.3%</td><td style="color:var(--amber);font-weight:600">9.1%</td><td style="font-size:11px">Amperage, voltage, UL listing</td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Electrical / Southwire')">Queue</button></td></tr>
+      <tr><td><div style="font-weight:600;font-size:12px">HVAC / Danfoss</div></td><td><span style="background:var(--gray-100);color:var(--gray-600);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">Medium</span></td><td><span class="sp sp-r">42</span></td><td>44.7%</td><td style="color:var(--amber);font-weight:600">7.8%</td><td style="font-size:11px">Refrigerant type, op. temp</td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'HVAC / Danfoss')">Queue</button></td></tr>
+      <tr><td><div style="font-weight:600;font-size:12px">Plumbing / Charlotte Pipe</div></td><td><span style="background:var(--gray-100);color:var(--gray-600);font-size:9px;padding:1px 7px;border-radius:3px;font-weight:600">Medium</span></td><td><span class="sp sp-r">44</span></td><td>41.2%</td><td style="color:var(--amber);font-weight:600">8.3%</td><td style="font-size:11px">Thread type, pressure rating</td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'Plumbing / Charlotte Pipe')">Queue</button></td></tr>
     </tbody></table>
+    <div style="margin-top:10px;padding:6px 12px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:10px;color:var(--gray-400);text-align:center;cursor:default;display:flex;align-items:center;justify-content:center;gap:5px"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>View more — showing top 5 results</div>
   </div>
   <div class="dlcard">
     <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;margin-bottom:6px">Download Reports</div>
@@ -1154,12 +1249,12 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
         <div class="sq" onclick="sendP('List the top-performing brands in Electrical by overall score')">Top-performing brands in Electrical</div>
         <div class="sq" onclick="sendP('Show me gross margin by category and which ones are ready to promote')">Gross margin by category — ready to promote?</div>
         <div class="divider"></div>
-        <div style="font-size:10px;color:var(--gray-400);line-height:1.6">Scoped to Summit Supply Co. catalog data. Connected to OroCommerce, Akeneo, GSC &amp; GA4.</div>
+        <div style="font-size:10px;color:var(--gray-400);line-height:1.6">Scoped to Summit Supply Co. catalog data. Connected to OroCommerce, OroCommerce, Akeneo, GSC &amp; GA4.</div>
       </div>
     </div>
     <div class="ag-main">
       <div class="chat-area" id="chat-area">
-        <div class="msg msg-a"><div class="ai-av">PT</div><div><div class="bub-a"><strong>Welcome to Ascend Catalog Pro Agentic Query</strong> — Summit Supply Co.<br><br>I'm connected to OroCommerce, Akeneo PIM, Google Search Console, and GA4. Ask me about catalog scores, pipeline status, financial impact, return rates, and brand performance across your 91,800 SKUs.</div><div class="mtag">Pivotree TowerTalk v2.1 · 5 sources connected</div></div></div>
+        <div class="msg msg-a"><div class="ai-av">PT</div><div><div class="bub-a"><strong>Welcome to Ascend Catalog Pro Agentic Query</strong> — Summit Supply Co.<br><br>I'm connected to OroCommerce, OroCommerce, Akeneo PIM, Google Search Console, and GA4. Ask me about catalog scores, pipeline status, financial impact, return rates, margin attribution, or brand performance across your 91,800 SKUs.</div><div class="mtag">Pivotree TowerTalk v2.1 · 5 sources connected</div></div></div>
       </div>
       <div id="typing-ind" style="display:none;padding:8px 18px;background:var(--gray-50);border-left:1px solid var(--gray-200);border-right:1px solid var(--gray-200)">
         <div class="msg msg-a"><div class="ai-av">PT</div><div class="bub-a"><div class="typing"><span></span><span></span><span></span></div></div></div>
@@ -1261,6 +1356,28 @@ body{font-family:'Inter',sans-serif;background:var(--gray-50);color:var(--gray-8
   </div>
 </div>
 
+<!-- ASSIGN MODAL -->
+<div class="moverlay" id="assign-modal">
+  <div class="modal" style="width:420px">
+    <div class="modal-ttl">Assign for Review</div>
+    <div class="modal-sub" id="assign-item-label">Assign this item to a team member for investigation or monitoring.</div>
+    <label class="fl">Team Member</label>
+    <select class="fs" id="assign-to">
+      <option>Sarah Chen — Merchandising</option>
+      <option>James Okafor — Catalog Ops</option>
+      <option>Priya Nair — eCommerce</option>
+      <option>Tom Walsh — Demand Planning</option>
+    </select>
+    <label class="fl">Note (optional)</label>
+    <input class="fs" id="assign-note" placeholder="e.g. Check pricing — T1 complete but CTR is low">
+    <label class="fl">Due Date</label>
+    <input class="fs" type="date" id="assign-due" value="2026-05-15">
+    <div class="macts">
+      <button class="btn btn-s" onclick="document.getElementById('assign-modal').classList.remove('open')">Cancel</button>
+      <button class="btn btn-p" onclick="submitAssign()">Assign Task</button>
+    </div>
+  </div>
+</div>
 <div class="tc" id="tc"></div>
 
 <script>
@@ -1274,6 +1391,7 @@ function switchTab(id,btn){
   else document.querySelectorAll('.tbtn').forEach(b=>{if(b.dataset.tab===id)b.classList.add('active');});
   if(id==='operations')setTimeout(drawGrowthChart,100);
   if(id==='howitworks')setTimeout(drawLoopDiagram,50);
+  if(id==='strategic'){setTimeout(()=>{applyF();resetDrill();renderHeatmap();},50);}
 }
 function openLib(){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -1286,6 +1404,21 @@ function showToast(msg,icon='→'){
   t.className='toast';t.innerHTML=`<span class="ti2">${icon}</span><span>${msg}</span>`;
   c.appendChild(t);setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),350);},3000);
 }
+
+function openAssign(name) {
+  document.getElementById('assign-item-label').textContent = 'Assign "' + name + '" to a team member for investigation or monitoring.';
+  document.getElementById('assign-modal').classList.add('open');
+}
+function submitAssign() {
+  var to = document.getElementById('assign-to').value.split('—')[0].trim();
+  document.getElementById('assign-modal').classList.remove('open');
+  showToast('Task assigned to ' + to, '✓');
+}
+document.getElementById('assign-modal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+function flagForReview(){showToast("Flagged for merchandising review","!");}
 function addQ(btn,name){btn.className='btn btn-q btn-sm';btn.textContent='Queued';btn.disabled=true;showToast(name+' added to queue');}
 
 // MODAL
@@ -1317,7 +1450,7 @@ function renderFinCards(){
     <div class="fin-card"><div class="fin-card-label">Conversion Rate</div><div class="fin-card-val">${d.conv}</div><div class="fin-card-delta ${isPost?'up':''}">${d.convDelta}</div></div>
     <div class="fin-card"><div class="fin-card-label">Return Rate (catalog attr.)</div><div class="fin-card-val">${d.ret}</div><div class="fin-card-delta ${isPost?'up dn':''}">${d.retDelta}</div></div>`;
   document.getElementById('fin-insight').innerHTML=isPost
-    ?`<strong>Post-enrichment impact (Lighting + Electrical batches, Nov 2025–Apr 2026):</strong> Revenue per product page view improved by $1.14M attributed to enriched SKUs. Return rate dropped 4.2 percentage points — OroCommerce RMA data attributes $840K in reduced return processing costs. Conversion rate up 3.1pp on enriched categories.`
+    ?`<strong>Post-enrichment impact (Lighting + Electrical batches, Nov 2025–Apr 2026):</strong> Revenue per product page view improved by $1.14M attributed to enriched SKUs. Return rate dropped 4.2 percentage points — OroCommerce data attributes $840K in reduced return processing costs. OroCommerce conversion rate up 3.1pp on enriched categories.`
     :`<strong>Pre-enrichment baseline (Oct 2025):</strong> Before the Lighting and Electrical enrichment cycles, conversion rate was 9.3% and return rate was 12.0% across catalog-attributed orders. Toggle to Post-Enrichment to see the impact.`;
 }
 renderFinCards();
@@ -1365,19 +1498,19 @@ function resetF(){
   document.getElementById('reset-f').style.display='none';activeKey='all';applyF();
 }
 
-function scColor(s){return s>=75?'var(--green)':s>=50?'var(--amber-mid)':'var(--red)';}
-function scTrack(s){return s>=75?'#6ee7b7':s>=50?'#fcd34d':'#fecdd3';}
-function scBg(s){return s>=75?'sbg-g':s>=50?'sbg-y':'sbg-r';}
-function scNum(s){return s>=75?'sg':s>=50?'sy':'sr';}
+function scColor(s){return s>=70?'var(--green)':s>=40?'var(--amber-mid)':'var(--red)';}
+function scTrack(s){return s>=70?'#6ee7b7':s>=40?'#fcd34d':'#fecdd3';}
+function scBg(s){return s>=70?'sbg-g':s>=40?'sbg-y':'sbg-r';}
+function scNum(s){return s>=70?'sg':s>=40?'sy':'sr';}
 function deltaHtml(d){
   if(d>0)return`<span class="sdelta dup">▲ +${Math.abs(d).toFixed(1)}%</span>`;
   if(d<0)return`<span class="sdelta ddn">▼ −${Math.abs(d).toFixed(1)}%</span>`;
   return`<span class="sdelta dfl">— 0.0%</span>`;
 }
 const cardMeta=[
-  {id:'sp-search',label:'Search Visibility',src:'Google Search Console',key:'search'},
-  {id:'sp-find',label:'Findability Score',src:'GA4 on-site data',key:'find'},
-  {id:'sp-buy',label:'Conversion Score',src:'OroCommerce + GA4',key:'buy'},
+  {id:'sp-find',label:'Data Quality',src:'Akeneo PIM · attribute completeness',key:'find'},
+  {id:'sp-search',label:'Search',src:'Google Search Console',key:'search'},
+  {id:'sp-buy',label:'Conversion',src:'GA4 + OroCommerce',key:'buy'},
 ];
 function renderScorecards(p,key,filt){
   const pl=activeDate==='30d'?'30 days':activeDate==='90d'?'90 days':activeDate==='6m'?'6 months':'12 months';
@@ -1420,9 +1553,9 @@ function renderExec(p,key,filt){
   let concern='';
   if(!filt)concern='PVF remains the primary drag — <span class="hl-r">21,300 SKUs at 43/100</span> with a 14.7% return rate attributed to missing specs. PVF Phase 1 is in the pipeline.';
   else if(['Lighting','Philips Signify','Eaton','Klein Tools','Honeywell'].includes(key))concern=`<span class="hl-g">All dimensions performing above target.</span> OroCommerce data shows strong conversion and low return rates. Ready for promotion investment.`;
-  else if(['PVF','Matco-Norca','Smith-Cooper','Southwire'].includes(key))concern=`<span class="hl-r">Scores are declining.</span> OroCommerce RMA data confirms spec mismatch as the primary driver. Prioritize enrichment before any promotion spend.`;
-  else concern=`Composite at <strong>${avgS}/100</strong>. Continued enrichment should move scores toward the 75+ target.`;
-  document.getElementById('exec-sum-body').innerHTML=`<div class="es-ttl">Executive Summary · ${period.charAt(0).toUpperCase()+period.slice(1)}</div><div class="es-txt">Catalog quality for ${ctx} has ${trend} over the ${period}. Search visibility is <strong>${p.search.score}/100</strong>, Findability is <strong>${p.find.score}/100</strong>, and Conversion is <strong>${p.buy.score}/100</strong>. ${concern}</div>`;
+  else if(['PVF','Matco-Norca','Smith-Cooper','Southwire'].includes(key))concern=`<span class="hl-r">Scores are declining.</span> OroCommerce data confirms spec mismatch as the primary driver. Prioritize enrichment before any promotion spend.`;
+  else concern=`Priority score at <strong>${avgS}/100</strong>. Continued enrichment should move scores above the 70 threshold into MONITOR status.`;
+  document.getElementById('exec-sum-body').innerHTML=`<div class="es-ttl">Executive Summary · ${period.charAt(0).toUpperCase()+period.slice(1)}</div><div class="es-txt">Priority scoring for ${ctx} has ${trend} over the ${period}. Data Quality is <strong>${p.find.score}/100</strong>, Search is <strong>${p.search.score}/100</strong>, and Conversion is <strong>${p.buy.score}/100</strong>. ${concern}</div>`;
 }
 
 const movers=[{name:'Eaton',sub:'Electrical',score:82,d:8.3},{name:'Philips Signify',sub:'Lighting',score:89,d:7.2},{name:'Electrical',sub:'All brands',score:71,d:7.4},{name:'Honeywell',sub:'HVAC',score:79,d:5.7}];
@@ -1431,40 +1564,34 @@ function renderMovers(){
   const lbl=drLabels[activeDate];const cap=lbl.charAt(0).toUpperCase()+lbl.slice(1);
   document.getElementById('mv-lbl').textContent=cap;document.getElementById('dc-lbl').textContent=cap;
   document.getElementById('mv-list').innerHTML=movers.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-up">▲ +${m.d.toFixed(1)}%</div></div>`).join('');
-  document.getElementById('dc-list').innerHTML=decliners.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-dn">▼ ${m.d.toFixed(1)}%</div><button class="btn btn-g btn-sm" onclick="addQ(this,'${m.name}')">Queue</button></div>`).join('');
+  document.getElementById('dc-list').innerHTML=decliners.map(m=>`<div class="mv-row"><div><div class="mv-name">${m.name}</div><div class="mv-sub">${m.sub} · Score ${m.score}</div></div><div class="mv-dn">▼ ${m.d.toFixed(1)}%</div></div>`).join('');
 }
 
 const hmCats=[{name:'Lighting',search:85,find:88,buy:92},{name:'Electrical',search:71,find:62,buy:68},{name:'HVAC',search:58,find:55,buy:71},{name:'Plumbing',search:62,find:51,buy:60},{name:'Tools & Safety',search:52,find:48,buy:64},{name:'PVF',search:38,find:41,buy:51}];
 function hmCol(s){return s>=75?{bg:'#d1fae5',c:'#0d6b40'}:s>=50?{bg:'#fef3c7',c:'#b45309'}:{bg:'#fee2e2',c:'#991b1b'};}
 function renderHeatmap(){
-  let h=`<div class="hm-hdr"></div><div class="hm-hdr">Search</div><div class="hm-hdr">Find</div><div class="hm-hdr">Buy</div><div class="hm-hdr"></div>`;
-  hmCats.forEach(r=>{const s=hmCol(r.search),f=hmCol(r.find),b=hmCol(r.buy);const comp=Math.round((r.search+r.find+r.buy)/3);const qBtn=comp<75?`<button class="btn btn-g btn-sm" style="font-size:9px;padding:3px 7px" onclick="addQ(this,'${r.name}')">Queue</button>`:`<span style="font-size:9px;color:var(--green);font-weight:600">✓ Ready</span>`;h+=`<div class="hm-lbl">${r.name}</div><div class="hm-cell" style="background:${s.bg};color:${s.c}">${r.search}</div><div class="hm-cell" style="background:${f.bg};color:${f.c}">${r.find}</div><div class="hm-cell" style="background:${b.bg};color:${b.c}">${r.buy}</div><div style="display:flex;align-items:center;justify-content:center">${qBtn}</div>`;});
+  let h=`<div class="hm-hdr"></div><div class="hm-hdr">Quality</div><div class="hm-hdr">Search</div><div class="hm-hdr">Conversion</div>`;
+  hmCats.forEach(r=>{const s=hmCol(r.search),f=hmCol(r.find),b=hmCol(r.buy);h+=`<div class="hm-lbl">${r.name}</div><div class="hm-cell" style="background:${f.bg};color:${f.c}">${r.find}</div><div class="hm-cell" style="background:${s.bg};color:${s.c}">${r.search}</div><div class="hm-cell" style="background:${b.bg};color:${b.c}">${r.buy}</div>`;});
   document.getElementById('heatmap').innerHTML=h;
 }
 
 // DRILL-DOWN
 const catD=[{name:'Lighting',score:88,search:85,find:88,buy:92,skus:'11,600',trend:'▲',tc:'tu'},{name:'Electrical',score:67,search:71,find:62,buy:68,skus:'18,400',trend:'▲',tc:'tu'},{name:'HVAC',score:61,search:58,find:55,buy:71,skus:'14,200',trend:'►',tc:'tf'},{name:'Plumbing',score:58,search:62,find:51,buy:60,skus:'16,800',trend:'▲',tc:'tu'},{name:'Tools & Safety',score:55,search:52,find:48,buy:64,skus:'9,500',trend:'►',tc:'tf'},{name:'PVF',score:43,search:38,find:41,buy:51,skus:'21,300',trend:'▼',tc:'td2'}];
 const subD={PVF:[{name:'Carbon Steel Pipe',score:41,search:36,find:39,buy:48,skus:'6,200',trend:'▼',tc:'td2'},{name:'Stainless Fittings',score:44,search:40,find:43,buy:49,skus:'4,100',trend:'►',tc:'tf'},{name:'Gate/Globe/Check Valves',score:38,search:32,find:36,buy:46,skus:'5,800',trend:'▼',tc:'td2'},{name:'Flanges',score:47,search:43,find:46,buy:52,skus:'3,100',trend:'►',tc:'tf'},{name:'Gaskets & Seals',score:48,search:44,find:47,buy:53,skus:'2,100',trend:'►',tc:'tf'}],Electrical:[{name:'Circuit Breakers',score:74,search:78,find:71,buy:73,skus:'3,200',trend:'▲',tc:'tu'},{name:'Conduit & Fittings',score:61,search:65,find:58,buy:60,skus:'2,800',trend:'►',tc:'tf'},{name:'Wire & Cable',score:58,search:62,find:53,buy:59,skus:'4,100',trend:'►',tc:'tf'},{name:'Switchgear',score:71,search:74,find:68,buy:71,skus:'2,400',trend:'▲',tc:'tu'},{name:'Wiring Devices',score:63,search:67,find:60,buy:62,skus:'2,800',trend:'▲',tc:'tu'}],HVAC:[{name:'Ductwork',score:62,search:60,find:58,buy:68,skus:'2,800',trend:'►',tc:'tf'},{name:'Thermostats & Controls',score:54,search:52,find:47,buy:63,skus:'3,200',trend:'►',tc:'tf'},{name:'Motors & Blowers',score:65,search:62,find:63,buy:70,skus:'3,100',trend:'▲',tc:'tu'},{name:'Air Handling Units',score:68,search:65,find:63,buy:76,skus:'2,700',trend:'▲',tc:'tu'}],Plumbing:[{name:'Copper Fittings',score:63,search:67,find:58,buy:64,skus:'3,200',trend:'▲',tc:'tu'},{name:'PVC/CPVC',score:55,search:58,find:49,buy:58,skus:'3,800',trend:'►',tc:'tf'},{name:'Valves',score:52,search:56,find:46,buy:54,skus:'3,600',trend:'►',tc:'tf'},{name:'Water Heaters',score:61,search:65,find:56,buy:62,skus:'2,400',trend:'▲',tc:'tu'}],Lighting:[{name:'Commercial Fixtures',score:92,search:89,find:91,buy:96,skus:'4,200',trend:'▲',tc:'tu'},{name:'Lamps & Bulbs',score:88,search:85,find:87,buy:92,skus:'2,800',trend:'▲',tc:'tu'},{name:'Controls & Dimmers',score:84,search:81,find:83,buy:88,skus:'1,600',trend:'▲',tc:'tu'},{name:'Emergency & Exit',score:87,search:84,find:86,buy:91,skus:'1,400',trend:'▲',tc:'tu'}],'Tools & Safety':[{name:'Hand Tools',score:62,search:59,find:57,buy:70,skus:'2,200',trend:'▲',tc:'tu'},{name:'Power Tools',score:58,search:55,find:52,buy:67,skus:'1,800',trend:'►',tc:'tf'},{name:'PPE',score:54,search:51,find:48,buy:63,skus:'1,900',trend:'►',tc:'tf'},{name:'Testing & Meters',score:61,search:58,find:55,buy:70,skus:'1,800',trend:'▲',tc:'tu'}]};
-const skuD={
-'Gate/Globe/Check Valves':[{sku:'PVF-GV-2250',name:'2" Gate Valve — Carbon Steel',score:29,search:24,find:28,buy:35,brand:'Smith-Cooper'},{sku:'PVF-GV-3380',name:'3" Gate Valve — Stainless',score:33,search:28,find:32,buy:39,brand:'Matco-Norca'},{sku:'PVF-GV-4420',name:'4" Globe Valve — Carbon Steel',score:31,search:26,find:30,buy:37,brand:'Bonney Forge'},{sku:'PVF-CV-1140',name:'1.5" Check Valve — Swing',score:36,search:31,find:35,buy:42,brand:'Stockham'},{sku:'PVF-GV-6610',name:'6" Gate Valve — Flanged',score:27,search:22,find:26,buy:33,brand:'Anvil'},{sku:'PVF-BV-2260',name:'2" Ball Valve — NPT',score:41,search:36,find:40,buy:47,brand:'Smith-Cooper'}],
-'Carbon Steel Pipe':[{sku:'PVF-CS-1040',name:'1" Sch 40 Carbon Steel Pipe — 21ft',score:38,search:33,find:37,buy:44,brand:'Bonney Forge'},{sku:'PVF-CS-2040',name:'2" Sch 40 Carbon Steel Pipe — 21ft',score:42,search:37,find:41,buy:48,brand:'Bonney Forge'},{sku:'PVF-CS-3080',name:'3" Sch 80 Carbon Steel Pipe — 21ft',score:35,search:30,find:34,buy:41,brand:'Anvil'},{sku:'PVF-CS-4040',name:'4" Sch 40 Carbon Steel Pipe — 21ft',score:31,search:26,find:30,buy:37,brand:'Anvil'},{sku:'PVF-CS-6040',name:'6" Sch 40 Carbon Steel Pipe — 21ft',score:28,search:23,find:27,buy:34,brand:'Smith-Cooper'},{sku:'PVF-CS-0580',name:'0.5" Sch 80 Carbon Steel Nipple — 6"',score:44,search:39,find:43,buy:50,brand:'Matco-Norca'}],
-'Stainless Fittings':[{sku:'PVF-SS-E2150',name:'2" 150# SS Elbow — 90°',score:46,search:41,find:45,buy:52,brand:'Matco-Norca'},{sku:'PVF-SS-T2150',name:'2" 150# SS Tee — Equal',score:43,search:38,find:42,buy:49,brand:'Matco-Norca'},{sku:'PVF-SS-C3150',name:'3" 150# SS Coupling — Threaded',score:40,search:35,find:39,buy:46,brand:'Anvil'},{sku:'PVF-SS-R1150',name:'1.5" 150# SS Reducer — 1.5x1"',score:37,search:32,find:36,buy:43,brand:'Smith-Cooper'},{sku:'PVF-SS-U2300',name:'2" 300# SS Union — Threaded',score:49,search:44,find:48,buy:55,brand:'Bonney Forge'},{sku:'PVF-SS-C4150',name:'4" 150# SS Cap — Welded',score:34,search:29,find:33,buy:40,brand:'Stockham'}],
-'Flanges':[{sku:'PVF-FL-S2150',name:'2" 150# SS Slip-On Flange',score:50,search:45,find:49,buy:56,brand:'Bonney Forge'},{sku:'PVF-FL-W4150',name:'4" 150# CS Weld Neck Flange',score:44,search:39,find:43,buy:50,brand:'Anvil'},{sku:'PVF-FL-B3150',name:'3" 150# CS Blind Flange',score:48,search:43,find:47,buy:54,brand:'Smith-Cooper'},{sku:'PVF-FL-S6150',name:'6" 150# CS Slip-On Flange',score:41,search:36,find:40,buy:47,brand:'Anvil'},{sku:'PVF-FL-T2300',name:'2" 300# CS Threaded Flange',score:46,search:41,find:45,buy:52,brand:'Bonney Forge'},{sku:'PVF-FL-L4150',name:'4" 150# SS Lap Joint Flange',score:38,search:33,find:37,buy:44,brand:'Matco-Norca'}],
-'Gaskets & Seals':[{sku:'PVF-GK-S2150',name:'2" 150# Spiral Wound Gasket — SS/Flex',score:52,search:47,find:51,buy:58,brand:'Garlock'},{sku:'PVF-GK-R4150',name:'4" 150# Ring Gasket — PTFE',score:49,search:44,find:48,buy:55,brand:'Garlock'},{sku:'PVF-GK-F3150',name:'3" 150# Full Face Gasket — Neoprene',score:46,search:41,find:45,buy:52,brand:'Flexitallic'},{sku:'PVF-GK-M2300',name:'2" 300# Metal Ring Joint Gasket',score:43,search:38,find:42,buy:49,brand:'Flexitallic'},{sku:'PVF-GK-K1150',name:'1" 150# Kammprofile Gasket — SS',score:40,search:35,find:39,buy:46,brand:'Garlock'},{sku:'PVF-GK-S6150',name:'6" 150# Spiral Wound Gasket — CS/Flex',score:37,search:32,find:36,buy:43,brand:'Flexitallic'}]
-};
+const skuD={'Gate/Globe/Check Valves':[{sku:'PVF-GV-2250',name:'2" Gate Valve — Carbon Steel',score:29,search:24,find:28,buy:35,brand:'Smith-Cooper'},{sku:'PVF-GV-3380',name:'3" Gate Valve — Stainless',score:33,search:28,find:32,buy:39,brand:'Matco-Norca'},{sku:'PVF-GV-4420',name:'4" Globe Valve — Carbon Steel',score:31,search:26,find:30,buy:37,brand:'Bonney Forge'},{sku:'PVF-CV-1140',name:'1.5" Check Valve — Swing',score:36,search:31,find:35,buy:42,brand:'Stockham'},{sku:'PVF-GV-6610',name:'6" Gate Valve — Flanged',score:27,search:22,find:26,buy:33,brand:'Anvil'},{sku:'PVF-BV-2260',name:'2" Ball Valve — NPT',score:41,search:36,find:40,buy:47,brand:'Smith-Cooper'}]};
 let dLevel='cat',dCat=null,dSub=null;
-function spCls(s){return s>=75?'sp-g':s>=50?'sp-y':'sp-r';}
+function spCls(s){return s>=70?'sp-g':s>=40?'sp-y':'sp-r';}
 function renderDrill(data,level){
   const isSku=level==='sku';
   let h='<table class="dt"><thead><tr>';
-  if(isSku)h+='<th>SKU</th><th>Product</th><th>Brand</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th></th>';
-  else h+='<th>'+(level==='cat'?'Category':'Sub-category')+'</th><th>Composite</th><th>Search</th><th>Find</th><th>Buy</th><th>SKUs</th><th></th><th></th>';
+  if(isSku)h+='<th>SKU</th><th>Product</th><th>Brand</th><th>Priority Score</th><th>Quality</th><th>Search</th><th>Conversion</th>';
+  else h+='<th>'+(level==='cat'?'Category':'Sub-category')+'</th><th>Priority Score</th><th>Quality</th><th>Search</th><th>Conversion</th><th>SKUs</th><th>Trend</th><th></th>';
   h+='</tr></thead><tbody>';
   data.forEach(r=>{
-    if(isSku){h+=`<tr><td style="font-family:'DM Mono',monospace;font-size:10px">${r.sku}</td><td style="font-weight:500;font-size:11px">${r.name}</td><td style="font-size:11px;color:var(--gray-500)">${r.brand}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'${r.sku}')">Queue</button></td></tr>`;}
-    else{const cl=level==='cat'?`onclick="dCat='${r.name}';drillSub('${r.name}')"`:`onclick="dSub='${r.name}';drillSku('${r.name}')"`;h+=`<tr><td style="font-weight:600;cursor:pointer;color:var(--navy);font-size:12px" ${cl}>${r.name}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.search}</td><td>${r.find}</td><td>${r.buy}</td><td style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:500">${r.skus}</td><td><button class="btn btn-g btn-sm" ${cl}>View</button></td><td><button class="btn btn-g btn-sm" onclick="addQ(this,'${r.name}')">Queue</button></td></tr>`;}
+    if(isSku){h+=`<tr><td style="font-family:'DM Mono',monospace;font-size:10px">${r.sku}</td><td style="font-weight:500;font-size:11px">${r.name}</td><td style="font-size:11px;color:var(--gray-500)">${r.brand}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.find}</td><td>${r.search}</td><td>${r.buy}</td></tr>`;}
+    else{const cl=level==='cat'?`onclick="dCat='${r.name}';drillSub('${r.name}')"`:`onclick="dSub='${r.name}';drillSku('${r.name}')"`;h+=`<tr><td style="font-weight:600;cursor:pointer;color:var(--navy);font-size:12px" ${cl}>${r.name}</td><td><span class="sp ${spCls(r.score)}">${r.score}</span></td><td>${r.find}</td><td>${r.search}</td><td>${r.buy}</td><td style="font-family:'DM Mono',monospace;font-size:10px">${r.skus}</td><td class="${r.tc}">${r.trend}</td><td><button class="btn btn-g btn-sm" ${cl}>View</button></td></tr>`;}
   });
-  h+='</tbody></table>';document.getElementById('drill-wrap').innerHTML=h;
+  h+='</tbody></table><div style="margin-top:10px;padding:6px 10px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-md);font-size:10px;color:var(--gray-400);text-align:center;cursor:default">↓ Showing top results — more available</div>';document.getElementById('drill-wrap').innerHTML=h;
 }
 function renderBC(){
   const bc=document.getElementById('drill-bc');if(dLevel==='cat'){bc.innerHTML='';return;}
@@ -1536,12 +1663,12 @@ const responses={
   'underperforming sub-categories':`<strong>Top 10 Underperforming Sub-categories</strong><div class="mono"><span class="mh">RANK  SUB-CATEGORY              CAT       SCORE</span><br><span class="mw">1     Gate/Globe/Check Valves   PVF       38</span><br><span class="mw">2     Carbon Steel Pipe         PVF       41</span><br><span class="mw">3     Stainless Fittings        PVF       44</span><br><span class="mw">4     Thermostats &amp; Controls    HVAC      54</span><br>5     PVC/CPVC                  Plumbing  55<br>6     Jobsite Equipment         Tools     49<br>7     PPE                       Tools     54<br>8     Valves                    Plumbing  52</div>`,
   'incomplete product data':`<strong>Brand with Most Incomplete Product Data</strong><div class="mono"><span class="mh">BRAND           CAT    COMPLETE  SOURCE</span><br><span class="mw">Matco-Norca     PVF    34%       Akeneo PIM</span><br>Smith-Cooper    PVF    41%       Akeneo PIM<br>Southwire       Elec   48%       Akeneo PIM<br>Danfoss         HVAC   52%       Akeneo PIM<br><span class="mh">Completeness scores pulled from Akeneo attribute coverage data</span></div>`,
   'normalization phase':`<strong>SKUs in Normalization Phase</strong><div class="mono"><span class="mh">PHASE          COUNT</span><br>Queue          1,847<br><span class="mw">Normalization  730  ← current</span><br>Enrichment     654<br>Review         334<br>Published      4,218<br><span class="mh">730 SKUs — 52% are PVF items</span></div>`,
-  'revenue impact':`<strong>Estimated Revenue Impact — PVF Enrichment to Score 70</strong><div class="mono"><span class="mh">CURRENT STATE (OroCommerce)</span><br>PVF Composite Score:      43/100<br>PVF Conversion Rate:      6.0%<br>PVF Return Rate:          14.7%  (OroCommerce RMA)<br>PVF Avg Order Value:      $612   (OroCommerce)<br><span class="md">─────────────────────────────────────────</span><br><span class="mh">PROJECTED AT SCORE 70</span><br>Conversion Rate (est.):   +3.8pp → 9.8%<br>Return Rate (est.):       -5.1pp → 9.6%<br>Incremental Revenue:      <span class="mh">+$2.4M annually</span><br>Reduced Return Costs:     <span class="mh">+$840K annually</span><br>Total Financial Impact:   <span class="mh">~$3.2M</span><br><span class="md">Projection based on Lighting/Electrical enrichment benchmarks</span></div>`,
-  'return rates':`<strong>Return Rate by Category — OroCommerce RMA Data</strong><div class="mono"><span class="mh">CATEGORY       RETURN RATE  PRIMARY CAUSE</span><br><span class="mw">PVF            14.7%        Spec mismatch (pressure/material)</span><br><span class="mw">Plumbing       7.2%         Wrong thread type ordered</span><br>HVAC           6.1%         Compatibility missing (voltage)<br>Tools          8.4%         Missing fit/compatibility data<br>Electrical     4.3%         Improving post-Eaton enrich.<br><span class="mh">Lighting       2.1%         Lowest — 92% enrichment coverage</span><br><span class="md">Source: OroCommerce RMA reason codes mapped to catalog attr. gaps</span></div>`,
+  'revenue impact':`<strong>Estimated Revenue Impact — PVF Enrichment to Score 70</strong><div class="mono"><span class="mh">CURRENT STATE (OroCommerce)</span><br>PVF Composite Score:      43/100<br>PVF Conversion Rate:      6.0%<br>PVF Return Rate:          14.7%  (OroCommerce)<br>PVF Avg Order Value:      $612   (OroCommerce)<br><span class="md">─────────────────────────────────────────</span><br><span class="mh">PROJECTED AT SCORE 70</span><br>Conversion Rate (est.):   +3.8pp → 9.8%<br>Return Rate (est.):       -5.1pp → 9.6%<br>Incremental Revenue:      <span class="mh">+$2.4M annually</span><br>Reduced Return Costs:     <span class="mh">+$840K annually</span><br>Total Financial Impact:   <span class="mh">~$3.2M</span><br><span class="md">Projection based on Lighting/Electrical enrichment benchmarks</span></div>`,
+  'return rates':`<strong>Return Rate by Category — OroCommerce Attribution</strong><div class="mono"><span class="mh">CATEGORY       RETURN RATE  PRIMARY CAUSE</span><br><span class="mw">PVF            14.7%        Spec mismatch (pressure/material)</span><br><span class="mw">Plumbing       7.2%         Wrong thread type ordered</span><br>HVAC           6.1%         Compatibility missing (voltage)<br>Tools          8.4%         Missing fit/compatibility data<br>Electrical     4.3%         Improving post-Eaton enrich.<br><span class="mh">Lighting       2.1%         Lowest — 92% enrichment coverage</span><br><span class="md">Source: OroCommerce order data mapped to catalog attr. gaps</span></div>`,
   'top-performing brands in electrical':`<strong>Top Brands — Electrical (Composite Score)</strong><div class="mono"><span class="mh">RANK  BRAND      COMPOSITE  MARGIN</span><br><span class="mh">1     Eaton       84         48.3%</span><br>2     Hubbell     79         45.1%<br>3     Leviton     76         43.8%<br>4     Square D    74         44.2%<br>5     Lutron      71         46.0%<br><span class="mw">6     Southwire   39         48.3%  ← outlier, high margin low quality</span></div>`,
   'gross margin':`<strong>Gross Margin by Category — OroCommerce</strong><div class="mono"><span class="mh">CATEGORY        MARGIN  SCORE  STATUS</span><br><span class="mh">Lighting        62.4%   88     Ready to promote</span><br>Tools & Safety  54.1%   55     Enrich to unlock<br>Electrical      48.3%   67     Partially ready<br>HVAC            44.7%   61     Partially ready<br>Plumbing        41.2%   58     Enrich to unlock<br><span class="mw">PVF             36.8%   43     Do not promote yet</span><br><span class="md">Southwire (Elec): 48.3% margin, 39 score — high-value enrich target</span></div>`,
 };
-function getResp(t){const tl=t.toLowerCase();for(const[k,v]of Object.entries(responses)){if(k.split(' ').filter(w=>w.length>3).some(w=>tl.includes(w)))return v;}return`<strong>Query processed across all connected sources.</strong><br><br>I can answer questions about catalog scores (Akeneo), revenue, margin, and returns (OroCommerce), and search performance (GSC/GA4).<div class="mono"><span class="mh">CATALOG SUMMARY</span><br>Total SKUs:    91,800<br>Composite:     62/100<br>Return Rate:   7.8% overall<br><span class="mw">Critical: PVF 43/100 · 14.7% return rate</span></div>`;}
+function getResp(t){const tl=t.toLowerCase();for(const[k,v]of Object.entries(responses)){if(k.split(' ').filter(w=>w.length>3).some(w=>tl.includes(w)))return v;}return`<strong>Query processed across all connected sources.</strong><br><br>I can answer questions about catalog scores (Akeneo), revenue and margin (OroCommerce), conversion and returns (OroCommerce), and search performance (GSC/GA4).<div class="mono"><span class="mh">CATALOG SUMMARY</span><br>Total SKUs:    91,800<br>Composite:     62/100<br>Return Rate:   7.8% overall<br><span class="mw">Critical: PVF 43/100 · 14.7% return rate</span></div>`;}
 function sendP(t){document.getElementById('chat-inp').value=t;switchTab('agentic',document.querySelector('[data-tab="agentic"]'));sendChat();}
 function sendChat(){
   const inp=document.getElementById('chat-inp'),t=inp.value.trim();if(!t)return;inp.value='';
@@ -1551,7 +1678,7 @@ function sendChat(){
   setTimeout(()=>{
     document.getElementById('typing-ind').style.display='none';
     const a=document.createElement('div');a.className='msg msg-a';
-    a.innerHTML=`<div class="ai-av">PT</div><div><div class="bub-a">${getResp(t)}</div><div class="mtag">Pivotree TowerTalk v2.1 · OroCommerce · Akeneo · GSC · GA4</div></div>`;
+    a.innerHTML=`<div class="ai-av">PT</div><div><div class="bub-a">${getResp(t)}</div><div class="mtag">Pivotree TowerTalk v2.1 · OroCommerce · OroCommerce · Akeneo · GSC · GA4</div></div>`;
     area.appendChild(a);area.scrollTop=area.scrollHeight;
   },1200);
 }
@@ -1595,7 +1722,7 @@ function drawLoopDiagram(){
   // Stage definitions: angle in degrees (0 = right, clockwise)
   const stages=[
     {angle:-90, label:'1. Data Sources',    sub:'GSC · GA4 · Akeneo\nOroCommerce',  col:navy,  icon:'data'},
-    {angle:-18, label:'2. Ascend Scores',   sub:'Search · Find · Buy\nComposite scoring', col:teal,  icon:'score'},
+    {angle:-18, label:'2. Ascend Scores',   sub:'Search (35%) + Conversion (65%)\n× Data Quality', col:teal,  icon:'score'},
     {angle:54,  label:'3. Client Prioritizes', sub:'Adds categories &\nbrands to queue', col:navy,  icon:'queue'},
     {angle:126, label:'4. Pivotree Enriches', sub:'Normalize · Enrich\nQA review',    col:teal,  icon:'enrich'},
     {angle:198, label:'5. Back to PIM',     sub:'Akeneo review\nPublish to eCommerce', col:navy,  icon:'publish'},
@@ -1727,11 +1854,338 @@ function drawLoopDiagram(){
 
 setTimeout(drawLoopDiagram,150);
 
-setTimeout(()=>{if(document.getElementById('tab-operations').classList.contains('active'))drawGrowthChart();},150);
+// ═══════════════════════════════════════════════════════════════
+// PRIORITY ENGINE — stacked ENRICH / INVESTIGATE / MONITOR
+// ═══════════════════════════════════════════════════════════════
 
-// Initialize Strategic tab on load
-applyF();
-renderDrill(catD,'cat');
+const peData = {
+  cat: {
+    enrich: [
+      {name:'PVF',              score:43, search:38, conv:50, dq:'41%', skus:'21,300'},
+      {name:'Electrical',       score:55, search:52, conv:57, dq:'58%', skus:'18,400'},
+      {name:'HVAC',             score:51, search:48, conv:53, dq:'54%', skus:'14,200'},
+      {name:'Plumbing',         score:48, search:46, conv:50, dq:'52%', skus:'16,800'},
+      {name:'Safety Products',  score:39, search:36, conv:42, dq:'43%', skus:'7,600'},
+    ],
+    investigate: [
+      {name:'Lighting',         score:62, search:64, conv:60, dq:'87%', skus:'11,600'},
+      {name:'Datacom',          score:68, search:70, conv:65, dq:'84%', skus:'5,200'},
+      {name:'Fluid Power',      score:65, search:67, conv:63, dq:'82%', skus:'8,400'},
+      {name:'Climate Control',  score:71, search:73, conv:68, dq:'88%', skus:'4,100'},
+      {name:'Wire Management',  score:63, search:65, conv:61, dq:'83%', skus:'6,700'},
+    ],
+    monitor: [
+      {name:'Fasteners',           score:84, search:82, conv:87, dq:'93%', skus:'9,200'},
+      {name:'Power Transmission',  score:78, search:76, conv:81, dq:'89%', skus:'6,800'},
+      {name:'Pneumatics',          score:82, search:80, conv:85, dq:'91%', skus:'5,400'},
+      {name:'Test & Measurement',  score:86, search:84, conv:89, dq:'94%', skus:'4,600'},
+      {name:'Automation',          score:77, search:75, conv:80, dq:'88%', skus:'3,900'},
+    ]
+  },
+  brand: {
+    enrich: [
+      {name:'Matco-Norca',    score:28, search:24, conv:35, dq:'34%', skus:'6,200'},
+      {name:'Smith-Cooper',   score:31, search:28, conv:39, dq:'41%', skus:'4,100'},
+      {name:'Southwire',      score:39, search:36, conv:44, dq:'48%', skus:'4,100'},
+      {name:'Danfoss',        score:42, search:39, conv:46, dq:'52%', skus:'2,400'},
+      {name:'Charlotte Pipe', score:44, search:41, conv:48, dq:'55%', skus:'3,800'},
+    ],
+    investigate: [
+      {name:'Philips Signify',  score:62, search:64, conv:60, dq:'87%', skus:'4,200'},
+      {name:'Eaton',            score:68, search:70, conv:65, dq:'84%', skus:'5,800'},
+      {name:'Hubbell',          score:65, search:67, conv:63, dq:'82%', skus:'3,100'},
+      {name:'Leviton',          score:71, search:73, conv:68, dq:'88%', skus:'2,600'},
+      {name:'Parker Hannifin',  score:63, search:65, conv:61, dq:'83%', skus:'4,900'},
+    ],
+    monitor: [
+      {name:'Lithonia',       score:89, search:87, conv:95, dq:'96%', skus:'2,100'},
+      {name:'Honeywell',      score:81, search:79, conv:84, dq:'86%', skus:'2,800'},
+      {name:'Klein Tools',    score:83, search:81, conv:86, dq:'91%', skus:'1,900'},
+      {name:'Emerson',        score:78, search:76, conv:81, dq:'89%', skus:'3,200'},
+      {name:'Brady',          score:76, search:74, conv:79, dq:'87%', skus:'2,400'},
+    ]
+  }
+};
+
+// Sub-category drill data keyed by category name
+const peSubData = {
+  'PVF': {
+    enrich: [
+      {name:'Gate/Globe/Check Valves', score:38, search:32, conv:44, dq:'38%', skus:'5,800', gap:'Pressure class, end connection (T1)'},
+      {name:'Carbon Steel Pipe',       score:41, search:36, conv:47, dq:'41%', skus:'6,200', gap:'Schedule/wall thickness (T1)'},
+      {name:'Stainless Fittings',      score:44, search:40, conv:49, dq:'46%', skus:'4,100', gap:'Material grade, pressure rating (T1)'},
+    ],
+    investigate:[],
+    monitor:[]
+  },
+  'Electrical': {
+    enrich: [
+      {name:'Wire & Cable',    score:58, search:62, conv:59, dq:'62%', skus:'4,100', gap:'Amperage, voltage (T1)'},
+      {name:'Conduit & Fittings',score:61,search:65,conv:60,dq:'66%', skus:'2,800', gap:'Diameter, material (T1)'},
+      {name:'Wiring Devices',  score:63, search:67, conv:62, dq:'68%', skus:'2,800', gap:'Voltage, ampacity (T1)'},
+    ],
+    investigate:[
+      {name:'Switchgear',score:71,search:74,conv:71,dq:'88%',skus:'2,400',gap:'T1 complete · price sensitivity issue'},
+    ],
+    monitor:[
+      {name:'Circuit Breakers',score:74,search:78,conv:73,dq:'91%',skus:'3,200',review:'Jul 2026'},
+    ]
+  },
+  'HVAC': {
+    enrich:[
+      {name:'Thermostats & Controls',score:54,search:52,conv:63,dq:'54%',skus:'3,200',gap:'Voltage, stage count (T1)'},
+      {name:'Ductwork',              score:62,search:60,conv:68,dq:'63%',skus:'2,800',gap:'CFM, gauge spec (T1)'},
+    ],
+    investigate:[
+      {name:'Motors & Blowers',score:65,search:62,conv:70,dq:'84%',skus:'3,100',gap:'T1 complete · sourcing delays'},
+    ],
+    monitor:[
+      {name:'Air Handling Units',score:68,search:65,conv:76,dq:'87%',skus:'2,700',review:'Jul 2026'},
+    ]
+  },
+  'Lighting':{enrich:[],investigate:[],monitor:[
+    {name:'Commercial Fixtures',score:92,search:89,conv:96,dq:'96%',skus:'4,200',review:'Jul 2026'},
+    {name:'Lamps & Bulbs',      score:88,search:85,conv:92,dq:'93%',skus:'2,800',review:'Jul 2026'},
+    {name:'Controls & Dimmers', score:84,search:81,conv:88,dq:'89%',skus:'1,600',review:'Jul 2026'},
+  ]},
+  'Plumbing':{
+    enrich:[
+      {name:'PVC/CPVC',  score:55,search:58,conv:58,dq:'58%',skus:'3,800',gap:'Material, pressure rating (T1)'},
+      {name:'Valves',    score:52,search:56,conv:54,dq:'54%',skus:'3,600',gap:'Thread type, pressure (T1)'},
+    ],
+    investigate:[
+      {name:'Copper Fittings',score:63,search:67,conv:64,dq:'82%',skus:'3,200',gap:'T1 complete · pricing issue'},
+    ],
+    monitor:[]
+  },
+  'Tools & Safety':{
+    enrich:[
+      {name:'PPE',         score:54,search:51,conv:63,dq:'56%',skus:'1,900',gap:'Size, rating, standard (T1)'},
+      {name:'Power Tools', score:58,search:55,conv:67,dq:'60%',skus:'1,800',gap:'Voltage, RPM (T1)'},
+    ],
+    investigate:[],
+    monitor:[
+      {name:'Hand Tools',  score:74,search:72,conv:77,dq:'88%',skus:'2,200',review:'Jul 2026'},
+    ]
+  }
+};
+
+// SKU level data keyed by sub-category
+const peSKUData = {
+  'Gate/Globe/Check Valves':[
+    {sku:'PVF-GV-2250',name:'2" Gate Valve — Carbon Steel',score:29,search:24,conv:35,dq:'32%',brand:'Smith-Cooper',gap:'Missing: pressure rating, material grade'},
+    {sku:'PVF-GV-3380',name:'3" Gate Valve — Stainless',   score:33,search:28,conv:39,dq:'38%',brand:'Matco-Norca', gap:'Missing: pressure class, end connection'},
+    {sku:'PVF-GV-4420',name:'4" Globe Valve — Carbon Steel',score:31,search:26,conv:37,dq:'34%',brand:'Bonney Forge',gap:'Missing: pressure class, body material'},
+    {sku:'PVF-CV-1140',name:'1.5" Check Valve — Swing',    score:36,search:31,conv:42,dq:'41%',brand:'Stockham',   gap:'Missing: end connection, pressure rating'},
+    {sku:'PVF-GV-6610',name:'6" Gate Valve — Flanged',     score:27,search:22,conv:33,dq:'29%',brand:'Anvil',      gap:'Missing: pressure class, face-to-face dim.'},
+  ],
+  'Wire & Cable':[
+    {sku:'ELEC-WC-1001',name:'12 AWG THHN — 500ft Spool',  score:52,search:55,conv:54,dq:'58%',brand:'Southwire',  gap:'Missing: ampacity, insulation temp rating'},
+    {sku:'ELEC-WC-1002',name:'10 AWG XHHW — 500ft Spool',  score:56,search:60,conv:57,dq:'62%',brand:'Southwire',  gap:'Missing: voltage rating, conduit fill %'},
+    {sku:'ELEC-WC-1003',name:'4/0 AWG Aluminum USE-2',     score:48,search:51,conv:49,dq:'52%',brand:'Encore Wire', gap:'Missing: ampacity, temp rating'},
+  ],
+  'Thermostats & Controls':[
+    {sku:'HVAC-TC-0930',name:'24V 2-Stage Programmable T-stat',score:36,search:34,conv:41,dq:'38%',brand:'Honeywell',gap:'Missing: voltage, stage count, wire terminals'},
+    {sku:'HVAC-TC-0931',name:'7-Day 4-Heat/2-Cool T-stat',    score:41,search:39,conv:46,dq:'44%',brand:'Honeywell',gap:'Missing: stage count, wire compatibility'},
+    {sku:'HVAC-TC-0932',name:'Line Voltage Thermostat 120V',   score:44,search:42,conv:48,dq:'47%',brand:'Stelpro',  gap:'Missing: voltage, wattage rating'},
+  ]
+};
+
+let peView = 'cat';       // 'cat' or 'brand'
+let peDrillLevel = 'top'; // 'top', 'sub', 'sku'
+let peDrillCat = null;
+let peDrillSub = null;
+
+function setPEView(v) {
+  peView = v;
+  peDrillLevel = 'top'; peDrillCat = null; peDrillSub = null;
+  document.getElementById('pe-tog-cat').classList.toggle('active', v==='cat');
+  document.getElementById('pe-tog-brand').classList.toggle('active', v==='brand');
+  renderPE();
+}
+
+function renderPE() {
+  const d = peDrillLevel === 'top' ? peData[peView]
+           : peDrillLevel === 'sub' ? (peSubData[peDrillCat] || {enrich:[],investigate:[],monitor:[]})
+           : null;
+  if (!d) return;
+
+  const isCat = peView === 'cat';
+  const colLabel = peDrillLevel === 'top' ? (isCat ? 'Category' : 'Brand')
+                 : peDrillLevel === 'sub' ? 'Sub-category' : 'SKU';
+
+  // Update column header labels
+  ['enrich','inv','mon'].forEach(t => {
+    const el = document.getElementById('pe-' + t + '-name-col');
+    if (el) el.textContent = colLabel;
+  });
+
+  // Update context label and breadcrumb
+  let ctxLabel = 'Showing all ' + (isCat ? 'categories' : 'brands') + ' · click any row to drill in';
+  let bcHtml = '';
+  if (peDrillLevel === 'sub') {
+    ctxLabel = peDrillCat + ' — sub-categories · click to drill to SKU level';
+    bcHtml = `<span style="cursor:pointer;color:var(--navy);font-weight:500" onclick="resetPEDrill()">All ${isCat?'Categories':'Brands'}</span>
+      <span style="color:var(--gray-400);margin:0 4px">›</span>
+      <span style="color:var(--gray-700);font-weight:600">${peDrillCat}</span>`;
+  } else if (peDrillLevel === 'sku') {
+    ctxLabel = peDrillCat + ' › ' + peDrillSub + ' — SKU level';
+    bcHtml = `<span style="cursor:pointer;color:var(--navy);font-weight:500" onclick="resetPEDrill()">All</span>
+      <span style="color:var(--gray-400);margin:0 4px">›</span>
+      <span style="cursor:pointer;color:var(--navy);font-weight:500" onclick="peDrillToSub('${peDrillCat}')">${peDrillCat}</span>
+      <span style="color:var(--gray-400);margin:0 4px">›</span>
+      <span style="color:var(--gray-700);font-weight:600">${peDrillSub}</span>`;
+  }
+  document.getElementById('pe-context-label').textContent = ctxLabel;
+  const bcEl = document.getElementById('pe-bc');
+  bcEl.innerHTML = bcHtml ? `<div style="display:flex;align-items:center;background:var(--navy-light);border-radius:var(--r-md);padding:3px 10px;font-size:11px">${bcHtml}</div>` : '';
+
+  renderPESection('enrich', d.enrich || []);
+  renderPESection('inv',    d.investigate || []);
+  renderPESection('mon',    d.monitor || []);
+}
+
+function renderPESection(type, rows) {
+  var tbody = document.getElementById("pe-" + type + "-body");
+  if (rows.length === 0) {
+    tbody.innerHTML = "<tr><td colspan='8' style='text-align:center;color:#94a3b8;font-style:italic;padding:14px'>None at this level</td></tr>";
+    return;
+  }
+
+  var isMonitor = type === "mon";
+  var isInv = type === "inv";
+  var isSKU = peDrillLevel === "sku";
+  var canDrill = !isSKU;
+  var drillLevel = peDrillLevel;
+
+  var html = rows.map(function(r) {
+    var scoreClass = r.score >= 70 ? "sp-g" : r.score >= 40 ? "sp-y" : "sp-r";
+
+    var nameCell;
+    if (isSKU) {
+      nameCell = "<td><div class='num-m' style='font-size:10px;color:#94a3b8'>" + (r.sku || "") + "</div>"
+               + "<div style='font-weight:500;font-size:11px'>" + r.name + "</div>"
+               + (r.brand ? "<div style='font-size:10px;color:#94a3b8'>" + r.brand + "</div>" : "") + "</td>";
+    } else if (canDrill) {
+      nameCell = "<td class='pe-drillable' style='font-weight:500;font-size:12px;cursor:pointer;color:#001f5b'>"
+               + r.name + " <span style='font-size:9px;color:#94a3b8'>›</span></td>";
+    } else {
+      nameCell = "<td style='font-weight:500;font-size:12px;color:#001f5b'>" + r.name + "</td>";
+    }
+
+    var drillAttr = canDrill ? "data-drill='" + drillLevel + "' data-name='" + r.name.replace(/'/g,"&#39;") + "'" : "";
+    var rowStyle = canDrill ? "cursor:pointer;" : "";
+
+    var actionCell;
+    if (isMonitor) {
+      actionCell = "<td><button class='btn btn-s btn-sm' onclick='openAssign(\"" + r.name + "\")'><svg width='10' height='10' viewBox='0 0 12 12' fill='none' style='margin-right:3px'><circle cx='6' cy='4' r='2.5' stroke='currentColor' stroke-width='1.2'/><path d='M2 10c0-2.2 1.8-4 4-4s4 1.8 4 4' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/></svg>Assign</button></td>";
+    } else if (isInv) {
+      actionCell = "<td><button class='btn btn-s btn-sm' onclick='openAssign(&quot;" + r.name + "&quot;)'><svg width='10' height='10' viewBox='0 0 12 12' fill='none' style='margin-right:3px'><circle cx='6' cy='4' r='2.5' stroke='currentColor' stroke-width='1.2'/><path d='M2 10c0-2.2 1.8-4 4-4s4 1.8 4 4' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/></svg>Assign</button></td>";
+    } else {
+      actionCell = "<td><button class='btn btn-g btn-sm pe-queue-btn'>Queue</button></td>";
+    }
+
+    return "<tr " + drillAttr + " style='" + rowStyle + "'>"
+      + nameCell
+      + "<td><span class='sp " + scoreClass + "'>" + r.score + "</span></td>"
+      + "<td class='num-p' style='font-size:12px'>" + r.dq + "</td>"
+      + "<td class='num-p' style='font-size:12px'>" + r.search + "</td>"
+      + "<td class='num-p' style='font-size:12px'>" + r.conv + "</td>"
+      + "<td class='num-m' style='font-size:11px'>" + r.skus + "</td>"
+      + actionCell
+      + "</tr>";
+  }).join("");
+
+  tbody.innerHTML = html;
+
+  // Event delegation for drill-down (avoids inline onclick with nested quotes)
+  tbody.querySelectorAll("tr[data-drill]").forEach(function(tr) {
+    tr.addEventListener("click", function(e) {
+      if (e.target.tagName === "BUTTON") return;
+      var level = this.getAttribute("data-drill");
+      var name = this.getAttribute("data-name");
+      if (level === "top") peDrillToSub(name);
+      else if (level === "sub") peDrillToSKU(name);
+    });
+  });
+
+  // Wire up queue buttons with the row name
+  tbody.querySelectorAll(".pe-queue-btn").forEach(function(btn, i) {
+    var name = rows[i] ? rows[i].name : "";
+    btn.addEventListener("click", function() { addQ(this, name); });
+  });
+}
+
+function peDrillToSub(catName) {
+  if (!peSubData[catName]) { showToast('No sub-category data for '+catName); return; }
+  peDrillLevel = 'sub';
+  peDrillCat = catName;
+  peDrillSub = null;
+  renderPE();
+}
+
+function peDrillToSKU(subName) {
+  if (!peSKUData[subName]) { showToast('Drilling to SKU level for '+subName); return; }
+  peDrillLevel = 'sku';
+  peDrillSub = subName;
+  renderPE();
+}
+
+function resetPEDrill() {
+  peDrillLevel = 'top'; peDrillCat = null; peDrillSub = null;
+  renderPE();
+}
+
+function exportPE() {
+  const d = peDrillLevel === 'top' ? peData[peView]
+           : peDrillLevel === 'sub' ? (peSubData[peDrillCat] || {enrich:[],investigate:[],monitor:[]})
+           : {enrich:[], investigate:[], monitor:[]};
+  const all = [
+    ...(d.enrich||[]).map(r=>({...r,tag:'ENRICH'})),
+    ...(d.investigate||[]).map(r=>({...r,tag:'INVESTIGATE'})),
+    ...(d.monitor||[]).map(r=>({...r,tag:'MONITOR'}))
+  ];
+  const header = 'Name,Tag,Score,Search,Conversion,Data Quality,SKUs,Gap/Review\n';
+  const rows = all.map(r=>`"${r.name}","${r.tag}",${r.score},${r.search},${r.conv},"${r.dq}","${r.skus}","${r.gap||r.review||''}"`).join('\n');
+  const blob = new Blob([header+rows], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'priority_engine_export.csv';
+  a.click();
+  showToast('Priority Engine exported to CSV','↓');
+}
+
+// ── SEARCH / FILTER FUNCTIONS ─────────────────────────────────────────────────
+
+function filterDrill(q) {
+  var term = q.toLowerCase().trim();
+  var rows = document.querySelectorAll('#drill-wrap tbody tr');
+  rows.forEach(function(row) {
+    var text = row.textContent.toLowerCase();
+    row.style.display = (!term || text.includes(term)) ? '' : 'none';
+  });
+}
+
+function filterPE(q) {
+  var term = q.toLowerCase().trim();
+  ['enrich','inv','mon'].forEach(function(type) {
+    var rows = document.querySelectorAll('#pe-' + type + '-body tr');
+    rows.forEach(function(row) {
+      var text = row.textContent.toLowerCase();
+      row.style.display = (!term || text.includes(term)) ? '' : 'none';
+    });
+  });
+}
+
+// Clear PE search when toggling view
+var _origSetPEView = typeof setPEView === 'function' ? setPEView : null;
+
+// Initialise on first load
+setTimeout(renderPE, 200);
+setTimeout(applyF, 50);
+setTimeout(resetDrill, 50);
+
+setTimeout(()=>{if(document.getElementById('tab-operations').classList.contains('active'))drawGrowthChart();},150);
 </script>
 </body>
 </html>
